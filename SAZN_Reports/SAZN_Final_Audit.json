@@ -1,0 +1,148 @@
+{
+ "generated": "2026-11-08",
+ "branch": "arena/96a68a69-sazn",
+ "size_cap_ok": true,
+ "source_files": 51,
+ "db_counts": {
+  "source_files": 51,
+  "sheets": 2810,
+  "sheet_cells": 2810,
+  "cell_numeric": 324150,
+  "pdf_pages": 4345,
+  "pdf_num_pages": 4345,
+  "pdf_tables": 1349,
+  "eowr_facts": 2190,
+  "cbs_items": 10171,
+  "cbs_totals": 575,
+  "cbs_stim": 1563,
+  "cbs_accomm": 72,
+  "ddr_daily": 1304,
+  "ddr_activities": 38278,
+  "ddr_time": 34393,
+  "ddr_materials": 36046,
+  "ddr_formations": 8362,
+  "ddr_surveys": 4388,
+  "ddr_bha": 3960,
+  "ddr_casing": 3242,
+  "ddr_pob": 6641,
+  "ddr_notes": 4210,
+  "well_kpi": 13,
+  "well_events": 102,
+  "well_lessons": 156,
+  "well_recs": 156,
+  "reconciliation": 718,
+  "npt_breakdown": 48,
+  "field_timeseries": 1304,
+  "audit_findings": 5
+ },
+ "field_totals": {
+  "operations": 13,
+  "contracts": 3,
+  "rigs": [
+   "OEOC 201",
+   "OEOC 208"
+  ],
+  "cbs_files": 13,
+  "cbs_sheets": 202,
+  "ddr_files": 13,
+  "ddr_sheets": 2608,
+  "eowr_files": 11,
+  "eowr_pages": 2724,
+  "program_files": 14,
+  "program_pages": 1621,
+  "pdf_pages": 4345,
+  "excel_sheets": 2810,
+  "cells": 1196084,
+  "numeric_cells": 324150,
+  "formulas": 155248,
+  "pdf_tables": 1349,
+  "pdf_numbers": 305447,
+  "ddr_days": 1304,
+  "npt_hours": 13316.433333333334,
+  "cbs_plan": 94797894.38999999,
+  "gross": 99843688.22000001,
+  "payable": 89126231.27000001,
+  "net": 87082106.28,
+  "drilled_m": 12264.759999999998,
+  "formations": 188,
+  "events": 102,
+  "lessons": 156,
+  "recs": 156,
+  "reconciliation": 718
+ },
+ "graphics": {
+  "png": 149,
+  "artboards": 149,
+  "overlap_pairs": 0,
+  "review": {
+   "total": 149,
+   "resized": 29,
+   "min_kb": 97.6,
+   "max_kb": 247.1,
+   "mean_kb": 169.3,
+   "resolution": "2400 x 1800 px @ 300 DPI (deviceScaleFactor 2)",
+   "text_overlap_pairs": 0,
+   "text_overlap_files": 0,
+   "visual_review_samples": [
+    "AZNS-207_01_time_donut.png",
+    "AZNS-207_02_wellbore.png",
+    "AZNS-207_04_fourtrack.png",
+    "AZNS-207_06_reconciliation.png",
+    "FIELD_15_crosssection.png",
+    "FIELD_16_learning.png"
+   ],
+   "language": "English only inside every graphic",
+   "depth_axis": "inverted (0 m top)"
+  }
+ },
+ "docx": {
+  "total": 30,
+  "all_pass": true,
+  "min_chapters": 24,
+  "min_tables": 96,
+  "min_graphics": 11,
+  "mb": 30.04,
+  "fa_font": "B Nazanin",
+  "en_font": "Times New Roman",
+  "forbidden_labels": 0
+ },
+ "dashboard": {
+  "mb": 4.13,
+  "searchable_rows": 532268,
+  "offline": true,
+  "live_search_verified": true
+ },
+ "workbook_sheets": 23,
+ "audit_findings": [
+  {
+   "id": "AF-01",
+   "title": "AZNS-122 WO1 has no EOWR in 04.EOWR/"
+  },
+  {
+   "id": "AF-02",
+   "title": "Operations 12 and 13 share one EOWR file"
+  },
+  {
+   "id": "AF-03",
+   "title": "Contract-code discrepancies in source headers"
+  },
+  {
+   "id": "AF-04",
+   "title": "Benchmark material sheets for wells 29 and 38"
+  },
+  {
+   "id": "AF-05",
+   "title": "Image-only pages and text-layer limits"
+  }
+ ],
+ "no_fabrication": {
+  "rig_rate_basis": "sourced CBS Rig Service 23,000 USD/DAY",
+  "fallback_50_50_waiting_used": false,
+  "derived_day_rate_wells": [
+   "AZNS-85"
+  ],
+  "graphic_placeholders_removed": true
+ },
+ "patchset_files": 198,
+ "patchset_mb": 122.36
+}

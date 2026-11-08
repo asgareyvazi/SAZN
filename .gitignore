@@ -1,0 +1,7 @@
+.venv/
+.tools/
+__pycache__/
+*.pyc
+.arena/
+SAZN_Reports/_data/artboards/
+SAZN_Reports/_data/dashboard_check.png
