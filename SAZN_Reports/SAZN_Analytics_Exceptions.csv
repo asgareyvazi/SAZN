@@ -4980,29 +4980,515 @@ PDF_LOW_TEXT_PAGE,AZNS-75,Well Program/9.AZNS_75_Workover-1_Program.pdf,,p.64,10
 PDF_LOW_TEXT_PAGE,AZNS-75,Well Program/9.AZNS_75_Workover-1_Program.pdf,,p.87,185,<200 chars,5,LOW_TEXT_SOURCE_PAGE,Text layer <200 chars; OCR not available in source-only pipeline; no numeric value fabricated
 PDF_LOW_TEXT_PAGE,AZNS-75,Well Program/9.AZNS_75_Workover-1_Program.pdf,,p.95,147,<200 chars,6,LOW_TEXT_SOURCE_PAGE,Text layer <200 chars; OCR not available in source-only pipeline; no numeric value fabricated
 PDF_LOW_TEXT_PAGE,AZNS-75,Well Program/9.AZNS_75_Workover-1_Program.pdf,,p.117,198,<200 chars,3,LOW_TEXT_SOURCE_PAGE,Text layer <200 chars; OCR not available in source-only pipeline; no numeric value fabricated
-COST_CALENDAR_BASIS_FLAG,AZNS-40,well_profiles.json.gz,four-track cost,,151,102.0,49.0,OK,CBS day basis longer than DDR day count; source basis retained
-COST_CALENDAR_BASIS_FLAG,AZNS-10,well_profiles.json.gz,four-track cost,,83,39.0,44.0,OK,CBS day basis longer than DDR day count; source basis retained
-COST_CALENDAR_BASIS_FLAG,AZNS-85,well_profiles.json.gz,four-track cost,,53,,0.0,CBS_DAYS_MISSING,CBS day basis longer than DDR day count; source basis retained
-COST_CALENDAR_BASIS_FLAG,AZNS-122-WO1,well_profiles.json.gz,four-track cost,,56,45.0,11.0,OK,CBS day basis longer than DDR day count; source basis retained
-COST_CALENDAR_BASIS_FLAG,AZNS-116,well_profiles.json.gz,four-track cost,,112,77.4,34.6,OK,CBS day basis longer than DDR day count; source basis retained
-COST_CALENDAR_BASIS_FLAG,AZNS-127-WO1-ST1,well_profiles.json.gz,four-track cost,,137,60.0,77.0,OK,CBS day basis longer than DDR day count; source basis retained
-COST_CALENDAR_BASIS_FLAG,AZNS-207,well_profiles.json.gz,four-track cost,,155,145.00476909722227,9.995231,OK,CBS day basis longer than DDR day count; source basis retained
-COST_CALENDAR_BASIS_FLAG,AZNS-122-WO2,well_profiles.json.gz,four-track cost,,121,110.80781249999995,10.192188,OK,CBS day basis longer than DDR day count; source basis retained
-COST_CALENDAR_BASIS_FLAG,AZNS-75,well_profiles.json.gz,four-track cost,,166,154.9625,11.0375,OK,CBS day basis longer than DDR day count; source basis retained
-COST_CALENDAR_BASIS_FLAG,AZNS-12,well_profiles.json.gz,four-track cost,,72,91.917890625,-19.917891,CBS_DAYS_GT_DDR_DAYS,CBS day basis longer than DDR day count; source basis retained
-COST_CALENDAR_BASIS_FLAG,AZNS-166,well_profiles.json.gz,four-track cost,,24,44.237187500000005,-20.237188,CBS_DAYS_GT_DDR_DAYS,CBS day basis longer than DDR day count; source basis retained
-COST_CALENDAR_BASIS_FLAG,AZNS-127-WO2,well_profiles.json.gz,four-track cost,,68,45.925000000000004,22.075,OK,CBS day basis longer than DDR day count; source basis retained
-COST_CALENDAR_BASIS_FLAG,AZNS-127-ST2,well_profiles.json.gz,four-track cost,,106,115.36250000000005,-9.3625,CBS_DAYS_GT_DDR_DAYS,CBS day basis longer than DDR day count; source basis retained
-NPT_UNATTRIBUTED_EXPLICIT_HOURS,AZNS-40,DDR 24-h activity log,,,1947.5,explicit attribution,,NO_50_50_FALLBACK,Unattributed explicit NPT hours kept verbatim
-NPT_UNATTRIBUTED_EXPLICIT_HOURS,AZNS-10,DDR 24-h activity log,,,1210.0,explicit attribution,,NO_50_50_FALLBACK,Unattributed explicit NPT hours kept verbatim
-NPT_UNATTRIBUTED_EXPLICIT_HOURS,AZNS-85,DDR 24-h activity log,,,237.5,explicit attribution,,NO_50_50_FALLBACK,Unattributed explicit NPT hours kept verbatim
-NPT_UNATTRIBUTED_EXPLICIT_HOURS,AZNS-122-WO1,DDR 24-h activity log,,,928.5,explicit attribution,,NO_50_50_FALLBACK,Unattributed explicit NPT hours kept verbatim
-NPT_UNATTRIBUTED_EXPLICIT_HOURS,AZNS-116,DDR 24-h activity log,,,1495.0,explicit attribution,,NO_50_50_FALLBACK,Unattributed explicit NPT hours kept verbatim
-NPT_UNATTRIBUTED_EXPLICIT_HOURS,AZNS-127-WO1-ST1,DDR 24-h activity log,,,754.0,explicit attribution,,NO_50_50_FALLBACK,Unattributed explicit NPT hours kept verbatim
-NPT_UNATTRIBUTED_EXPLICIT_HOURS,AZNS-207,DDR 24-h activity log,,,380.5,explicit attribution,,NO_50_50_FALLBACK,Unattributed explicit NPT hours kept verbatim
-NPT_UNATTRIBUTED_EXPLICIT_HOURS,AZNS-122-WO2,DDR 24-h activity log,,,1023.95,explicit attribution,,NO_50_50_FALLBACK,Unattributed explicit NPT hours kept verbatim
-NPT_UNATTRIBUTED_EXPLICIT_HOURS,AZNS-75,DDR 24-h activity log,,,417.0,explicit attribution,,NO_50_50_FALLBACK,Unattributed explicit NPT hours kept verbatim
-NPT_UNATTRIBUTED_EXPLICIT_HOURS,AZNS-12,DDR 24-h activity log,,,749.0,explicit attribution,,NO_50_50_FALLBACK,Unattributed explicit NPT hours kept verbatim
-NPT_UNATTRIBUTED_EXPLICIT_HOURS,AZNS-166,DDR 24-h activity log,,,38.0,explicit attribution,,NO_50_50_FALLBACK,Unattributed explicit NPT hours kept verbatim
-NPT_UNATTRIBUTED_EXPLICIT_HOURS,AZNS-127-WO2,DDR 24-h activity log,,,246.5,explicit attribution,,NO_50_50_FALLBACK,Unattributed explicit NPT hours kept verbatim
-NPT_UNATTRIBUTED_EXPLICIT_HOURS,AZNS-127-ST2,DDR 24-h activity log,,,162.0,explicit attribution,,NO_50_50_FALLBACK,Unattributed explicit NPT hours kept verbatim
+COST_CALENDAR_BASIS_FLAG,AZNS-85,well_profiles.json.gz,four-track cost,,53,57.4,-4.4,CBS_DAYS_GT_DDR_DAYS,CBS day basis exceeds DDR day count; source basis retained
+COST_CALENDAR_BASIS_FLAG,AZNS-12,well_profiles.json.gz,four-track cost,,72,91.917890625,-19.917891,CBS_DAYS_GT_DDR_DAYS,CBS day basis exceeds DDR day count; source basis retained
+COST_CALENDAR_BASIS_FLAG,AZNS-166,well_profiles.json.gz,four-track cost,,24,44.237187500000005,-20.237188,CBS_DAYS_GT_DDR_DAYS,CBS day basis exceeds DDR day count; source basis retained
+COST_CALENDAR_BASIS_FLAG,AZNS-127-ST2,well_profiles.json.gz,four-track cost,,106,115.36250000000005,-9.3625,CBS_DAYS_GT_DDR_DAYS,CBS day basis exceeds DDR day count; source basis retained
+NPT_BLANK_ATTRIBUTION,AZNS-40,DDR 24-h activity log,,,1947.5,explicit attribution,,NO_50_50_FALLBACK,Blank attributed-party NPT hours kept verbatim; no 50/50 split
+NPT_BLANK_ATTRIBUTION,AZNS-10,DDR 24-h activity log,,,1210.0,explicit attribution,,NO_50_50_FALLBACK,Blank attributed-party NPT hours kept verbatim; no 50/50 split
+NPT_BLANK_ATTRIBUTION,AZNS-85,DDR 24-h activity log,,,237.5,explicit attribution,,NO_50_50_FALLBACK,Blank attributed-party NPT hours kept verbatim; no 50/50 split
+NPT_BLANK_ATTRIBUTION,AZNS-122-WO1,DDR 24-h activity log,,,928.5,explicit attribution,,NO_50_50_FALLBACK,Blank attributed-party NPT hours kept verbatim; no 50/50 split
+NPT_BLANK_ATTRIBUTION,AZNS-116,DDR 24-h activity log,,,1495.0,explicit attribution,,NO_50_50_FALLBACK,Blank attributed-party NPT hours kept verbatim; no 50/50 split
+NPT_BLANK_ATTRIBUTION,AZNS-127-WO1-ST1,DDR 24-h activity log,,,754.0,explicit attribution,,NO_50_50_FALLBACK,Blank attributed-party NPT hours kept verbatim; no 50/50 split
+NPT_BLANK_ATTRIBUTION,AZNS-207,DDR 24-h activity log,,,380.5,explicit attribution,,NO_50_50_FALLBACK,Blank attributed-party NPT hours kept verbatim; no 50/50 split
+NPT_BLANK_ATTRIBUTION,AZNS-122-WO2,DDR 24-h activity log,,,1023.95,explicit attribution,,NO_50_50_FALLBACK,Blank attributed-party NPT hours kept verbatim; no 50/50 split
+NPT_BLANK_ATTRIBUTION,AZNS-75,DDR 24-h activity log,,,417.0,explicit attribution,,NO_50_50_FALLBACK,Blank attributed-party NPT hours kept verbatim; no 50/50 split
+NPT_BLANK_ATTRIBUTION,AZNS-12,DDR 24-h activity log,,,749.0,explicit attribution,,NO_50_50_FALLBACK,Blank attributed-party NPT hours kept verbatim; no 50/50 split
+NPT_BLANK_ATTRIBUTION,AZNS-166,DDR 24-h activity log,,,38.0,explicit attribution,,NO_50_50_FALLBACK,Blank attributed-party NPT hours kept verbatim; no 50/50 split
+NPT_BLANK_ATTRIBUTION,AZNS-127-WO2,DDR 24-h activity log,,,246.5,explicit attribution,,NO_50_50_FALLBACK,Blank attributed-party NPT hours kept verbatim; no 50/50 split
+NPT_BLANK_ATTRIBUTION,AZNS-127-ST2,DDR 24-h activity log,,,162.0,explicit attribution,,NO_50_50_FALLBACK,Blank attributed-party NPT hours kept verbatim; no 50/50 split
+RATE_CARD_DEVIATION_GT5PCT,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Cost Breakdown-Material-166,F30,341275.0,1.0,341274.0,DEVIATION_GT5PCT,peer-card deviation 34127400.0% | Section D
+RATE_CARD_DEVIATION_GT5PCT,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Cost Breakdown-Material-F-20,F30,231275.0,1.0,231274.0,DEVIATION_GT5PCT,peer-card deviation 23127400.0% | Section D
+RATE_CARD_DEVIATION_GT5PCT,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Cost Breakdown-Material-F-20,F28,40455.0,1.0,40454.0,DEVIATION_GT5PCT,peer-card deviation 4045400.0% | Section B
+RATE_CARD_DEVIATION_GT5PCT,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Cost Breakdown-Material-F-20,F27,39005.0,1.0,39004.0,DEVIATION_GT5PCT,peer-card deviation 3900400.0% | Section A
+RATE_CARD_DEVIATION_GT5PCT,AZNS-122-WO1,CBS/4.AZNS_122_WO1_CBS.xlsx,Cost Breakdown-Material-122 EW,F231,9500.0,1.0,9499.0,DEVIATION_GT5PCT,"peer-card deviation 949900.0% | 8-1/2"" Rock Bit"
+RATE_CARD_DEVIATION_GT5PCT,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Cost Breakdown-Material-127,F231,9500.0,1.0,18998.0,DEVIATION_GT5PCT,"peer-card deviation 949900.0% | 8-1/2"" Rock Bit"
+RATE_CARD_DEVIATION_GT5PCT,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Cost Breakdown-Material-F-20,F268,9500.0,1.0,18998.0,DEVIATION_GT5PCT,"peer-card deviation 949900.0% | 8-1/2"" Rock Bit"
+RATE_CARD_DEVIATION_GT5PCT,AZNS-122-WO1,CBS/4.AZNS_122_WO1_CBS.xlsx,Cost Breakdown-Material-122 EW,F233,6500.0,2.0,6498.0,DEVIATION_GT5PCT,"peer-card deviation 324900.0% | 5-7/8"" Rock Bit"
+RATE_CARD_DEVIATION_GT5PCT,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Cost Breakdown-Material-127,F233,6500.0,2.0,19494.0,DEVIATION_GT5PCT,"peer-card deviation 324900.0% | 5-7/8"" Rock Bit"
+RATE_CARD_DEVIATION_GT5PCT,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Cost Breakdown-Material-F-20,F270,6500.0,2.0,6498.0,DEVIATION_GT5PCT,"peer-card deviation 324900.0% | 5-7/8"" Rock Bit"
+RATE_CARD_DEVIATION_GT5PCT,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Cost Breakdown-Material-F-20,F76,380.0,2.0,1890.0,DEVIATION_GT5PCT,"peer-card deviation 18900.0% | Crossover, 4-1/2"" 18.9 PPF Box × 3-1/2"" 10.2 PPF Pin, Gas Tight Conn, L-80 type1 1.2m long, PSL3."
+RATE_CARD_DEVIATION_GT5PCT,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Cost Breakdown-Material-F-20,F73,300.0,2.0,4470.0,DEVIATION_GT5PCT,"peer-card deviation 14900.0% | Tubing pup joint, 3 1/2"", L-80 type 1, 10.2 PPF, Gas Tight Conn, seamless, 1.5m long, PSL3."
+RATE_CARD_DEVIATION_GT5PCT,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Cost Breakdown-Material-F-20,F72,350.0,3.0,1388.0,DEVIATION_GT5PCT,"peer-card deviation 11566.6667% | Tubing pup joint, 4 1/2"", L-80 type 1, 18.9 PPF, Gas Tight Conn, seamless, 1.5m, PSL3."
+RATE_CARD_DEVIATION_GT5PCT,AZNS-122-WO1,CBS/4.AZNS_122_WO1_CBS.xlsx,Cost Breakdown-122,F14,3000.0,100.0,14500.0,DEVIATION_GT5PCT,peer-card deviation 2900.0% | Cementing Service Personnel
+RATE_CARD_DEVIATION_GT5PCT,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Cost Breakdown-127,F14,3000.0,100.0,14500.0,DEVIATION_GT5PCT,peer-card deviation 2900.0% | Cementing Service Personnel
+RATE_CARD_DEVIATION_GT5PCT,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Cost Breakdown-122,F14,3000.0,100.0,14500.0,DEVIATION_GT5PCT,peer-card deviation 2900.0% | Cementing Service Personnel
+RATE_CARD_DEVIATION_GT5PCT,AZNS-10,CBS/2.AZNS_10_CBS.xlsx,Cost Breakdown-10 w. Extra Wor,F14,2000.0,100.0,9500.0,DEVIATION_GT5PCT,peer-card deviation 1900.0% | Cementing Service Personnel
+RATE_CARD_DEVIATION_GT5PCT,AZNS-10,CBS/2.AZNS_10_CBS.xlsx,Cost Breakdown-10,F14,2000.0,100.0,20900.0,DEVIATION_GT5PCT,peer-card deviation 1900.0% | Cementing Service Personnel
+RATE_CARD_DEVIATION_GT5PCT,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Cost Breakdown-122,F98,56822.0,5400.0,51422.0,DEVIATION_GT5PCT,peer-card deviation 952.2593% | Coiled tubing equipment and personnel
+RATE_CARD_DEVIATION_GT5PCT,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Cost Breakdown-12,F11,346937.5,84062.5,262875.0,DEVIATION_GT5PCT,"peer-card deviation 312.7138% | Mud Chemicals for 8 1⁄2"" hole"
+RATE_CARD_DEVIATION_GT5PCT,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Cost Breakdown-166,F11,346937.5,84062.5,262875.0,DEVIATION_GT5PCT,"peer-card deviation 312.7138% | Mud Chemicals for 8 1⁄2"" hole"
+RATE_CARD_DEVIATION_GT5PCT,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Cost Breakdown-127#2,F11,346937.5,84062.5,262875.0,DEVIATION_GT5PCT,"peer-card deviation 312.7138% | Mud Chemicals for 8 1⁄2"" hole"
+RATE_CARD_DEVIATION_GT5PCT,AZNS-127-ST2,CBS/13.AZNS_127_ST2_CBS.xlsx,Cost Breakdown-127,F11,346937.5,84062.5,1419525.0,DEVIATION_GT5PCT,"peer-card deviation 312.7138% | Mud Chemicals for 8 1⁄2"" hole"
+RATE_CARD_DEVIATION_GT5PCT,AZNS-40,CBS/1.AZNS_40_CBS.xlsx,Cost Breakdown-40,F12,346937.5,86875.0,260062.5,DEVIATION_GT5PCT,"peer-card deviation 299.3525% | Mud Chemicals for 6 1/8"" hole"
+RATE_CARD_DEVIATION_GT5PCT,AZNS-127-ST2,CBS/13.AZNS_127_ST2_CBS.xlsx,Cost Breakdown-127,F12,346937.5,86875.0,520125.0,DEVIATION_GT5PCT,"peer-card deviation 299.3525% | Mud Chemicals for 6 1/8"" hole"
+RATE_CARD_DEVIATION_GT5PCT,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Cost Breakdown-122,F12,346937.5,86875.0,260062.5,DEVIATION_GT5PCT,"peer-card deviation 299.3525% | Mud Chemicals for 6 1/8"" hole"
+RATE_CARD_DEVIATION_GT5PCT,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Cost Breakdown-122,F157,159458.84,44376.0,115082.84,DEVIATION_GT5PCT,peer-card deviation 259.3358% | Well Test Full Package
+RATE_CARD_DEVIATION_GT5PCT,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Cost Breakdown-075,F163,159458.84,44376.0,115082.84,DEVIATION_GT5PCT,peer-card deviation 259.3358% | Well Test Full Package
+RATE_CARD_DEVIATION_GT5PCT,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Total Cost-EPD,G4,875413.8,290732.76,584681.04,DEVIATION_GT5PCT,peer-card deviation 201.106% | Contingency 1
+RATE_CARD_DEVIATION_GT5PCT,AZNS-122-WO1,CBS/4.AZNS_122_WO1_CBS.xlsx,Cost Breakdown-122,F15,4500.0,1750.0,13750.0,DEVIATION_GT5PCT,peer-card deviation 157.1429% | Cementing Equipment
+RATE_CARD_DEVIATION_GT5PCT,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Cost Breakdown-127,F15,4500.0,1750.0,13750.0,DEVIATION_GT5PCT,peer-card deviation 157.1429% | Cementing Equipment
+RATE_CARD_DEVIATION_GT5PCT,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Cost Breakdown-122,F15,4500.0,1750.0,13750.0,DEVIATION_GT5PCT,peer-card deviation 157.1429% | Cementing Equipment
+RATE_CARD_DEVIATION_GT5PCT,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Total Cost-EPD,G9,1125005.9300000002,446269.4,678736.53,DEVIATION_GT5PCT,peer-card deviation 152.0912% | Contingency 6
+RATE_CARD_DEVIATION_GT5PCT,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Total Cost-EPD,G4,613719.4,290732.76,322986.64,DEVIATION_GT5PCT,peer-card deviation 111.094% | Contingency 1
+RATE_CARD_DEVIATION_GT5PCT,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Total Cost-EPD,G6,1240918.28,616970.13,-616970.13,DEVIATION_GT5PCT,peer-card deviation 101.131% | Contingency 3
+RATE_CARD_DEVIATION_GT5PCT,AZNS-10,CBS/2.AZNS_10_CBS.xlsx,Cost Breakdown-10 w. Extra Wor,F15,3500.0,1750.0,8750.0,DEVIATION_GT5PCT,peer-card deviation 100.0% | Cementing Equipment
+RATE_CARD_DEVIATION_GT5PCT,AZNS-10,CBS/2.AZNS_10_CBS.xlsx,Cost Breakdown-10,F15,3500.0,1750.0,19250.0,DEVIATION_GT5PCT,peer-card deviation 100.0% | Cementing Equipment
+RATE_CARD_DEVIATION_GT5PCT,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Cost Breakdown-F-20,F11,63.0,84062.5,-167999000.0,DEVIATION_GT5PCT,"peer-card deviation -99.9251% | Mud Chemicals for 8 1⁄2"" hole"
+RATE_CARD_DEVIATION_GT5PCT,AZNS-127-ST2,CBS/13.AZNS_127_ST2_CBS.xlsx,Cost Breakdown-127,F86,187.5,19800.0,-17357062.5,DEVIATION_GT5PCT,peer-card deviation -99.053% | 
+RATE_CARD_DEVIATION_GT5PCT,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Cost Breakdown-Material-166,F53,151.0,3102.0,-9148100.0,DEVIATION_GT5PCT,"peer-card deviation -95.1322% | Tubing, 4 1/2"", L80, 18.9 ppf, Premium Conn., Seamless, R2, PSL3."
+RATE_CARD_DEVIATION_GT5PCT,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Cost Breakdown-12,F151,73.0,1150.0,-1055460.0,DEVIATION_GT5PCT,peer-card deviation -93.6522% | Completion Fluids
+RATE_CARD_DEVIATION_GT5PCT,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Cost Breakdown-166,F151,73.0,1150.0,-1055460.0,DEVIATION_GT5PCT,peer-card deviation -93.6522% | Completion Fluids
+RATE_CARD_DEVIATION_GT5PCT,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Cost Breakdown-075,F151,73.0,1150.0,-1046674.09,DEVIATION_GT5PCT,peer-card deviation -93.6522% | Completion Fluids
+RATE_CARD_DEVIATION_GT5PCT,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Total Cost-EPD,G11,121867.20625000002,942332.25,-942332.25,DEVIATION_GT5PCT,peer-card deviation -87.0675% | Contingency 8
+RATE_CARD_DEVIATION_GT5PCT,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Total Cost-EPD,G7,119011.38,892716.1000000001,-773704.72,DEVIATION_GT5PCT,peer-card deviation -86.6686% | Contingency 4
+RATE_CARD_DEVIATION_GT5PCT,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Total Cost-EPD,G6,112511.38,616970.13,-504458.75,DEVIATION_GT5PCT,peer-card deviation -81.7639% | Contingency 3
+RATE_CARD_DEVIATION_GT5PCT,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Total Cost-EPD,G6,112511.38,616970.13,-504458.75,DEVIATION_GT5PCT,peer-card deviation -81.7639% | Contingency 3
+RATE_CARD_DEVIATION_GT5PCT,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Cost Breakdown-F-20,F39,293616.0,165847.5,127768.5,DEVIATION_GT5PCT,peer-card deviation 77.0398% | Full-Suit Log
+RATE_CARD_DEVIATION_GT5PCT,AZNS-127-ST2,CBS/13.AZNS_127_ST2_CBS.xlsx,Total Cost-EPD,G5,576550.0,2385000.0,-1808450.0,DEVIATION_GT5PCT,peer-card deviation -75.826% | Procurement for AZNS-127
+RATE_CARD_DEVIATION_GT5PCT,AZNS-40,CBS/1.AZNS_40_CBS.xlsx,Cost Breakdown-40,F106,3900.0,15000.0,-11100.0,DEVIATION_GT5PCT,"peer-card deviation -74.0% | 7"" liner hanger running equipment and personnel (lump Sum as Complete package)"
+RATE_CARD_DEVIATION_GT5PCT,AZNS-127-ST2,CBS/13.AZNS_127_ST2_CBS.xlsx,Cost Breakdown-127,F119,3900.0,15000.0,-33300.0,DEVIATION_GT5PCT,"peer-card deviation -74.0% | 7"" liner hanger running equipment and personnel (lump Sum as Complete package)"
+RATE_CARD_DEVIATION_GT5PCT,AZNS-10,CBS/2.AZNS_10_CBS.xlsx,Cost Breakdown-10,F114,3900.0,15000.0,-11100.0,DEVIATION_GT5PCT,"peer-card deviation -74.0% | 7"" liner hanger running equipment and personnel (lump Sum as Complete package)"
+RATE_CARD_DEVIATION_GT5PCT,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Cost Breakdown-F-20,F120,3900.0,15000.0,-11100.0,DEVIATION_GT5PCT,"peer-card deviation -74.0% | 7"" liner hanger running equipment and personnel (lump Sum as Complete package)"
+RATE_CARD_DEVIATION_GT5PCT,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Total Cost-EPD,G6,199554.225,616970.13,-417415.91,DEVIATION_GT5PCT,peer-card deviation -67.6558% | Contingency 3
+RATE_CARD_DEVIATION_GT5PCT,AZNS-40,CBS/1.AZNS_40_CBS.xlsx,Cost Breakdown-40,F122,15000.0,9000.0,6000.0,DEVIATION_GT5PCT,"peer-card deviation 66.6667% | Wellhead services in kazhdumi, Gadvan and Fahliyan wells (Full Stack)"
+RATE_CARD_DEVIATION_GT5PCT,AZNS-127-ST2,CBS/13.AZNS_127_ST2_CBS.xlsx,Cost Breakdown-127,F136,15000.0,9000.0,6000.0,DEVIATION_GT5PCT,"peer-card deviation 66.6667% | Wellhead services in kazhdumi, Gadvan and Fahliyan wells (Full Stack)"
+RATE_CARD_DEVIATION_GT5PCT,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Cost Breakdown-F-20,F137,15000.0,9000.0,30000.0,DEVIATION_GT5PCT,"peer-card deviation 66.6667% | Wellhead services in kazhdumi, Gadvan and Fahliyan wells (Full Stack)"
+RATE_CARD_DEVIATION_GT5PCT,,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Total Cost-EPD,G7,318436.67999999993,892716.1000000001,-574279.42,DEVIATION_GT5PCT,peer-card deviation -64.3295% | Contingency 4
+RATE_CARD_DEVIATION_GT5PCT,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Total Cost-EPD,G10,147017.07,403056.9,-403056.9,DEVIATION_GT5PCT,peer-card deviation -63.5245% | Contingency 7
+RATE_CARD_DEVIATION_GT5PCT,,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Total Cost-EPD,G14,327717.62,876466.1000000001,-548748.48,DEVIATION_GT5PCT,peer-card deviation -62.6092% | Contingency 5
+RATE_CARD_DEVIATION_GT5PCT,AZNS-127-ST2,CBS/13.AZNS_127_ST2_CBS.xlsx,Cost Breakdown-Material-127,F139,15000.0,39150.0,-24150.0,DEVIATION_GT5PCT,peer-card deviation -61.6858% | Service Charge
+RATE_CARD_DEVIATION_GT5PCT,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Total Cost-EPD,G8,1392344.73,876466.1000000001,515878.63,DEVIATION_GT5PCT,peer-card deviation 58.8589% | Contingency 5
+RATE_CARD_DEVIATION_GT5PCT,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Cost Breakdown-Material-12,F34,142085.0,91785.0,50300.0,DEVIATION_GT5PCT,peer-card deviation 54.802% | Section C
+RATE_CARD_DEVIATION_GT5PCT,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Cost Breakdown-Material-166,F29,142085.0,91785.0,50300.0,DEVIATION_GT5PCT,peer-card deviation 54.802% | Section C
+RATE_CARD_DEVIATION_GT5PCT,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Total Cost-EPD,G9,204517.07,446269.4,-446269.4,DEVIATION_GT5PCT,peer-card deviation -54.1718% | Contingency 6
+RATE_CARD_DEVIATION_GT5PCT,,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Total Cost-EPD,G8,408655.12,876466.1000000001,-467810.98,DEVIATION_GT5PCT,peer-card deviation -53.3747% | Contingency 5
+RATE_CARD_DEVIATION_GT5PCT,AZNS-40,CBS/1.AZNS_40_CBS.xlsx,Cost Breakdown-40,F14,150.0,100.0,900.0,DEVIATION_GT5PCT,peer-card deviation 50.0% | Cementing Service Personnel
+RATE_CARD_DEVIATION_GT5PCT,AZNS-127-ST2,CBS/13.AZNS_127_ST2_CBS.xlsx,Cost Breakdown-127,F14,150.0,100.0,1000.0,DEVIATION_GT5PCT,peer-card deviation 50.0% | Cementing Service Personnel
+RATE_CARD_DEVIATION_GT5PCT,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Cost Breakdown-F-20,F14,150.0,100.0,1200.0,DEVIATION_GT5PCT,peer-card deviation 50.0% | Cementing Service Personnel
+RATE_CARD_DEVIATION_GT5PCT,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Cost Breakdown-075,F14,150.0,100.0,900.0,DEVIATION_GT5PCT,peer-card deviation 50.0% | Cementing Service Personnel
+RATE_CARD_DEVIATION_GT5PCT,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Total Cost-EPD,G5,268965.95,510264.9,-510264.9,DEVIATION_GT5PCT,peer-card deviation -47.289% | Contingency 2
+RATE_CARD_DEVIATION_GT5PCT,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Cost Breakdown-075,F19,18000.0,32812.5,-59250.0,DEVIATION_GT5PCT,"peer-card deviation -45.1429% | Cementing 5"" Liner"
+RATE_CARD_DEVIATION_GT5PCT,AZNS-127-ST2,CBS/13.AZNS_127_ST2_CBS.xlsx,Cost Breakdown-Material-127,F171,31200.0,21750.0,9450.0,DEVIATION_GT5PCT,"peer-card deviation 43.4483% | Rotating liner hanger, hydraulic set, tandem cone, with integral/split, weight set top packer, 7"" 32# x 9 5/8"" 47 53.5#,"
+RATE_CARD_DEVIATION_GT5PCT,AZNS-127-ST2,CBS/13.AZNS_127_ST2_CBS.xlsx,Cost Breakdown-Material-127,F185,31200.0,21750.0,9450.0,DEVIATION_GT5PCT,"peer-card deviation 43.4483% | Rotating liner hanger, hydraulic set, tandem cone, with integral/split, weight set top packer, 5"" 18# x 7"" 29 32#, L080,"
+RATE_CARD_DEVIATION_GT5PCT,AZNS-122-WO1,CBS/4.AZNS_122_WO1_CBS.xlsx,Cost Breakdown-Material-122 EW,F145,31200.0,21750.0,9450.0,DEVIATION_GT5PCT,"peer-card deviation 43.4483% | Rotating liner hanger, hydraulic set, tandem cone, with integral/split, weight set top packer, 7"" 29-32# x 9 5/8"" 47-53."
+RATE_CARD_DEVIATION_GT5PCT,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Cost Breakdown-Material-F-20,F205,31200.0,21750.0,9450.0,DEVIATION_GT5PCT,"peer-card deviation 43.4483% | Rotating liner hanger, hydraulic set, tandem cone, with integral/split, weight set top packer, 7"" 32# x 9 5/8"" 47-53.5#,"
+RATE_CARD_DEVIATION_GT5PCT,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Cost Breakdown-Material-075,F185,31200.0,21750.0,9450.0,DEVIATION_GT5PCT,"peer-card deviation 43.4483% | Rotating liner hanger, hydraulic set, tandem cone, with integral/split, weight set top packer, 5"" 18# x 7"" 29 32#, L080,"
+RATE_CARD_DEVIATION_GT5PCT,AZNS-10,CBS/2.AZNS_10_CBS.xlsx,Cost Breakdown-10,F159,169.5,298.0,-27884.5,DEVIATION_GT5PCT,"peer-card deviation -43.1208% | Liner, 7"", L80, 29 ppf, Gas Tight Conn.,Seamless, R3, PLS3"
+RATE_CARD_DEVIATION_GT5PCT,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Cost Breakdown-075,F96,35.0,25.0,4530.0,DEVIATION_GT5PCT,"peer-card deviation 40.0% | Casing Running 5"" Liner"
+RATE_CARD_DEVIATION_GT5PCT,AZNS-40,CBS/1.AZNS_40_CBS.xlsx,Cost Breakdown-40,F37,91750.0,65975.0,25775.0,DEVIATION_GT5PCT,peer-card deviation 39.0678% | CCL/GR/CBL· VDL
+RATE_CARD_DEVIATION_GT5PCT,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Cost Breakdown-F-20,F38,91750.0,65975.0,25775.0,DEVIATION_GT5PCT,peer-card deviation 39.0678% | CCL/GR/CBL· VDL
+RATE_CARD_DEVIATION_GT5PCT,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Total Cost-EPD,G7,1221368.28,892716.1000000001,328652.18,DEVIATION_GT5PCT,peer-card deviation 36.8149% | Contingency 4
+RATE_CARD_DEVIATION_GT5PCT,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Total Cost-EPD,G7,1214816.28,892716.1000000001,322100.18,DEVIATION_GT5PCT,peer-card deviation 36.0809% | Contingency 4
+RATE_CARD_DEVIATION_GT5PCT,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Total Cost-EPD,G5,688953.3500000001,510264.9,178688.45,DEVIATION_GT5PCT,peer-card deviation 35.0188% | Contingency 2
+RATE_CARD_DEVIATION_GT5PCT,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Total Cost-EPD,G5,688885.3500000001,510264.9,178620.45,DEVIATION_GT5PCT,peer-card deviation 35.0054% | Contingency 2
+RATE_CARD_DEVIATION_GT5PCT,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Total Cost-EPD,G9,202.5,150.0,8624.28,DEVIATION_GT5PCT,peer-card deviation 35.0% | Mission cost
+RATE_CARD_DEVIATION_GT5PCT,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Total Cost-EPD,G11,1271721.8608333336,942332.25,329389.61,DEVIATION_GT5PCT,peer-card deviation 34.9547% | Contingency 8
+RATE_CARD_DEVIATION_GT5PCT,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Total Cost-EPD,G8,571588.3666666667,876466.1000000001,-876466.1,DEVIATION_GT5PCT,peer-card deviation -34.7849% | Contingency 5
+RATE_CARD_DEVIATION_GT5PCT,AZNS-127-ST2,CBS/13.AZNS_127_ST2_CBS.xlsx,Cost Breakdown-127,F31,1000.0,1500.0,-1500.0,DEVIATION_GT5PCT,peer-card deviation -33.3333% | Full Suite
+RATE_CARD_DEVIATION_GT5PCT,,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Total Cost-EPD,G5,342436.67999999993,510264.9,-167828.22,DEVIATION_GT5PCT,peer-card deviation -32.8904% | Contingency 2
+RATE_CARD_DEVIATION_GT5PCT,,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Total Cost-EPD,G11,342436.67999999993,510264.9,-167828.22,DEVIATION_GT5PCT,peer-card deviation -32.8904% | Contingency 2
+RATE_CARD_DEVIATION_GT5PCT,,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Total Cost-EPD,G4,203332.76,290732.76,-87400.0,DEVIATION_GT5PCT,peer-card deviation -30.062% | Contingency 1
+RATE_CARD_DEVIATION_GT5PCT,,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Total Cost-EPD,G10,203332.76,290732.76,-87400.0,DEVIATION_GT5PCT,peer-card deviation -30.062% | Contingency 1
+RATE_CARD_DEVIATION_GT5PCT,AZNS-127-ST2,CBS/13.AZNS_127_ST2_CBS.xlsx,Cost Breakdown-127,F80,350.0,490.0,-5068.0,DEVIATION_GT5PCT,peer-card deviation -28.5714% | Directional Drilling Engineer
+RATE_CARD_DEVIATION_GT5PCT,AZNS-127-ST2,CBS/13.AZNS_127_ST2_CBS.xlsx,Cost Breakdown-127,F81,300.0,420.0,-4344.0,DEVIATION_GT5PCT,peer-card deviation -28.5714% | MWD and LWD Engineer
+RATE_CARD_DEVIATION_GT5PCT,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Cost Breakdown-116 Contingecy,F132,17190.0,13875.0,3315.0,DEVIATION_GT5PCT,peer-card deviation 23.8919% | Dry test services for 7 in liner
+RATE_CARD_DEVIATION_GT5PCT,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Cost Breakdown-127 Contingeny ,F133,17190.0,13875.0,3315.0,DEVIATION_GT5PCT,peer-card deviation 23.8919% | Dry test services for 7 in liner
+RATE_CARD_DEVIATION_GT5PCT,AZNS-127-ST2,CBS/13.AZNS_127_ST2_CBS.xlsx,Total Cost-EPD,G4,359514.9,290732.76,68782.14,DEVIATION_GT5PCT,peer-card deviation 23.6582% | Contingency 1
+RATE_CARD_DEVIATION_GT5PCT,AZNS-122-WO1,CBS/4.AZNS_122_WO1_CBS.xlsx,Cost Breakdown-Material-122 EW,F235,5000.0,6500.0,-1500.0,DEVIATION_GT5PCT,"peer-card deviation -23.0769% | 6"" Mill"
+RATE_CARD_DEVIATION_GT5PCT,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Cost Breakdown-Material-166,F55,120.0,100.0,14000.0,DEVIATION_GT5PCT,"peer-card deviation 20.0% | Tubing, 3 1/2"", L80, 10.2 ppf, Premium Conn., seamless, R2, PSL3."
+RATE_CARD_DEVIATION_GT5PCT,AZNS-10,CBS/2.AZNS_10_CBS.xlsx,Cost Breakdown-10 w. Extra Wor,F39,96031.25,80937.5,15093.75,DEVIATION_GT5PCT,peer-card deviation 18.6486% | CCL/GR/CBL-VDL/CAST or USIT or SBT
+RATE_CARD_DEVIATION_GT5PCT,,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Total Cost-EPD,G13,735298.91,892716.1000000001,-157417.19,DEVIATION_GT5PCT,peer-card deviation -17.6335% | Contingency 4
+RATE_CARD_DEVIATION_GT5PCT,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Total Cost-EPD,G10,474068.28,403056.9,71011.38,DEVIATION_GT5PCT,peer-card deviation 17.6182% | Contingency 7
+RATE_CARD_DEVIATION_GT5PCT,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Cost Breakdown-116,F43,46897.5,55643.25,-8745.75,DEVIATION_GT5PCT,"peer-card deviation -15.7175% | Corrosion Log for 7"" Liner and 9 5/8” casing (MTT or MTD or EMDS) CCL/GR (after perforation)"
+RATE_CARD_DEVIATION_GT5PCT,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Cost Breakdown-075,F43,46897.5,55643.25,-34983.0,DEVIATION_GT5PCT,"peer-card deviation -15.7175% | Corrosion Log for 7"" Liner and 9 5/8” casing (MTT or MTD or EMDS) CCL/GR (after perforation)"
+RATE_CARD_DEVIATION_GT5PCT,AZNS-40,CBS/1.AZNS_40_CBS.xlsx,Cost Breakdown-40,F39,91875.0,80937.5,10937.5,DEVIATION_GT5PCT,peer-card deviation 13.5135% | CCL/GR/CBL-VDL/CAST or USIT or SBT
+RATE_CARD_DEVIATION_GT5PCT,AZNS-127-ST2,CBS/13.AZNS_127_ST2_CBS.xlsx,Cost Breakdown-127,F40,91875.0,80937.5,43750.0,DEVIATION_GT5PCT,peer-card deviation 13.5135% | CCL/GR/CBL-VDL/CAST or USIT or SBT
+RATE_CARD_DEVIATION_GT5PCT,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Cost Breakdown-122,F40,91875.0,80937.5,10937.5,DEVIATION_GT5PCT,peer-card deviation 13.5135% | CCL/GR/CBL-VDL/CAST or USIT or SBT
+RATE_CARD_DEVIATION_GT5PCT,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Total Cost-EPD,G4,254628.45,290732.76,-36104.31,DEVIATION_GT5PCT,peer-card deviation -12.4184% | Contingency 1
+RATE_CARD_DEVIATION_GT5PCT,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Total Cost-EPD,G4,254628.45,290732.76,-36104.31,DEVIATION_GT5PCT,peer-card deviation -12.4184% | Contingency 1
+RATE_CARD_DEVIATION_GT5PCT,AZNS-40,CBS/1.AZNS_40_CBS.xlsx,Cost Breakdown-40,F118,98475.0,89700.0,8775.0,DEVIATION_GT5PCT,peer-card deviation 9.7826% | TCP Guns & Charges
+RATE_CARD_DEVIATION_GT5PCT,AZNS-127-ST2,CBS/13.AZNS_127_ST2_CBS.xlsx,Cost Breakdown-127,F132,98475.0,89700.0,8775.0,DEVIATION_GT5PCT,peer-card deviation 9.7826% | TCP Guns & Charges
+RATE_CARD_DEVIATION_GT5PCT,AZNS-10,CBS/2.AZNS_10_CBS.xlsx,Cost Breakdown-10 w. Extra Wor,F127,98475.0,89700.0,8775.0,DEVIATION_GT5PCT,peer-card deviation 9.7826% | TCP Guns & Charges
+RATE_CARD_DEVIATION_GT5PCT,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Cost Breakdown-116,F132,98475.0,89700.0,26325.0,DEVIATION_GT5PCT,peer-card deviation 9.7826% | TCP Guns & Charges
+RATE_CARD_DEVIATION_GT5PCT,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Cost Breakdown-F-20,F133,98475.0,89700.0,8775.0,DEVIATION_GT5PCT,peer-card deviation 9.7826% | TCP Guns & Charges
+RATE_CARD_DEVIATION_GT5PCT,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Cost Breakdown-075,F132,98475.0,89700.0,8775.0,DEVIATION_GT5PCT,peer-card deviation 9.7826% | TCP Guns & Charges
+RATE_CARD_DEVIATION_GT5PCT,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Total Cost-EPD,G8,947477.4800000001,876466.1000000001,71011.38,DEVIATION_GT5PCT,peer-card deviation 8.102% | Contingency 5
+RATE_CARD_DEVIATION_GT5PCT,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Cost Breakdown-116,F11,77937.5,84062.5,-6125.0,DEVIATION_GT5PCT,"peer-card deviation -7.2862% | Mud Chemicals for 8 1⁄2"" hole"
+RATE_CARD_DEVIATION_GT5PCT,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Cost Breakdown-075,F11,77937.5,84062.5,-18375.0,DEVIATION_GT5PCT,"peer-card deviation -7.2862% | Mud Chemicals for 8 1⁄2"" hole"
+RATE_CARD_MISSING_PRICE,AZNS-40,CBS/1.AZNS_40_CBS.xlsx,Cost Breakdown-40,F29,,1000.0,,IMPUTED_PRICE_MISSING,peer-card fill for CCL/GR/CBL·VDL/CAST OR USIT OR SBT
+RATE_CARD_MISSING_PRICE,AZNS-40,CBS/1.AZNS_40_CBS.xlsx,Cost Breakdown-40,F30,,1500.0,,IMPUTED_PRICE_MISSING,peer-card fill for Full Suite
+RATE_CARD_MISSING_PRICE,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Mob.& Demob for Stim.-12,F4,,,,MISSING_PRICE_NO_REFERENCE,"peer-card fill for Liquid Pumping Unit, and Personnel"
+RATE_CARD_MISSING_PRICE,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Mob.& Demob for Stim.-12,F6,,,,MISSING_PRICE_NO_REFERENCE,"peer-card fill for Storage/Mixing Tank (water,acid, diesel) 500BBL Minimum"
+RATE_CARD_MISSING_PRICE,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Mob.& Demob for Stim.-12,F7,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Batch mixer
+RATE_CARD_MISSING_PRICE,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Mob.& Demob for Stim.-12,F8,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Blender
+RATE_CARD_MISSING_PRICE,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Mob.& Demob for Stim.-12,F9,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Liquid N2 Pump Unit and Personnel
+RATE_CARD_MISSING_PRICE,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Mob.& Demob for Stim.-12,F10,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Liquid Nitrogen Storage Tank
+RATE_CARD_MISSING_PRICE,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Mob.& Demob for Stim.-12,F11,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Coiled Tubing Unit and Personnel
+RATE_CARD_MISSING_PRICE,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Mob.& Demob for Stim.-12,F12,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Test Choke Manifold
+RATE_CARD_MISSING_PRICE,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Mob.& Demob for Stim.-12,F13,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 3-Phase Test Separator
+RATE_CARD_MISSING_PRICE,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Mob.& Demob for Stim.-12,F14,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Gauge Tank
+RATE_CARD_MISSING_PRICE,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Mob.& Demob for Stim.-12,F15,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Surge Tank
+RATE_CARD_MISSING_PRICE,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Mob.& Demob for Stim.-12,F16,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Burner System and Accessories
+RATE_CARD_MISSING_PRICE,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Mob.& Demob for Stim.-12,F17,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Slickline Unit and Personnel
+RATE_CARD_MISSING_PRICE,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Mob.& Demob for Stim.-12,F18,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Wireline Unit and Personnel
+RATE_CARD_MISSING_PRICE,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Mob.& Demob for Stim.-12,F19,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Downhole PVT Sampling Tools and Personnel
+RATE_CARD_MISSING_PRICE,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Mob.& Demob for Stim.-12,F20,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Memory Gauge
+RATE_CARD_MISSING_PRICE,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Oil Transportation Service-12,F3,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Oil Storage
+RATE_CARD_MISSING_PRICE,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Oil Transportation Service-12,F4,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Oil Pumping
+RATE_CARD_MISSING_PRICE,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Oil Transportation Service-12,F5,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Oil Transportation by 200BBL Mobile Tank
+RATE_CARD_MISSING_PRICE,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Oil Transportation Service-12,F6,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 
+RATE_CARD_MISSING_PRICE,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Oil Transportation Service-12,F7,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Standby Oil Transportation Service and Equipment
+RATE_CARD_MISSING_PRICE,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Personnel rate-12,F3,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 1
+RATE_CARD_MISSING_PRICE,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Personnel rate-12,F4,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 2
+RATE_CARD_MISSING_PRICE,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Personnel rate-12,F5,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 3
+RATE_CARD_MISSING_PRICE,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Personnel rate-12,F6,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 4
+RATE_CARD_MISSING_PRICE,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Personnel rate-12,F7,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 5
+RATE_CARD_MISSING_PRICE,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Personnel rate-12,F8,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 6
+RATE_CARD_MISSING_PRICE,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Personnel rate-12,F9,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 7
+RATE_CARD_MISSING_PRICE,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Personnel rate-12,F10,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 8
+RATE_CARD_MISSING_PRICE,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Personnel rate-12,F11,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 9
+RATE_CARD_MISSING_PRICE,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Personnel rate-12,F12,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 10
+RATE_CARD_MISSING_PRICE,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Personnel rate-12,F13,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 11
+RATE_CARD_MISSING_PRICE,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Personnel rate-12,F14,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 12
+RATE_CARD_MISSING_PRICE,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Personnel rate-12,F15,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 13
+RATE_CARD_MISSING_PRICE,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Personnel rate-12,F16,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 14
+RATE_CARD_MISSING_PRICE,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Personnel rate-12,F17,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 15
+RATE_CARD_MISSING_PRICE,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Personnel rate-12,F18,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 16
+RATE_CARD_MISSING_PRICE,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Personnel rate-12,F19,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 17
+RATE_CARD_MISSING_PRICE,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Personnel rate-12,F20,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 18
+RATE_CARD_MISSING_PRICE,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Personnel rate-12,F21,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 19
+RATE_CARD_MISSING_PRICE,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Personnel rate-12,F22,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 20
+RATE_CARD_MISSING_PRICE,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Personnel rate-12,F23,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 21
+RATE_CARD_MISSING_PRICE,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Personnel rate-12,F24,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 22
+RATE_CARD_MISSING_PRICE,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Personnel rate-12,F25,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 23
+RATE_CARD_MISSING_PRICE,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Personnel rate-12,F26,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 24
+RATE_CARD_MISSING_PRICE,AZNS-12,CBS/10.AZNS_12_CBS.xlsx,Personnel rate-12,F27,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 25
+RATE_CARD_MISSING_PRICE,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Mob.& Demob for Stim.-166,F4,,,,MISSING_PRICE_NO_REFERENCE,"peer-card fill for Liquid Pumping Unit, and Personnel"
+RATE_CARD_MISSING_PRICE,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Mob.& Demob for Stim.-166,F6,,,,MISSING_PRICE_NO_REFERENCE,"peer-card fill for Storage/Mixing Tank (water,acid, diesel) 500BBL Minimum"
+RATE_CARD_MISSING_PRICE,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Mob.& Demob for Stim.-166,F7,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Batch mixer
+RATE_CARD_MISSING_PRICE,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Mob.& Demob for Stim.-166,F8,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Blender
+RATE_CARD_MISSING_PRICE,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Mob.& Demob for Stim.-166,F9,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Liquid N2 Pump Unit and Personnel
+RATE_CARD_MISSING_PRICE,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Mob.& Demob for Stim.-166,F10,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Liquid Nitrogen Storage Tank
+RATE_CARD_MISSING_PRICE,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Mob.& Demob for Stim.-166,F11,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Coiled Tubing Unit and Personnel
+RATE_CARD_MISSING_PRICE,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Mob.& Demob for Stim.-166,F12,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Test Choke Manifold
+RATE_CARD_MISSING_PRICE,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Mob.& Demob for Stim.-166,F13,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 3-Phase Test Separator
+RATE_CARD_MISSING_PRICE,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Mob.& Demob for Stim.-166,F14,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Gauge Tank
+RATE_CARD_MISSING_PRICE,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Mob.& Demob for Stim.-166,F15,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Surge Tank
+RATE_CARD_MISSING_PRICE,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Mob.& Demob for Stim.-166,F16,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Burner System and Accessories
+RATE_CARD_MISSING_PRICE,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Mob.& Demob for Stim.-166,F17,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Slickline Unit and Personnel
+RATE_CARD_MISSING_PRICE,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Mob.& Demob for Stim.-166,F18,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Wireline Unit and Personnel
+RATE_CARD_MISSING_PRICE,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Mob.& Demob for Stim.-166,F19,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Downhole PVT Sampling Tools and Personnel
+RATE_CARD_MISSING_PRICE,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Mob.& Demob for Stim.-166,F20,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Memory Gauge
+RATE_CARD_MISSING_PRICE,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Oil Transportation Service-166,F3,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Oil Storage
+RATE_CARD_MISSING_PRICE,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Oil Transportation Service-166,F4,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Oil Pumping
+RATE_CARD_MISSING_PRICE,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Oil Transportation Service-166,F5,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Oil Transportation by 200BBL Mobile Tank
+RATE_CARD_MISSING_PRICE,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Oil Transportation Service-166,F6,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 
+RATE_CARD_MISSING_PRICE,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Oil Transportation Service-166,F7,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Standby Oil Transportation Service and Equipment
+RATE_CARD_MISSING_PRICE,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Personnel rate-166,F3,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 1
+RATE_CARD_MISSING_PRICE,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Personnel rate-166,F4,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 2
+RATE_CARD_MISSING_PRICE,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Personnel rate-166,F5,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 3
+RATE_CARD_MISSING_PRICE,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Personnel rate-166,F6,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 4
+RATE_CARD_MISSING_PRICE,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Personnel rate-166,F7,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 5
+RATE_CARD_MISSING_PRICE,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Personnel rate-166,F8,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 6
+RATE_CARD_MISSING_PRICE,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Personnel rate-166,F9,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 7
+RATE_CARD_MISSING_PRICE,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Personnel rate-166,F10,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 8
+RATE_CARD_MISSING_PRICE,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Personnel rate-166,F11,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 9
+RATE_CARD_MISSING_PRICE,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Personnel rate-166,F12,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 10
+RATE_CARD_MISSING_PRICE,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Personnel rate-166,F13,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 11
+RATE_CARD_MISSING_PRICE,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Personnel rate-166,F14,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 12
+RATE_CARD_MISSING_PRICE,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Personnel rate-166,F15,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 13
+RATE_CARD_MISSING_PRICE,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Personnel rate-166,F16,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 14
+RATE_CARD_MISSING_PRICE,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Personnel rate-166,F17,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 15
+RATE_CARD_MISSING_PRICE,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Personnel rate-166,F18,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 16
+RATE_CARD_MISSING_PRICE,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Personnel rate-166,F19,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 17
+RATE_CARD_MISSING_PRICE,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Personnel rate-166,F20,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 18
+RATE_CARD_MISSING_PRICE,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Personnel rate-166,F21,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 19
+RATE_CARD_MISSING_PRICE,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Personnel rate-166,F22,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 20
+RATE_CARD_MISSING_PRICE,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Personnel rate-166,F23,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 21
+RATE_CARD_MISSING_PRICE,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Personnel rate-166,F24,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 22
+RATE_CARD_MISSING_PRICE,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Personnel rate-166,F25,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 23
+RATE_CARD_MISSING_PRICE,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Personnel rate-166,F26,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 24
+RATE_CARD_MISSING_PRICE,AZNS-166,CBS/11.AZNS_166_CBS.xlsx,Personnel rate-166,F27,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 25
+RATE_CARD_MISSING_PRICE,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Mob.& Demob for Stim.-127#2,F4,,,,MISSING_PRICE_NO_REFERENCE,"peer-card fill for Liquid Pumping Unit, and Personnel"
+RATE_CARD_MISSING_PRICE,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Mob.& Demob for Stim.-127#2,F6,,,,MISSING_PRICE_NO_REFERENCE,"peer-card fill for Storage/Mixing Tank (water,acid, diesel) 500BBL Minimum"
+RATE_CARD_MISSING_PRICE,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Mob.& Demob for Stim.-127#2,F7,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Batch mixer
+RATE_CARD_MISSING_PRICE,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Mob.& Demob for Stim.-127#2,F8,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Blender
+RATE_CARD_MISSING_PRICE,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Mob.& Demob for Stim.-127#2,F9,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Liquid N2 Pump Unit and Personnel
+RATE_CARD_MISSING_PRICE,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Mob.& Demob for Stim.-127#2,F10,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Liquid Nitrogen Storage Tank
+RATE_CARD_MISSING_PRICE,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Mob.& Demob for Stim.-127#2,F11,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Coiled Tubing Unit and Personnel
+RATE_CARD_MISSING_PRICE,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Mob.& Demob for Stim.-127#2,F12,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Test Choke Manifold
+RATE_CARD_MISSING_PRICE,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Mob.& Demob for Stim.-127#2,F13,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 3-Phase Test Separator
+RATE_CARD_MISSING_PRICE,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Mob.& Demob for Stim.-127#2,F14,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Gauge Tank
+RATE_CARD_MISSING_PRICE,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Mob.& Demob for Stim.-127#2,F15,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Surge Tank
+RATE_CARD_MISSING_PRICE,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Mob.& Demob for Stim.-127#2,F16,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Burner System and Accessories
+RATE_CARD_MISSING_PRICE,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Mob.& Demob for Stim.-127#2,F17,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Slickline Unit and Personnel
+RATE_CARD_MISSING_PRICE,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Mob.& Demob for Stim.-127#2,F18,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Wireline Unit and Personnel
+RATE_CARD_MISSING_PRICE,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Mob.& Demob for Stim.-127#2,F19,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Downhole PVT Sampling Tools and Personnel
+RATE_CARD_MISSING_PRICE,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Mob.& Demob for Stim.-127#2,F20,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Memory Gauge
+RATE_CARD_MISSING_PRICE,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Oil Transportation Service127#2,F3,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Oil Storage
+RATE_CARD_MISSING_PRICE,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Oil Transportation Service127#2,F4,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Oil Pumping
+RATE_CARD_MISSING_PRICE,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Oil Transportation Service127#2,F5,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Oil Transportation by 200BBL Mobile Tank
+RATE_CARD_MISSING_PRICE,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Oil Transportation Service127#2,F6,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 
+RATE_CARD_MISSING_PRICE,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Oil Transportation Service127#2,F7,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Standby Oil Transportation Service and Equipment
+RATE_CARD_MISSING_PRICE,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Personnel rate-127#2,F3,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 1
+RATE_CARD_MISSING_PRICE,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Personnel rate-127#2,F4,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 2
+RATE_CARD_MISSING_PRICE,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Personnel rate-127#2,F5,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 3
+RATE_CARD_MISSING_PRICE,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Personnel rate-127#2,F6,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 4
+RATE_CARD_MISSING_PRICE,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Personnel rate-127#2,F7,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 5
+RATE_CARD_MISSING_PRICE,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Personnel rate-127#2,F8,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 6
+RATE_CARD_MISSING_PRICE,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Personnel rate-127#2,F9,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 7
+RATE_CARD_MISSING_PRICE,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Personnel rate-127#2,F10,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 8
+RATE_CARD_MISSING_PRICE,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Personnel rate-127#2,F11,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 9
+RATE_CARD_MISSING_PRICE,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Personnel rate-127#2,F12,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 10
+RATE_CARD_MISSING_PRICE,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Personnel rate-127#2,F13,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 11
+RATE_CARD_MISSING_PRICE,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Personnel rate-127#2,F14,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 12
+RATE_CARD_MISSING_PRICE,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Personnel rate-127#2,F15,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 13
+RATE_CARD_MISSING_PRICE,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Personnel rate-127#2,F16,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 14
+RATE_CARD_MISSING_PRICE,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Personnel rate-127#2,F17,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 15
+RATE_CARD_MISSING_PRICE,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Personnel rate-127#2,F18,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 16
+RATE_CARD_MISSING_PRICE,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Personnel rate-127#2,F19,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 17
+RATE_CARD_MISSING_PRICE,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Personnel rate-127#2,F20,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 18
+RATE_CARD_MISSING_PRICE,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Personnel rate-127#2,F21,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 19
+RATE_CARD_MISSING_PRICE,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Personnel rate-127#2,F22,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 20
+RATE_CARD_MISSING_PRICE,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Personnel rate-127#2,F23,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 21
+RATE_CARD_MISSING_PRICE,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Personnel rate-127#2,F24,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 22
+RATE_CARD_MISSING_PRICE,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Personnel rate-127#2,F25,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 23
+RATE_CARD_MISSING_PRICE,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Personnel rate-127#2,F26,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 24
+RATE_CARD_MISSING_PRICE,AZNS-127-WO2,CBS/12.AZNS_127_WO2_CBS.xlsx,Personnel rate-127#2,F27,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 25
+RATE_CARD_MISSING_PRICE,AZNS-10,CBS/2.AZNS_10_CBS.xlsx,Cost Breakdown-10 w. Extra Wor,F29,,1000.0,,IMPUTED_PRICE_MISSING,peer-card fill for CCL/GR/CBL·VDL/CAST OR USIT OR SBT
+RATE_CARD_MISSING_PRICE,AZNS-10,CBS/2.AZNS_10_CBS.xlsx,Cost Breakdown-10 w. Extra Wor,F30,,1500.0,,IMPUTED_PRICE_MISSING,peer-card fill for Full Suite
+RATE_CARD_MISSING_PRICE,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Cost Breakdown-116 Contingecy,F171,,2000.0,-2000.0,IMPUTED_PRICE_MISSING,peer-card fill for Final well geological and mud logging report
+RATE_CARD_MISSING_PRICE,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Cost Breakdown-127 Contingeny ,F172,,2000.0,-2000.0,IMPUTED_PRICE_MISSING,peer-card fill for Final well geological and mud logging report
+RATE_CARD_MISSING_PRICE,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Mob.& Demob for Stim.-116,F4,,,,MISSING_PRICE_NO_REFERENCE,"peer-card fill for Liquid Pumping Unit, and Personnel"
+RATE_CARD_MISSING_PRICE,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Mob.& Demob for Stim.-116,F6,,,,MISSING_PRICE_NO_REFERENCE,"peer-card fill for Storage/Mixing Tank (water,acid, diesel) 500BBL Minimum"
+RATE_CARD_MISSING_PRICE,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Mob.& Demob for Stim.-116,F7,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Batch mixer
+RATE_CARD_MISSING_PRICE,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Mob.& Demob for Stim.-116,F8,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Blender
+RATE_CARD_MISSING_PRICE,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Mob.& Demob for Stim.-116,F9,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Liquid N2 Pump Unit and Personnel
+RATE_CARD_MISSING_PRICE,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Mob.& Demob for Stim.-116,F10,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Liquid Nitrogen Storage Tank
+RATE_CARD_MISSING_PRICE,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Mob.& Demob for Stim.-116,F11,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Coiled Tubing Unit and Personnel
+RATE_CARD_MISSING_PRICE,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Mob.& Demob for Stim.-116,F12,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Test Choke Manifold
+RATE_CARD_MISSING_PRICE,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Mob.& Demob for Stim.-116,F13,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 3-Phase Test Separator
+RATE_CARD_MISSING_PRICE,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Mob.& Demob for Stim.-116,F14,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Gauge Tank
+RATE_CARD_MISSING_PRICE,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Mob.& Demob for Stim.-116,F15,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Surge Tank
+RATE_CARD_MISSING_PRICE,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Mob.& Demob for Stim.-116,F16,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Burner System and Accessories
+RATE_CARD_MISSING_PRICE,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Mob.& Demob for Stim.-116,F17,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Slickline Unit and Personnel
+RATE_CARD_MISSING_PRICE,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Mob.& Demob for Stim.-116,F18,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Wireline Unit and Personnel
+RATE_CARD_MISSING_PRICE,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Mob.& Demob for Stim.-116,F19,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Downhole PVT Sampling Tools and Personnel
+RATE_CARD_MISSING_PRICE,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Mob.& Demob for Stim.-116,F20,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Memory Gauge
+RATE_CARD_MISSING_PRICE,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Mob.& Demob for Stim.-127,F4,,,,MISSING_PRICE_NO_REFERENCE,"peer-card fill for Liquid Pumping Unit, and Personnel"
+RATE_CARD_MISSING_PRICE,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Mob.& Demob for Stim.-127,F6,,,,MISSING_PRICE_NO_REFERENCE,"peer-card fill for Storage/Mixing Tank (water,acid, diesel) 500BBL Minimum"
+RATE_CARD_MISSING_PRICE,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Mob.& Demob for Stim.-127,F7,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Batch mixer
+RATE_CARD_MISSING_PRICE,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Mob.& Demob for Stim.-127,F8,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Blender
+RATE_CARD_MISSING_PRICE,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Mob.& Demob for Stim.-127,F9,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Liquid N2 Pump Unit and Personnel
+RATE_CARD_MISSING_PRICE,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Mob.& Demob for Stim.-127,F10,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Liquid Nitrogen Storage Tank
+RATE_CARD_MISSING_PRICE,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Mob.& Demob for Stim.-127,F11,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Coiled Tubing Unit and Personnel
+RATE_CARD_MISSING_PRICE,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Mob.& Demob for Stim.-127,F12,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Test Choke Manifold
+RATE_CARD_MISSING_PRICE,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Mob.& Demob for Stim.-127,F13,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 3-Phase Test Separator
+RATE_CARD_MISSING_PRICE,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Mob.& Demob for Stim.-127,F14,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Gauge Tank
+RATE_CARD_MISSING_PRICE,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Mob.& Demob for Stim.-127,F15,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Surge Tank
+RATE_CARD_MISSING_PRICE,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Mob.& Demob for Stim.-127,F16,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Burner System and Accessories
+RATE_CARD_MISSING_PRICE,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Mob.& Demob for Stim.-127,F17,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Slickline Unit and Personnel
+RATE_CARD_MISSING_PRICE,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Mob.& Demob for Stim.-127,F18,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Wireline Unit and Personnel
+RATE_CARD_MISSING_PRICE,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Mob.& Demob for Stim.-127,F19,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Downhole PVT Sampling Tools and Personnel
+RATE_CARD_MISSING_PRICE,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Mob.& Demob for Stim.-127,F20,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Memory Gauge
+RATE_CARD_MISSING_PRICE,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Oil Transportation Service-116,F3,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Oil Storage
+RATE_CARD_MISSING_PRICE,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Oil Transportation Service-116,F4,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Oil Pumping
+RATE_CARD_MISSING_PRICE,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Oil Transportation Service-116,F5,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Oil Transportation by 200BBL Mobile Tank
+RATE_CARD_MISSING_PRICE,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Oil Transportation Service-116,F6,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 
+RATE_CARD_MISSING_PRICE,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Oil Transportation Service-116,F7,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Standby Oil Transportation Service and Equipment
+RATE_CARD_MISSING_PRICE,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Oil Transportation Service-127,F3,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Oil Storage
+RATE_CARD_MISSING_PRICE,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Oil Transportation Service-127,F4,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Oil Pumping
+RATE_CARD_MISSING_PRICE,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Oil Transportation Service-127,F5,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Oil Transportation by 200BBL Mobile Tank
+RATE_CARD_MISSING_PRICE,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Oil Transportation Service-127,F6,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 
+RATE_CARD_MISSING_PRICE,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Oil Transportation Service-127,F7,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Standby Oil Transportation Service and Equipment
+RATE_CARD_MISSING_PRICE,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-116,F3,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 1
+RATE_CARD_MISSING_PRICE,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-116,F4,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 2
+RATE_CARD_MISSING_PRICE,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-116,F5,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 3
+RATE_CARD_MISSING_PRICE,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-116,F6,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 4
+RATE_CARD_MISSING_PRICE,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-116,F7,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 5
+RATE_CARD_MISSING_PRICE,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-116,F8,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 6
+RATE_CARD_MISSING_PRICE,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-116,F9,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 7
+RATE_CARD_MISSING_PRICE,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-116,F10,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 8
+RATE_CARD_MISSING_PRICE,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-116,F11,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 9
+RATE_CARD_MISSING_PRICE,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-116,F12,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 10
+RATE_CARD_MISSING_PRICE,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-116,F13,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 11
+RATE_CARD_MISSING_PRICE,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-116,F14,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 12
+RATE_CARD_MISSING_PRICE,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-116,F15,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 13
+RATE_CARD_MISSING_PRICE,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-116,F16,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 14
+RATE_CARD_MISSING_PRICE,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-116,F17,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 15
+RATE_CARD_MISSING_PRICE,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-116,F18,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 16
+RATE_CARD_MISSING_PRICE,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-116,F19,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 17
+RATE_CARD_MISSING_PRICE,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-116,F20,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 18
+RATE_CARD_MISSING_PRICE,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-116,F21,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 19
+RATE_CARD_MISSING_PRICE,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-116,F22,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 20
+RATE_CARD_MISSING_PRICE,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-116,F23,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 21
+RATE_CARD_MISSING_PRICE,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-116,F24,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 22
+RATE_CARD_MISSING_PRICE,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-116,F25,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 23
+RATE_CARD_MISSING_PRICE,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-116,F26,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 24
+RATE_CARD_MISSING_PRICE,AZNS-116,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-116,F27,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 25
+RATE_CARD_MISSING_PRICE,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-127,F3,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 1
+RATE_CARD_MISSING_PRICE,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-127,F4,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 2
+RATE_CARD_MISSING_PRICE,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-127,F5,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 3
+RATE_CARD_MISSING_PRICE,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-127,F6,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 4
+RATE_CARD_MISSING_PRICE,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-127,F7,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 5
+RATE_CARD_MISSING_PRICE,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-127,F8,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 6
+RATE_CARD_MISSING_PRICE,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-127,F9,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 7
+RATE_CARD_MISSING_PRICE,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-127,F10,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 8
+RATE_CARD_MISSING_PRICE,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-127,F11,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 9
+RATE_CARD_MISSING_PRICE,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-127,F12,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 10
+RATE_CARD_MISSING_PRICE,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-127,F13,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 11
+RATE_CARD_MISSING_PRICE,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-127,F14,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 12
+RATE_CARD_MISSING_PRICE,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-127,F15,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 13
+RATE_CARD_MISSING_PRICE,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-127,F16,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 14
+RATE_CARD_MISSING_PRICE,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-127,F17,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 15
+RATE_CARD_MISSING_PRICE,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-127,F18,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 16
+RATE_CARD_MISSING_PRICE,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-127,F19,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 17
+RATE_CARD_MISSING_PRICE,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-127,F20,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 18
+RATE_CARD_MISSING_PRICE,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-127,F21,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 19
+RATE_CARD_MISSING_PRICE,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-127,F22,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 20
+RATE_CARD_MISSING_PRICE,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-127,F23,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 21
+RATE_CARD_MISSING_PRICE,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-127,F24,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 22
+RATE_CARD_MISSING_PRICE,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-127,F25,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 23
+RATE_CARD_MISSING_PRICE,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-127,F26,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 24
+RATE_CARD_MISSING_PRICE,AZNS-127-WO1-ST1,CBS/5.6AZNS_127WO1_and_116_CBS.xlsx,Personnel rate-127,F27,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 25
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Cost Breakdown-F-20,F31,,1500.0,-500.0,IMPUTED_PRICE_MISSING,peer-card fill for Full Suite
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Cost Breakdown-F-20,F32,,1500.0,,IMPUTED_PRICE_MISSING,peer-card fill for CDR/DT
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Mob.& Demob for Stim.-F-20,F4,,,,MISSING_PRICE_NO_REFERENCE,"peer-card fill for Liquid Pumping Unit, and Personnel"
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Mob.& Demob for Stim.-F-20,F6,,,,MISSING_PRICE_NO_REFERENCE,"peer-card fill for Storage/Mixing Tank (water,acid, diesel) 500BBL Minimum"
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Mob.& Demob for Stim.-F-20,F7,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Batch mixer
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Mob.& Demob for Stim.-F-20,F8,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Blender
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Mob.& Demob for Stim.-F-20,F9,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Liquid N2 Pump Unit and Personnel
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Mob.& Demob for Stim.-F-20,F10,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Liquid Nitrogen Storage Tank
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Mob.& Demob for Stim.-F-20,F11,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Coiled Tubing Unit and Personnel
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Mob.& Demob for Stim.-F-20,F12,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Test Choke Manifold
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Mob.& Demob for Stim.-F-20,F13,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 3-Phase Test Separator
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Mob.& Demob for Stim.-F-20,F14,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Gauge Tank
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Mob.& Demob for Stim.-F-20,F15,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Surge Tank
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Mob.& Demob for Stim.-F-20,F16,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Burner System and Accessories
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Mob.& Demob for Stim.-F-20,F17,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Slickline Unit and Personnel
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Mob.& Demob for Stim.-F-20,F18,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Wireline Unit and Personnel
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Mob.& Demob for Stim.-F-20,F19,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Downhole PVT Sampling Tools and Personnel
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Mob.& Demob for Stim.-F-20,F20,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Memory Gauge
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Oil Transportation Service-F-20,F3,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Oil Storage
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Oil Transportation Service-F-20,F4,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Oil Pumping
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Oil Transportation Service-F-20,F5,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Oil Transportation by 200BBL Mobile Tank
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Oil Transportation Service-F-20,F6,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Oil Transportation Service-F-20,F7,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Standby Oil Transportation Service and Equipment
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Personnel rate-F-20,F3,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 1
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Personnel rate-F-20,F4,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 2
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Personnel rate-F-20,F5,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 3
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Personnel rate-F-20,F6,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 4
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Personnel rate-F-20,F7,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 5
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Personnel rate-F-20,F8,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 6
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Personnel rate-F-20,F9,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 7
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Personnel rate-F-20,F10,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 8
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Personnel rate-F-20,F11,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 9
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Personnel rate-F-20,F12,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 10
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Personnel rate-F-20,F13,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 11
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Personnel rate-F-20,F14,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 12
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Personnel rate-F-20,F15,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 13
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Personnel rate-F-20,F16,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 14
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Personnel rate-F-20,F17,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 15
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Personnel rate-F-20,F18,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 16
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Personnel rate-F-20,F19,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 17
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Personnel rate-F-20,F20,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 18
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Personnel rate-F-20,F21,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 19
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Personnel rate-F-20,F22,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 20
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Personnel rate-F-20,F23,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 21
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Personnel rate-F-20,F24,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 22
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Personnel rate-F-20,F25,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 23
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Personnel rate-F-20,F26,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 24
+RATE_CARD_MISSING_PRICE,AZNS-207,CBS/7.AZNS_207_CBS.xlsx,Personnel rate-F-20,F27,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 25
+RATE_CARD_MISSING_PRICE,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Mob.& Demob for Stim.-122,F4,,,,MISSING_PRICE_NO_REFERENCE,"peer-card fill for Liquid Pumping Unit, and Personnel"
+RATE_CARD_MISSING_PRICE,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Mob.& Demob for Stim.-122,F6,,,,MISSING_PRICE_NO_REFERENCE,"peer-card fill for Storage/Mixing Tank (water,acid, diesel) 500BBL Minimum"
+RATE_CARD_MISSING_PRICE,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Mob.& Demob for Stim.-122,F7,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Batch mixer
+RATE_CARD_MISSING_PRICE,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Mob.& Demob for Stim.-122,F8,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Blender
+RATE_CARD_MISSING_PRICE,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Mob.& Demob for Stim.-122,F9,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Liquid N2 Pump Unit and Personnel
+RATE_CARD_MISSING_PRICE,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Mob.& Demob for Stim.-122,F10,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Liquid Nitrogen Storage Tank
+RATE_CARD_MISSING_PRICE,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Mob.& Demob for Stim.-122,F11,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Coiled Tubing Unit and Personnel
+RATE_CARD_MISSING_PRICE,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Mob.& Demob for Stim.-122,F12,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Test Choke Manifold
+RATE_CARD_MISSING_PRICE,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Mob.& Demob for Stim.-122,F13,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 3-Phase Test Separator
+RATE_CARD_MISSING_PRICE,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Mob.& Demob for Stim.-122,F14,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Gauge Tank
+RATE_CARD_MISSING_PRICE,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Mob.& Demob for Stim.-122,F15,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Surge Tank
+RATE_CARD_MISSING_PRICE,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Mob.& Demob for Stim.-122,F16,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Burner System and Accessories
+RATE_CARD_MISSING_PRICE,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Mob.& Demob for Stim.-122,F17,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Slickline Unit and Personnel
+RATE_CARD_MISSING_PRICE,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Mob.& Demob for Stim.-122,F18,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Wireline Unit and Personnel
+RATE_CARD_MISSING_PRICE,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Mob.& Demob for Stim.-122,F19,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Downhole PVT Sampling Tools and Personnel
+RATE_CARD_MISSING_PRICE,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Mob.& Demob for Stim.-122,F20,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Memory Gauge
+RATE_CARD_MISSING_PRICE,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Oil Transportation Service-122,F3,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Oil Storage
+RATE_CARD_MISSING_PRICE,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Oil Transportation Service-122,F4,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Oil Pumping
+RATE_CARD_MISSING_PRICE,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Oil Transportation Service-122,F5,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Oil Transportation by 200BBL Mobile Tank
+RATE_CARD_MISSING_PRICE,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Oil Transportation Service-122,F6,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 
+RATE_CARD_MISSING_PRICE,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Oil Transportation Service-122,F7,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Standby Oil Transportation Service and Equipment
+RATE_CARD_MISSING_PRICE,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Personnel rate-122,F3,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 1
+RATE_CARD_MISSING_PRICE,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Personnel rate-122,F4,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 2
+RATE_CARD_MISSING_PRICE,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Personnel rate-122,F5,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 3
+RATE_CARD_MISSING_PRICE,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Personnel rate-122,F6,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 4
+RATE_CARD_MISSING_PRICE,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Personnel rate-122,F7,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 5
+RATE_CARD_MISSING_PRICE,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Personnel rate-122,F8,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 6
+RATE_CARD_MISSING_PRICE,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Personnel rate-122,F9,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 7
+RATE_CARD_MISSING_PRICE,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Personnel rate-122,F10,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 8
+RATE_CARD_MISSING_PRICE,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Personnel rate-122,F11,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 9
+RATE_CARD_MISSING_PRICE,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Personnel rate-122,F12,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 10
+RATE_CARD_MISSING_PRICE,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Personnel rate-122,F13,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 11
+RATE_CARD_MISSING_PRICE,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Personnel rate-122,F14,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 12
+RATE_CARD_MISSING_PRICE,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Personnel rate-122,F15,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 13
+RATE_CARD_MISSING_PRICE,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Personnel rate-122,F16,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 14
+RATE_CARD_MISSING_PRICE,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Personnel rate-122,F17,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 15
+RATE_CARD_MISSING_PRICE,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Personnel rate-122,F18,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 16
+RATE_CARD_MISSING_PRICE,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Personnel rate-122,F19,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 17
+RATE_CARD_MISSING_PRICE,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Personnel rate-122,F20,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 18
+RATE_CARD_MISSING_PRICE,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Personnel rate-122,F21,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 19
+RATE_CARD_MISSING_PRICE,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Personnel rate-122,F22,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 20
+RATE_CARD_MISSING_PRICE,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Personnel rate-122,F23,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 21
+RATE_CARD_MISSING_PRICE,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Personnel rate-122,F24,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 22
+RATE_CARD_MISSING_PRICE,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Personnel rate-122,F25,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 23
+RATE_CARD_MISSING_PRICE,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Personnel rate-122,F26,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 24
+RATE_CARD_MISSING_PRICE,AZNS-122-WO2,CBS/8.AZNS_122_WO2_CBS.xlsx,Personnel rate-122,F27,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 25
+RATE_CARD_MISSING_PRICE,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Mob.& Demob for Stim.-075,F4,,,,MISSING_PRICE_NO_REFERENCE,"peer-card fill for Liquid Pumping Unit, and Personnel"
+RATE_CARD_MISSING_PRICE,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Mob.& Demob for Stim.-075,F6,,,,MISSING_PRICE_NO_REFERENCE,"peer-card fill for Storage/Mixing Tank (water,acid, diesel) 500BBL Minimum"
+RATE_CARD_MISSING_PRICE,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Mob.& Demob for Stim.-075,F7,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Batch mixer
+RATE_CARD_MISSING_PRICE,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Mob.& Demob for Stim.-075,F8,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Blender
+RATE_CARD_MISSING_PRICE,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Mob.& Demob for Stim.-075,F9,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Liquid N2 Pump Unit and Personnel
+RATE_CARD_MISSING_PRICE,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Mob.& Demob for Stim.-075,F10,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Liquid Nitrogen Storage Tank
+RATE_CARD_MISSING_PRICE,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Mob.& Demob for Stim.-075,F11,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Coiled Tubing Unit and Personnel
+RATE_CARD_MISSING_PRICE,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Mob.& Demob for Stim.-075,F12,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Test Choke Manifold
+RATE_CARD_MISSING_PRICE,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Mob.& Demob for Stim.-075,F13,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 3-Phase Test Separator
+RATE_CARD_MISSING_PRICE,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Mob.& Demob for Stim.-075,F14,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Gauge Tank
+RATE_CARD_MISSING_PRICE,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Mob.& Demob for Stim.-075,F15,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Surge Tank
+RATE_CARD_MISSING_PRICE,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Mob.& Demob for Stim.-075,F16,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Burner System and Accessories
+RATE_CARD_MISSING_PRICE,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Mob.& Demob for Stim.-075,F17,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Slickline Unit and Personnel
+RATE_CARD_MISSING_PRICE,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Mob.& Demob for Stim.-075,F18,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Wireline Unit and Personnel
+RATE_CARD_MISSING_PRICE,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Mob.& Demob for Stim.-075,F19,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Downhole PVT Sampling Tools and Personnel
+RATE_CARD_MISSING_PRICE,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Mob.& Demob for Stim.-075,F20,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Memory Gauge
+RATE_CARD_MISSING_PRICE,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Oil Transportation Service-075,F3,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Oil Storage
+RATE_CARD_MISSING_PRICE,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Oil Transportation Service-075,F4,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Oil Pumping
+RATE_CARD_MISSING_PRICE,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Oil Transportation Service-075,F5,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Oil Transportation by 200BBL Mobile Tank
+RATE_CARD_MISSING_PRICE,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Oil Transportation Service-075,F6,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 
+RATE_CARD_MISSING_PRICE,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Oil Transportation Service-075,F7,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for Standby Oil Transportation Service and Equipment
+RATE_CARD_MISSING_PRICE,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Personnel rate-075,F3,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 1
+RATE_CARD_MISSING_PRICE,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Personnel rate-075,F4,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 2
+RATE_CARD_MISSING_PRICE,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Personnel rate-075,F5,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 3
+RATE_CARD_MISSING_PRICE,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Personnel rate-075,F6,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 4
+RATE_CARD_MISSING_PRICE,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Personnel rate-075,F7,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 5
+RATE_CARD_MISSING_PRICE,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Personnel rate-075,F8,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 6
+RATE_CARD_MISSING_PRICE,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Personnel rate-075,F9,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 7
+RATE_CARD_MISSING_PRICE,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Personnel rate-075,F10,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 8
+RATE_CARD_MISSING_PRICE,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Personnel rate-075,F11,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 9
+RATE_CARD_MISSING_PRICE,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Personnel rate-075,F12,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 10
+RATE_CARD_MISSING_PRICE,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Personnel rate-075,F13,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 11
+RATE_CARD_MISSING_PRICE,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Personnel rate-075,F14,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 12
+RATE_CARD_MISSING_PRICE,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Personnel rate-075,F15,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 13
+RATE_CARD_MISSING_PRICE,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Personnel rate-075,F16,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 14
+RATE_CARD_MISSING_PRICE,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Personnel rate-075,F17,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 15
+RATE_CARD_MISSING_PRICE,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Personnel rate-075,F18,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 16
+RATE_CARD_MISSING_PRICE,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Personnel rate-075,F19,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 17
+RATE_CARD_MISSING_PRICE,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Personnel rate-075,F20,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 18
+RATE_CARD_MISSING_PRICE,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Personnel rate-075,F21,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 19
+RATE_CARD_MISSING_PRICE,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Personnel rate-075,F22,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 20
+RATE_CARD_MISSING_PRICE,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Personnel rate-075,F23,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 21
+RATE_CARD_MISSING_PRICE,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Personnel rate-075,F24,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 22
+RATE_CARD_MISSING_PRICE,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Personnel rate-075,F25,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 23
+RATE_CARD_MISSING_PRICE,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Personnel rate-075,F26,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 24
+RATE_CARD_MISSING_PRICE,AZNS-75,CBS/9.AZNS_75_CBS.xlsx,Personnel rate-075,F27,,,,MISSING_PRICE_NO_REFERENCE,peer-card fill for 25

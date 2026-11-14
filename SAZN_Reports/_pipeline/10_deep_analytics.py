@@ -647,8 +647,8 @@ def findings_and_export():
     A('CBS tariff', ' priced-line arithmetic is not closed by qty × unit price',
       f"{cb['m']} of {cb['n']} priced lines diverge; net signed delta {fmt(cb['d'],0)} USD, absolute {fmt(cb['ad'],0)} USD. Largest: " +
       '; '.join(f"{x['well_key']} {x['description'][:34]} expected {fmt(x['expected'],0)} vs total {fmt(x['total'],0)} ({fmt(x['pct'],1)}%)" for x in worst),
-      'The CBS Total column is a lump-sum/allocated ceiling, not always the algebraic product of QTY and Unit Price. Treating both as identical would misstate the invoice basis.',
-      'Keep both columns with their source cell, close out each line contractually before payment, and never recompute the ceiling from QTY × price.')
+      'The CBS Total column is a lump-sum/allocated ceiling, not always the algebraic product of QTY and Unit Price. Per project confirmation (2026-11-08), the large positive deltas between the source Total and QTY × unit rate are the embedded company margin (profit/overhead), not extraction errors; treating either side as the "true" cost would misstate the invoice basis.',
+      'Keep both columns with their source cell; reconcile contractually before payment; use the peer-well reference rate card (DA-22) to normalise missing rates, and never recompute the ceiling from QTY × price.')
     # time balance
     t = R('SELECT COUNT(*) n,SUM(balance_status="UNDER_CODED") u,SUM(balance_status="OVER_CODED") o,AVG(ilt_h) ai,SUM(ilt_h) si FROM an_time_balance')[0]
     co = R('SELECT SUM(carried_over_h) h,AVG(carried_over_h) a,SUM(CASE WHEN ilt_h>0 THEN ilt_h ELSE 0 END) short FROM an_time_balance')[0]
@@ -674,8 +674,8 @@ def findings_and_export():
     A('Rate benchmark', 'Unit-price dispersion across the 13 operations',
       f"{up['d']} of {up['n']} normalised tariff keys show >5% spread. Largest: " +
       '; '.join(f"{x['description'][:30]} {fmt(x['v_min'],0)}→{fmt(x['v_max'],0)} ({fmt(x['spread_pct'],1)}%, n={x['n']})" for x in top),
-      'Rate differences are real source values (scope, hole size, rig or contract bundle), not extraction noise; wells 29/38 remain benchmarks only.',
-      'Benchmark each new AFE against the median of the same normalised key and flag >5% deviations.')
+      'Unit rates for a defined operation/commodity are uniform campaign-wide (project confirmation 2026-11-08). Observed >5% spreads are therefore scope/hole-size/contract-bundle differences or incomplete source data — not noise and not an error — to be read against the reference rate card (DA-22). Wells 29/38 remain benchmarks only.',
+      'Benchmark each new AFE against the median of the same normalised key and flag >5% deviations; where a CBS line lacks a unit rate, reference the rate from peer wells running the same defined item.')
     # correlations
     cs = R("SELECT well_key,x,y,n,pearson,r2,strength FROM an_correlations WHERE strength IN ('STRONG','MODERATE') ORDER BY ABS(pearson) DESC LIMIT 8")
     A('Drilling parameters', 'Well-level ROP drivers identified from paired daily rows',

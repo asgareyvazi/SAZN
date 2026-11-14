@@ -333,7 +333,7 @@ for wk in sorted(WELLS, key=lambda k: P[k]['op']):
     field['max_delta'] = max(field['max_delta'], mx)
     if flag != 'OK': field['cal_flags'].append(wk+':'+flag)
 fmx = max(abs(field['gf']-field['gs']),abs(field['pf']-field['ps']),abs(field['nf']-field['ns']))
-cost_rows.append(('FIELD',13,'CBS Rig Service 23,000 USD/DAY; AZNS-85 sourced Contract-1 CBS benchmark',23000.0,
+cost_rows.append(('FIELD',13,'CBS Rig Service 23,000 USD/DAY; AZNS-85 day basis 57.4 d from CBS time breakdown (user-confirmed 2026-11-08)',23000.0,
                   round(field['cbs'],2),None,field['days'],None,round(field['gf'],2),round(field['gs'],2),
                   round(field['gf']-field['gs'],6),field['npt_h'],field['ctr_h'],field['cli_h'],
                   round(field['ctr_ded'],2),round(field['cli_ded'],2),round(field['all_ded'],2),
@@ -407,6 +407,97 @@ ins('npt_attribution_audit', ['well_key','activity_rows','npt_status_rows','npt_
                               'profile_npt_total_h','delta_h','explicit_attribution_pct','explicit_client_pct',
                               'waiting_h','waiting_blank_attribution_h','fallback_50_50_waiting_h','status'], npt_rows)
 
+# ------------------------------------------- unit rate reference card (DA-22) --
+# Project confirmation (2026-11-08): unit rates of a defined operation/commodity
+# are uniform campaign-wide. Where a CBS line lacks a unit rate, the peer-well
+# reference (campaign median for the same normalised description+unit) is the
+# correct reference. Large positive deltas (source Total > QTY x rate) are the
+# embedded company margin (profit/overhead), not arithmetic errors.
+rc_key = lambda d, u: (re.sub(r'\s+', ' ', (d or '').strip().lower())[:70], (u or '').upper())
+all_items = R('SELECT well_key,rel_path,sheet,cell_ref,description,unit,qty,unit_price,total FROM cbs_items')
+ref_obs = collections.defaultdict(list)
+for r in all_items:
+    if r['unit_price'] and r['unit_price'] > 0:
+        ref_obs[rc_key(r['description'], r['unit'])].append((float(r['unit_price']), r['well_key']))
+ref_rows, ref_map, ref_status = [], {}, {}
+for (desc, unit), obs in ref_obs.items():
+    prices = [o[0] for o in obs]; wells = sorted(set(o[1] for o in obs))
+    mn, md, mx = min(prices), med(prices), max(prices)
+    near = sum(1 for x in prices if abs(x-md)/md <= 0.05) if md else 0
+    spread = 100*(mx-mn)/mn if mn else None
+    nw = len(wells)
+    status = ('UNIFORM_CARD' if (spread or 0) < 5 else ('LOW_DISPERSION' if (spread or 0) < 25 else 'DISPERSED')) if nw > 1 else 'SINGLE_WELL'
+    ref_map[(desc, unit)] = md; ref_status[(desc, unit)] = status
+    ref_rows.append((desc, unit, len(prices), nw, round(md, 6), round(mn, 6), round(mx, 6),
+                     round(spread, 4) if spread is not None else None, round(100*near/len(prices), 2),
+                     ','.join(wells)[:200], status))
+table('unit_rate_reference', 'description TEXT, unit TEXT, n_lines INTEGER, n_wells INTEGER, ref_rate REAL, '
+      'v_min REAL, v_max REAL, spread_pct REAL, pct_lines_within_5pct REAL, wells TEXT, status TEXT')
+ins('unit_rate_reference', ['description','unit','n_lines','n_wells','ref_rate','v_min','v_max','spread_pct','pct_lines_within_5pct','wells','status'], ref_rows)
+
+delta_rows = []
+marg_pos = marg_neg = ref_pos = ref_neg = 0.0
+u_pos = u_neg = 0.0; u_lines = 0
+uniform_lines = dev5 = missing_price = imputed_ok = 0
+priced = 0
+for r in all_items:
+    qty, up, tot = r['qty'], r['unit_price'], r['total']
+    if qty is None or tot is None: continue
+    q = float(qty)
+    if q == 0: continue
+    key = rc_key(r['description'], r['unit'])
+    rr = ref_map.get(key)
+    exp_own = float(up)*q if (up and up > 0) else None
+    if exp_own is not None:
+        d = float(tot)-exp_own; marg_pos += max(0.0, d); marg_neg += min(0.0, d); priced += 1
+    ref_exp = rr*q if rr is not None else None
+    margin_vs_ref = (float(tot)-ref_exp) if ref_exp is not None else None
+    if ref_exp is not None:
+        dr = float(tot)-ref_exp; ref_pos += max(0.0, dr); ref_neg += min(0.0, dr)
+        if ref_status.get(key) == 'UNIFORM_CARD':
+            u_pos += max(0.0, dr); u_neg += min(0.0, dr); u_lines += 1
+    if up and up > 0:
+        if rr is not None:
+            dev = (float(up)-rr)/rr
+            if abs(dev) <= 0.05: uniform_lines += 1; status = 'UNIFORM_LINE'
+            else: dev5 += 1; status = 'DEVIATION_GT5PCT'
+            price_dev = round(100*dev, 4)
+        else:
+            status, price_dev = 'NO_REFERENCE', None
+    else:
+        missing_price += 1
+        if rr is not None: imputed_ok += 1; status = 'IMPUTED_PRICE_MISSING'
+        else: status = 'MISSING_PRICE_NO_REFERENCE'
+        price_dev = None
+    delta_rows.append((r['well_key'], r['rel_path'], r['sheet'], r['cell_ref'], (r['description'] or '')[:120],
+                       (r['unit'] or '').upper(), q, float(up) if up else None, rr,
+                       price_dev, float(tot), round(ref_exp, 2) if ref_exp is not None else None,
+                       round(margin_vs_ref, 2) if margin_vs_ref is not None else None, status))
+table('cbs_reference_delta', 'well_key TEXT, rel_path TEXT, sheet TEXT, cell TEXT, description TEXT, unit TEXT, '
+      'qty REAL, unit_price REAL, ref_rate REAL, price_dev_pct REAL, source_total REAL, ref_expected REAL, '
+      'margin_vs_ref_usd REAL, status TEXT')
+ins('cbs_reference_delta', ['well_key','rel_path','sheet','cell','description','unit','qty','unit_price','ref_rate',
+                            'price_dev_pct','source_total','ref_expected','margin_vs_ref_usd','status'], delta_rows)
+n_uni = sum(1 for x in ref_rows if x[10] == 'UNIFORM_CARD')
+n_low = sum(1 for x in ref_rows if x[10] == 'LOW_DISPERSION')
+n_disp = sum(1 for x in ref_rows if x[10] == 'DISPERSED')
+n_single = sum(1 for x in ref_rows if x[10] == 'SINGLE_WELL')
+n_multi = n_uni + n_low + n_disp
+rate_card = dict(keys_total=len(ref_rows), multi_well_keys=n_multi, single_well_keys=n_single,
+                 uniform_card=n_uni, low_dispersion=n_low, dispersed=n_disp,
+                 priced_lines=priced, lines_within_5pct_of_ref=uniform_lines,
+                 lines_dev_gt5pct_vs_ref=dev5, missing_price_lines=missing_price,
+                 imputed_from_peer_card=imputed_ok,
+                 embedded_margin_pos_usd=round(marg_pos, 2), embedded_margin_neg_usd=round(marg_neg, 2),
+                 embedded_margin_net_usd=round(marg_pos+marg_neg, 2),
+                 delta_vs_ref_pos_usd=round(ref_pos, 2), delta_vs_ref_neg_usd=round(ref_neg, 2),
+                 delta_vs_ref_net_usd=round(ref_pos+ref_neg, 2),
+                 uniform_delta_pos_usd=round(u_pos, 2), uniform_delta_neg_usd=round(u_neg, 2),
+                 uniform_delta_net_usd=round(u_pos+u_neg, 2), uniform_delta_lines=u_lines)
+print('RATE CARD keys', len(ref_rows), 'uniform', n_uni, 'low', n_low, 'dispersed', n_disp,
+      '| lines within5%', uniform_lines, 'dev>5%', dev5, 'missing price', missing_price,
+      'margin pos', round(marg_pos, 0), 'neg', round(marg_neg, 0), flush=True)
+
 # --------------------------------------------------- data quality + findings --
 new_dq = [
  ('PDF numeric tokens indexed and classified','PDF text layer',len(token_rows),
@@ -422,6 +513,9 @@ new_dq = [
   'gross = CBS + (DDR days - CBS days) x 23,000; payable/net deduct contractor/all NPT hours at same sourced rate'),
  ('NPT attribution without 50/50 waiting fallback','Operations',13,13,100.0,
   'Explicit DDR N/NPT status rows only; blank attributed-party cells retained verbatim and classified by the source contractor/client heuristic, never split 50/50'),
+ ('Unit rates imputable from peer-well reference card','CBS lines with missing unit price',missing_price,imputed_ok,
+  round(pct(imputed_ok,missing_price),4) if missing_price else 0.0,
+  'Peer-well campaign-median rates (same normalised description+unit) fill incomplete CBS rate fields; unit rates are uniform per defined operation/commodity (project-confirmed 2026-11-08)'),
 ]
 W("DELETE FROM an_data_quality WHERE check_name IN (%s)" % ','.join('?'*len(new_dq)), *[x[0] for x in new_dq])
 ins('data_quality', ['check_name','scope','n','affected','pct','detail'], new_dq)
@@ -466,13 +560,20 @@ new_findings = [
   'The comparison checks numeric equality to six decimals across the whole warehouse. It is a reconciliation lead, not proof that two different source quantities are the same physical measurement.',
   'Use AN_PDF_MATCH rows to trace exact values back to file/sheet/cell or page/line/table before accepting any reconciliation.',
   'P2'),
+ ('DA-22','Peer-well reference rate card','Unit rates are uniform campaign-wide; missing rates are imputable from peer wells',
+  '%d normalised unit/description keys (%d multi-well, %d single-well): %d uniform card (<5%% spread), %d low dispersion, %d dispersed. Of %d priced lines, %d (%.1f%%) sit within 5%% of the peer reference; %d lines deviate >5%%. %d lines lack a unit price: %d can be priced from the peer card, %d remain open data gaps. Embedded margin vs own-line arithmetic (DA-01 basis): +%s / -%s (net %s USD). Margin vs peer card on uniform-card keys only (%d lines): +%s / -%s (net %s USD).' %
+  (len(ref_rows),n_multi,n_single,n_uni,n_low,n_disp,priced,uniform_lines,pct(uniform_lines,priced),dev5,missing_price,imputed_ok,missing_price-imputed_ok,
+   fmt(marg_pos,0),fmt(-marg_neg,0),fmt(marg_pos+marg_neg,0),u_lines,fmt(u_pos,0),fmt(-u_neg,0),fmt(u_pos+u_neg,0)),
+  'Unit rates of a defined operation/commodity are uniform campaign-wide (project confirmation 2026-11-08). Deviations beyond a few percent reflect scope, hole size or contract-bundle differences, or incomplete source data — never noise to auto-correct. Large positive line deltas (source Total above QTY x rate) are the embedded company margin (profit/overhead), not arithmetic errors; the negative side is dominated by lump-sum/zero-total contingency lines. The 77 dispersed keys are scope sign-offs and are excluded from the uniform-card margin figure.',
+  'Adopt an_unit_rate_reference as the campaign reference card for CBS audits and future AFEs; re-price the %d imputable gap lines with the peer median (flagged in an_cbs_reference_delta), resolve the %d unimputable gaps at source, and sign off every DISPERSED-key scope before invoice settlement; retain source values verbatim in parallel.' % (imputed_ok, missing_price-imputed_ok),
+  'P1'),
  ('DA-21','Four-track cost / NPT attribution','Sourced four-track model reconciles with no 50/50 waiting fallback',
   'CBS %s; gross %s; payable %s; net %s USD. Contractor NPT %s h -> %s USD deduction; client NPT %s h -> %s USD; all NPT %s h -> %s USD. Max per-well formula delta %s USD; %d calendar-basis flags: %s. Fallback 50/50 waiting hours = 0.' %
   (fmt(field['cbs'],2),fmt(field['gs'],2),fmt(field['ps'],2),fmt(field['ns'],2),
    fmt(field['ctr_h'],1),fmt(field['ctr_ded'],2),fmt(field['cli_h'],1),fmt(field['cli_ded'],2),
    fmt(field['npt_h'],1),fmt(field['all_ded'],2),fmt(field['max_delta'],4),len(cal_bad),
    ', '.join('%s %s (CBS days %s / DDR %s)' % (x['well_key'],x['calendar_flag'],fmt(x['cbs_days'],2),x['ddr_days']) for x in cal_bad)),
-  'gross = CBS plan + (DDR days - CBS days) x the sourced 23,000 USD/DAY rate; payable deducts contractor-attributed NPT; net deducts all attributed NPT. Four source-basis flags exist: three CBS day bases longer than their DDR day count, producing negative calendar deltas, and one missing CBS day basis. These are source-basis flags, not recalculated costs. The 50/50 waiting fallback was removed from the pipeline.',
+  'gross = CBS plan + (DDR days - CBS days) x the sourced 23,000 USD/DAY rate; payable deducts contractor-attributed NPT; net deducts all attributed NPT. Four source-basis flags exist; all four CBS day bases exceed their DDR day count (AZNS-85 57.4 d per the CBS time breakdown, user-confirmed 2026-11-08; AZNS-12 91.92 d; AZNS-166 44.24 d; AZNS-127-ST2 115.36 d), producing negative calendar deltas. These are source-basis flags, not recalculated costs. The 50/50 waiting fallback was removed from the pipeline.',
   'Use an_cost_track_audit and an_npt_attribution_audit as the financial close-out register; investigate the four CBS day-basis flags with Contracts before any final invoice settlement.',
   'P1'),
 ]
@@ -501,19 +602,19 @@ with gzip.open(exc, 'wt', encoding='utf-8', newline='', compresslevel=9) as f:
     for r in low_rows:
         w.writerow(['PDF_LOW_TEXT_PAGE',r[0],r[1],r[2],'','','','','', '', '', r[10]])
     for r in cost_rows[:13]:
-        if r[-3] != 'OK':
+        if r[-2] != 'OK':
             w.writerow(['COST_CALENDAR_BASIS_FLAG',r[0],'well_profiles.json.gz','','','','','','','',r[-2],
                         'cbs_days=%s ddr_days=%s delta_days=%s' % (r[5],r[6],r[7])])
     for r in npt_rows[:13]:
         if r[6] > 0:
-            w.writerow(['NPT_UNATTRIBUTED_EXPLICIT_HOURS',r[0],'DDR 24-h activity log','','','','','','','', '',
-                        'unattributed_h=%s; no 50/50 split used' % r[6]])
+            w.writerow(['NPT_BLANK_ATTRIBUTION',r[0],'DDR 24-h activity log','','','','','','','', '',
+                        'blank_attribution_h=%s; retained verbatim; no 50/50 split used' % r[6]])
 
 # Append new exception families idempotently to the master exception CSV.
 master = os.path.join(OUT, 'SAZN_Analytics_Exceptions.csv')
 with open(master, 'r', encoding='utf-8', newline='') as f:
     rd = csv.DictReader(f); fields = rd.fieldnames
-    old_rows = [r for r in rd if not r['exception_type'].startswith(('PDF_','COST_','NPT_'))]
+    old_rows = [r for r in rd if not r['exception_type'].startswith(('PDF_','COST_','NPT_','RATE_'))]
 new_master = list(old_rows)
 for r in out_rows[:5000]:
     new_master.append(dict(exception_type='PDF_ROBUST_OUTLIER', well=r[0], document=r[1],
@@ -524,16 +625,24 @@ for r in low_rows:
         sheet='', cell_or_page='p.%s' % r[2], source_value=r[4], expected_or_reference='<200 chars',
         delta=r[6], status='LOW_TEXT_SOURCE_PAGE', detail=r[10][:180]))
 for r in cost_rows[:13]:
-    if r[-3] != 'OK':
+    if r[-2] != 'OK':
         new_master.append(dict(exception_type='COST_CALENDAR_BASIS_FLAG', well=r[0], document='well_profiles.json.gz',
             sheet='four-track cost', cell_or_page='', source_value=r[6], expected_or_reference=r[5], delta=r[7],
-            status=r[-2], detail='CBS day basis longer than DDR day count; source basis retained'))
+            status=r[-2], detail='CBS day basis exceeds DDR day count; source basis retained'))
 for r in npt_rows[:13]:
     if r[6] > 0:
-        new_master.append(dict(exception_type='NPT_UNATTRIBUTED_EXPLICIT_HOURS', well=r[0],
+        new_master.append(dict(exception_type='NPT_BLANK_ATTRIBUTION', well=r[0],
             document='DDR 24-h activity log', sheet='', cell_or_page='', source_value=r[6],
             expected_or_reference='explicit attribution', delta='', status='NO_50_50_FALLBACK',
-            detail='Unattributed explicit NPT hours kept verbatim'))
+            detail='Blank attributed-party NPT hours kept verbatim; no 50/50 split'))
+for r in sorted((d for d in delta_rows if d[13] == 'DEVIATION_GT5PCT'), key=lambda d: -abs(d[9] or 0))[:300]:
+    new_master.append(dict(exception_type='RATE_CARD_DEVIATION_GT5PCT', well=r[0], document=r[1],
+        sheet=r[2], cell_or_page=r[3], source_value=r[7], expected_or_reference=r[8],
+        delta=r[12], status='DEVIATION_GT5PCT', detail=('peer-card deviation %s%% | %s' % (r[9], r[4][:120]))))
+for r in (d for d in delta_rows if d[13] in ('IMPUTED_PRICE_MISSING', 'MISSING_PRICE_NO_REFERENCE')):
+    new_master.append(dict(exception_type='RATE_CARD_MISSING_PRICE', well=r[0], document=r[1],
+        sheet=r[2], cell_or_page=r[3], source_value='', expected_or_reference=r[8] or '',
+        delta=r[12] or '', status=r[13], detail=('peer-card fill for %s' % (r[4][:120]))))
 with open(master, 'w', encoding='utf-8', newline='') as f:
     w = csv.DictWriter(f, fieldnames=fields, lineterminator='\n'); w.writeheader(); w.writerows(new_master)
 
@@ -559,6 +668,8 @@ S['pdf'] = dict(
     top_value_matches=top_match,
     source_coverage=[dict(r) for r in R('SELECT * FROM an_pdf_source_gaps ORDER BY low_text_pages DESC,numeric_tokens DESC')],
 )
+S['rate_card'] = rate_card
+S['field']['rate_card'] = rate_card
 S['cost_track'] = dict(
     audit=[dict(r) for r in R('SELECT * FROM an_cost_track_audit ORDER BY op')],
     npt_attribution=[dict(r) for r in R('SELECT * FROM an_npt_attribution_audit ORDER BY well_key')],
@@ -577,8 +688,13 @@ for wk in WELLS:
     S['per_well'][wk]['pdf_low_text_pages'] = CON.execute('SELECT COUNT(*) FROM an_pdf_low_text WHERE well_key=?',(wk,)).fetchone()[0]
     S['per_well'][wk]['cost_track_audit'] = [dict(r) for r in R('SELECT * FROM an_cost_track_audit WHERE well_key=?',(wk,))]
     S['per_well'][wk]['npt_attribution_audit'] = [dict(r) for r in R('SELECT * FROM an_npt_attribution_audit WHERE well_key=?',(wk,))]
+    S['per_well'][wk]['rate_card'] = dict(
+        priced_lines=sum(1 for d in delta_rows if d[0] == wk and d[7] is not None),
+        imputed=sum(1 for d in delta_rows if d[0] == wk and d[13] == 'IMPUTED_PRICE_MISSING'),
+        dev_gt5=sum(1 for d in delta_rows if d[0] == wk and d[13] == 'DEVIATION_GT5PCT'),
+        embedded_margin_pos_usd=round(sum(max(0.0, (d[10] or 0) - (d[6]*(d[7] or 0))) for d in delta_rows if d[0] == wk and d[7]), 2))
 json.dump(S, open(S_PATH,'w',encoding='utf-8'), ensure_ascii=False, separators=(',',':'))
-compact = dict(generated='2026-11-08', pdf=S['pdf'], cost_track=S['cost_track'],
+compact = dict(generated='2026-11-08', pdf=S['pdf'], cost_track=S['cost_track'], rate_card=S['rate_card'],
                new_findings=new_findings, derived_table_counts={k:v for k,v in S['derived_tables'].items() if k.startswith(('pdf_','cost_','npt_attribution'))})
 json.dump(compact, open(os.path.join(DATA,'pdf_cost_forensics.json'),'w',encoding='utf-8'), ensure_ascii=False, separators=(',',':'))
 

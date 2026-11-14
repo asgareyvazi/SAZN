@@ -24,7 +24,7 @@ review=dict(total=len(files),resized=changed,min_kb=min(r['kb'] for r in rec),ma
             text_overlap_pairs=ov_total,text_overlap_files=ov_files,
             visual_review_samples=['AZNS-207_01_time_donut.png','AZNS-207_02_wellbore.png','AZNS-207_04_fourtrack.png',
                                    'AZNS-207_06_reconciliation.png','FIELD_15_crosssection.png','FIELD_16_learning.png',
-                                   'AN_13_pdf_token_census.png','AN_16_cost_bridge.png','AN_17_npt_attribution.png'],
+                                   'AN_13_pdf_token_census.png','AN_16_cost_bridge.png','AN_17_npt_attribution.png','AN_18_rate_card.png'],
             language='English only inside every graphic',depth_axis='inverted (0 m top)')
 json.dump(dict(review=review,files=rec),open(os.path.join(DATA,'visual_review.json'),'w'),indent=1)
 print(json.dumps(review,indent=1))

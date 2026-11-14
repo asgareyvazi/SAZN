@@ -6,15 +6,15 @@ Complete, zero-summarisation deliverable built from the 51 source documents in `
 
 | File / folder | Content |
 |---|---|
-| `SAZN_Master_Warehouse.sqlite.gz` + `.sha256` | Gzip of the full warehouse (36.9 MB, expands to ~163 MB). `common.load_json()`/pipeline restore the `.sqlite` automatically from the `.gz` when absent. Tracked in Git; the raw `.sqlite` is gitignored (over GitHub's file-size limit) and is restored locally or rebuilt from sources. |
-| `SAZN_Master_Warehouse.sqlite` | Full archive (local only, not tracked): 2,810 exact worksheet cell blobs, 324,150 numeric cells, 155,248 formulas, 4,345 lossless PDF page texts, **305,447 numeric PDF tokens**, 1,349 numbered tables, FTS indexes, semantic DDR/CBS tables, derived KPI/events/lessons/recommendations/reconciliation/NPT/time-series, **40 `an_*` deep-analytics tables**. Every value carries `file → sheet/page → cell/row/table` provenance. |
-| `SAZN_Master_Audit_Workbook.xlsx` | **63 sheets**: source registry, four-track cost, CBS tariff & materials, DDR 24-h log, NPT, formations, BHA, casing, surveys, EOWR facts, PDF tables, lessons, REC cards, audit findings, full cell/page inventory, field KPI, **29 DA sheets (23–51)**, **11 PDF/cost forensic sheets (52–62)**. ~100,000 DA/PDF/cost audit rows. |
-| `SAZN_Executive_Interactive_Dashboard.html` | Self-contained, offline, **881,121 searchable rows**. Live search across numbers, wells, rigs, materials, files, sheets, pages, **all 305,447 PDF numeric tokens** and every DA/PDF/cost forensic row, with exact provenance; four-track charts, contract close-out, deep-analytics panels (DQ scorecard, DA findings, PDF census, NPT attribution, four-track cost bridge). |
+| `SAZN_Master_Warehouse.sqlite.gz` + `.sha256` | Gzip of the full warehouse (38.7 MB, expands to ~171 MB). `common.load_json()`/pipeline restore the `.sqlite` automatically from the `.gz` when absent. Tracked in Git; the raw `.sqlite` is gitignored (over GitHub's file-size limit) and is restored locally or rebuilt from sources. |
+| `SAZN_Master_Warehouse.sqlite` | Full archive (local only, not tracked): 2,810 exact worksheet cell blobs, 324,150 numeric cells, 155,248 formulas, 4,345 lossless PDF page texts, **305,447 numeric PDF tokens**, 1,349 numbered tables, FTS indexes, semantic DDR/CBS tables, derived KPI/events/lessons/recommendations/reconciliation/NPT/time-series, **42 `an_*` deep-analytics tables**. Every value carries `file → sheet/page → cell/row/table` provenance. |
+| `SAZN_Master_Audit_Workbook.xlsx` | **65 sheets**: source registry, four-track cost, CBS tariff & materials, DDR 24-h log, NPT, formations, BHA, casing, surveys, EOWR facts, PDF tables, lessons, REC cards, audit findings, full cell/page inventory, field KPI, **29 DA sheets (23–51)**, **13 PDF/cost forensic sheets (52–64, incl. 63_DA_Unit_Rate_Reference and 64_DA_Reference_Delta)**. ~102,000 DA/PDF/cost audit rows. |
+| `SAZN_Executive_Interactive_Dashboard.html` | Self-contained, offline, **882,714 searchable rows**. Live search across numbers, wells, rigs, materials, files, sheets, pages, **all 305,447 PDF numeric tokens** and every DA/PDF/cost forensic row, with exact provenance; four-track charts, contract close-out, deep-analytics panels (DQ scorecard, DA findings, PDF census, NPT attribution, four-track cost bridge). |
 | `Word_Books/` | **31 DOCX**: 13 single-well FA + 13 single-well EN, plus 2 field-master FA/EN, 2 executive-management FA/EN, and **`00_SAZN_Analytical_Findings_Technical_Financial_FA.docx`** (گزارش فنی–مالی یافته‌های تحلیل داده‌های حفاری، کد SAZN-FA-DA-001). Each reference book has **24 chapters, 149 provenance tables and 11 custom graphics**. FA = B Nazanin + full RTL (`w:bidi`, `w:bidiVisual`); EN = Times New Roman. |
-| `SAZN_Graphics/` | **166 PNG** (2400×1800 px / 300 DPI) rendered from HTML5 + CSS3 + SVG + Canvas in headless Chromium. 0 text-overlap pairs, English-only text, inverted depth axis, mean ≈160 KB. Includes 17 `AN_*` deep-analytics artboards. |
-| `SAZN_PDF_Numeric_Token_Census.csv.gz` | Census of **all 305,447 PDF numeric tokens** with page/line provenance, magnitude band, derived context class, robust unit-group outlier flag, Excel/fact coincidence flags. 4.6 MB (gzip). |
+| `SAZN_Graphics/` | **167 PNG** (2400×1800 px / 300 DPI) rendered from HTML5 + CSS3 + SVG + Canvas in headless Chromium. 0 text-overlap pairs, English-only text, inverted depth axis, mean ≈160 KB. Includes 18 `AN_*` deep-analytics artboards (incl. `AN_18_rate_card.png`). |
+| `SAZN_PDF_Numeric_Token_Census.csv.gz` | Census of **all 305,447 PDF numeric tokens** with page/line provenance, magnitude band, derived context class, robust unit-group outlier flag, Excel/fact coincidence flags. 4.8 MB (gzip). |
 | `SAZN_PDF_Analytics_Exceptions.csv.gz` | Exception register (PDF + cost forensics). |
-| `SAZN_Analytics_Exceptions.csv` | Deep-analytics exceptions (formula mismatches, CBS arithmetic, time balance, mud imbalance, outliers). 0.6 MB. |
+| `SAZN_Analytics_Exceptions.csv` | Deep-analytics exceptions (formula mismatches, CBS arithmetic, time balance, mud imbalance, outliers). 0.68 MB. |
 | `SAZN_DOCX_Audit.json` | Gate + full audit of all 30 Word books. `SAZN_Final_Audit.json` | Final gate for the whole patchset (patchset files, MB, size cap, DB/workbook/dashboard/graphics/DOCX checks). |
 | `_data/` | `well_profiles.json.gz`, `field_analytics.json`, `deep_analytics.json`, `pdf_cost_forensics.json`, `visual_review.json`, `analytics_overlap.json` (0 overlaps). |
 | `_pipeline/` | Reproducible generators: `common.py`, `build_warehouse.py`, `06_graphics.py`…`09_dashboard.py`, `10_deep_analytics.py`, `11_extend_workbook.py`, `12_analytics_graphics.py`, `13_pdf_and_cost_forensics.py`, `14_findings_fa.py`. |
@@ -30,16 +30,16 @@ Complete, zero-summarisation deliverable built from the 51 source documents in `
 3. **Payable excl. contractor zero-rate NPT** = Gross − contractor NPT hours / 24 × rate.
 4. **Pure Net excl. all NPT** = Gross − all attributed NPT hours / 24 × rate.
 
-Field totals: CBS plan **94,797,894.39 USD** · gross **99,843,688.22 USD** · payable **89,126,231.27 USD** · pure net **87,082,106.28 USD** · **13,316.43 h** attributed NPT (contractor **11,183.43 h** → **10,717,456.94 USD**; client/subsurface **2,133.00 h** → **2,044,125.00 USD**; all-NPT deduction **12,761,581.94 USD**) · 1,304 DDR days · 12,264.76 m recorded 24-h footage.
+Field totals: CBS plan **94,797,894.39 USD** · gross **99,742,488.22 USD** · payable **89,025,031.27 USD** · pure net **86,980,906.28 USD** · **13,316.43 h** attributed NPT (contractor **11,183.43 h** → **10,717,456.94 USD**; client/subsurface **2,133.00 h** → **2,044,125.00 USD**; all-NPT deduction **12,761,581.94 USD**) · 1,304 DDR days · 12,264.76 m recorded 24-h footage.
 
 The 23,000 USD/DAY rate is the **sourced** CBS `Rig Service` unit price, never an assumed market number. Every derived basis is recorded in `04_Four_Track_Cost` and in `an_cost_track_audit` (per well + FIELD). **The 50/50 waiting-time fallback was removed**; waiting hours are never split. Blank attributed-party cells in DDR are retained verbatim (`blank_attribution_h`) and classified only by the source convention (literal `Unattributed` → contractor-side); the per-well register is `an_npt_attribution_audit`. All 13 operations reconcile to **≤ 0.01 USD** after rounding (max delta **0.0092 USD**).
 
-**Calendar-basis flags (4)** — source-basis inconsistencies, not recalculated cost: `AZNS-85` CBS days missing; `AZNS-12` / `AZNS-166` / `AZNS-127-ST2` CBS days > DDR days. Raised as DA-21 / P1 action for Contracts before final invoice settlement.
+**Calendar-basis flags (4)** — source-basis inconsistencies, not recalculated cost: `AZNS-85` CBS days = **57.4** (CBS time breakdown incl. 51.89 d + 5.5 d contingency plan #1, user-confirmed 2026-11-08 → formula-derived gross 1,117,800 USD; payable = net 890,195.83 USD); `AZNS-12` / `AZNS-166` / `AZNS-127-ST2` CBS days > DDR days. All four are `CBS_DAYS_GT_DDR_DAYS`. Raised as DA-21 / P1 action for Contracts before final invoice settlement. Large positive line deltas are the embedded company margin (profit/overhead), not audit errors; the peer-well reference rate card (DA-22) is the campaign norm for unit rates.
 
 ## Drilling-Data Analysis Department (deep forensics)
 
-- **40 derived `an_*` tables** (29 from `10_deep_analytics.py` + 11 from `13_pdf_and_cost_forensics.py`), all additive, none overwriting source.
-- **21 findings (DA-01…DA-21)** with numeric evidence, interpretation, action and priority (`an_findings`, workbook `51_DA_Findings`, dashboard DA panels, FA report sections 6–9).
+- **42 derived `an_*` tables** (29 from `10_deep_analytics.py` + 13 from `13_pdf_and_cost_forensics.py`), all additive, none overwriting source.
+- **22 findings (DA-01…DA-22)** with numeric evidence, interpretation, action and priority (`an_findings`, workbook `51_DA_Findings`, dashboard DA panels, FA report sections 6–9). DA-22 introduces the peer-well reference rate card (uniform campaign unit rates, project-confirmed 2026-11-08; missing prices imputable from analogous wells).
 - Data-quality highlights: numeric-as-text **328,989 / 1,196,084 cells (27.51%)**; formula audit **47,965 MATCH / 3 MINOR / 43 MISMATCH** of 48,011 recomputable formulas; CBS priced-line arithmetic **17 lines** qty×price≠total + **16** material ≥5% gaps (net signed delta **−8,759,173 USD**, abs **9,093,071 USD**); 24-h time balance **16 under / 1,224 over-coded / 7,393 h carried-over**; mud balance **1,846 / 36,046 (5.12%)** imbalance; **364 low-text PDF pages (8.38%)**.
 - **PDF numeric forensics**: 305,447 tokens classified (band × context class × unit group); **538 robust unit-group outliers** flagged, never corrected; **4,286 exact six-decimal PDF↔Excel/fact value coincidences** (a reconciliation lead, not proof of identity); unit stats across **34 unit labels**; page-level table `an_pdf_page_stats` (4,345 rows).
 - **Cross-source**: CBS ↔ DDR ↔ EOWR ↔ Programme reconciliations (`an_recon_delta`, 4,298 keys), prognosis vs actual tops (`an_program_vs_actual`, 188), casing checks (3,237), directional (4,388), correlations (125 well + 28 field), learning curves (3 chains).
@@ -69,17 +69,17 @@ SELECT * FROM an_cost_track_audit ORDER BY op;
 SELECT * FROM an_npt_attribution_audit ORDER BY well_key;
 ```
 
-Full-text indexes: `sheet_fts` (worksheet text) and `pdf_fts` (page text). Semantic tables: `cbs_items`, `cbs_totals`, `ddr_daily`, `ddr_activities`, `ddr_materials`, `ddr_formations`, `ddr_surveys`, `ddr_bha`, `ddr_casing`, `eowr_facts`, `pdf_tables`, `pdf_num_pages`, `well_events`, `well_lessons`, `well_recs`, `reconciliation`, `npt_breakdown`, `field_timeseries` + **40 `an_*` forensic tables**.
+Full-text indexes: `sheet_fts` (worksheet text) and `pdf_fts` (page text). Semantic tables: `cbs_items`, `cbs_totals`, `ddr_daily`, `ddr_activities`, `ddr_materials`, `ddr_formations`, `ddr_surveys`, `ddr_bha`, `ddr_casing`, `eowr_facts`, `pdf_tables`, `pdf_num_pages`, `well_events`, `well_lessons`, `well_recs`, `reconciliation`, `npt_breakdown`, `field_timeseries` + **42 `an_*` forensic tables**.
 
 ## Reproduce
 
 ```bash
 .venv/bin/python SAZN_Reports/_pipeline/build_warehouse.py        # schema → Excel → PDF → enrich → facts → analytics → workbook (DB restore: needs only .gz if .sqlite absent)
 .venv/bin/python SAZN_Reports/_pipeline/10_deep_analytics.py      # 29 an_* tables, 15 findings, exceptions CSV
-.venv/bin/python SAZN_Reports/_pipeline/13_pdf_and_cost_forensics.py  # PDF token census, cost/NPT audit, DA-16…DA-21
-.venv/bin/python SAZN_Reports/_pipeline/11_extend_workbook.py     # workbook → 63 sheets
+.venv/bin/python SAZN_Reports/_pipeline/13_pdf_and_cost_forensics.py  # PDF token census, cost/NPT audit, DA-16…DA-22
+.venv/bin/python SAZN_Reports/_pipeline/11_extend_workbook.py     # workbook → 65 sheets
 .venv/bin/python SAZN_Reports/_pipeline/06_graphics.py            # 149 base artboards
-.venv/bin/python SAZN_Reports/_pipeline/12_analytics_graphics.py  # + 17 AN_* deep-analytics artboards
+.venv/bin/python SAZN_Reports/_pipeline/12_analytics_graphics.py  # + 18 AN_* deep-analytics artboards
 LD_LIBRARY_PATH=/tmp/alibs/lib/lib:/tmp/alibs/lib node .tools/render_graphics.mjs SAZN_Reports/_data/graphics_jobs.json SAZN_Reports/_data/graphics_overlap.json
 LD_LIBRARY_PATH=/tmp/alibs/lib/lib:/tmp/alibs/lib node .tools/render_graphics.mjs SAZN_Reports/_data/analytics_graphics_jobs.json SAZN_Reports/_data/analytics_overlap.json
 .venv/bin/python SAZN_Reports/_pipeline/07_optimize_graphics.py

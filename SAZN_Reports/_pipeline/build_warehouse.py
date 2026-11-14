@@ -804,6 +804,13 @@ def costs(wk):
     for i in it:
         if 'rig service' in (i['description'] or '').lower() and i['unit_price']:
             if rr is None or i['unit_price']>rr:rr,cd=i['unit_price'],i['qty']
+    # AZNS-85: CBS workbook carries no priced Rig Service line (file 3.AZNS_85_CBS.xlsx
+    # holds a time breakdown + material breakdown only). Per the time breakdown in
+    # sheet 'AZNS-085 WO. Extra Work', AZNS-85's day basis is 51.8896 d (incl.
+    # contingency) + 5.5 d contingency plan #1 = 57.3896 d ≈ 57.4 d (user-confirmed
+    # 2026-11-08). Rig rate stays the Contract-1 CBS benchmark day rate (23,000 USD/DAY).
+    if wk == 'AZNS-85' and cd is None:
+        cd = 57.4
     base=[i for i in it if i['category'] in ('SERVICE','MATERIAL') and not i['is_contingency']]
     cont=[i for i in it if i['is_contingency']]
     sec=collections.defaultdict(float);mat=collections.defaultdict(float)

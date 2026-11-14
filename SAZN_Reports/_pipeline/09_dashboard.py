@@ -121,6 +121,20 @@ for r in CON.execute("""SELECT well_key,rel_path,page_no,line_no,token,value,uni
               clean(r['context'], 60), clean(r['flags'], 70)))
     add('AN_PDF_TOKEN', r['well_key'], num(r['value']), r['rel_path'], loc, lab)
 
+# ---- peer-well reference rate card (DA-22)
+for r in CON.execute("SELECT description,unit,n_lines,n_wells,ref_rate,v_min,v_max,spread_pct,pct_lines_within_5pct,wells,status FROM an_unit_rate_reference"):
+    lab = ('Reference rate card | %s | %s | lines %s | wells %s | median %s | min %s | max %s | spread %s%% | within5%% %s | %s'
+           % (clean(r['description'],60), r['unit'], r['n_lines'], r['n_wells'], num(r['ref_rate']),
+              num(r['v_min']), num(r['v_max']), fmt(r['spread_pct'],2) if r['spread_pct'] is not None else '—',
+              r['pct_lines_within_5pct'], r['status']))
+    add('AN_RATE_REF', '', num(r['ref_rate']), 'CBS reference card (peer-well median)', r['unit'], lab)
+for r in CON.execute("SELECT well_key,rel_path,sheet,cell,description,unit,qty,unit_price,ref_rate,price_dev_pct,source_total,ref_expected,margin_vs_ref_usd,status FROM an_cbs_reference_delta WHERE margin_vs_ref_usd IS NOT NULL ORDER BY ABS(margin_vs_ref_usd) DESC LIMIT 500"):
+    lab = ('Reference delta | src price %s | peer ref %s | dev %s%% | qty %s | src total %s | ref expected %s | margin vs ref %s USD | %s | %s'
+           % (num(r['unit_price']), num(r['ref_rate']), fmt(r['price_dev_pct'],2) if r['price_dev_pct'] is not None else '—',
+              num(r['qty']), num(r['source_total']), num(r['ref_expected']), num(r['margin_vs_ref_usd']),
+              r['status'], clean(r['description'],50)))
+    add('AN_RATE_DEV', r['well_key'], num(r['margin_vs_ref_usd']), r['rel_path'], r['sheet'] + '!' + str(r['cell']), lab)
+
 # ---- Drilling-Data Analysis Department derived rows ----------------------
 AN_SQLS = [
  ('AN_CBS', "SELECT well_key,rel_path,sheet,cell,description,total,expected,delta,status FROM an_cbs_line_audit"),
@@ -153,6 +167,8 @@ AN_SQLS = [
  ('AN_PDF_SOURCE', "SELECT well_key,rel_path,category,pages,low_text_pages,low_text_pct,numeric_tokens,n_chars,n_images,measured_tokens,unclassified_tokens,outlier_tokens,status FROM an_pdf_source_gaps"),
  ('AN_COST_TRACK', "SELECT well_key,op,rate_basis,rig_rate,cbs_plan,cbs_days,ddr_days,delta_days,gross_formula,gross_stored,gross_delta,npt_total_h,npt_contractor_h,npt_client_h,contractor_deduction,client_deduction,all_npt_deduction,payable_formula,payable_stored,payable_delta,net_formula,net_stored,net_delta,attribution_gap_h,status,calendar_flag,fallback_50_50_waiting_h FROM an_cost_track_audit"),
  ('AN_NPT_ATTR', "SELECT well_key,activity_rows,npt_status_rows,npt_status_h,contractor_h,client_h,blank_attribution_h,explicit_attribution_h,explicit_contractor_h,explicit_client_h,profile_npt_total_h,delta_h,explicit_attribution_pct,explicit_client_pct,waiting_h,waiting_blank_attribution_h,fallback_50_50_waiting_h,status FROM an_npt_attribution_audit"),
+ ('AN_RATE_REF', "SELECT description,unit,n_lines,n_wells,ref_rate,v_min,v_max,spread_pct,pct_lines_within_5pct,wells,status FROM an_unit_rate_reference"),
+ ('AN_RATE_DEV', "SELECT well_key,rel_path,sheet,cell,description,unit,qty,unit_price,ref_rate,price_dev_pct,source_total,ref_expected,margin_vs_ref_usd,status FROM an_cbs_reference_delta WHERE margin_vs_ref_usd IS NOT NULL ORDER BY ABS(margin_vs_ref_usd) DESC LIMIT 500"),
  ('AN_DQ_EXT', "SELECT check_name,scope,n,affected,pct,detail FROM an_data_quality"),
  ('AN_CENSUS', "SELECT well_key,rel_path,sheet,n,v_min,v_med,v_max,v_mean,v_std,outliers,dominant_band FROM an_num_census"),
  ('AN_PARAMSTAT', "SELECT well_key,param,n,v_min,v_med,v_max,v_mean,v_std,cv_pct,iqr_outliers FROM an_param_stats"),
@@ -187,7 +203,7 @@ META = dict(files=FILES, sheet_count=len(SHEETS), rows=len(ROWS),
                       cost_efficiency=S['field']['cost_efficiency'], field_correlations=S['field']['field_correlations'],
                       learning_metrics=S['field']['learning_metrics'], unit_price=S['field']['unit_price_dispersion'][:20],
                       program_vs_actual=S['field']['program_vs_actual'][:20], derived_tables=S['derived_tables'],
-                      pdf=S['pdf'], cost_track=S['cost_track'],
+                      pdf=S['pdf'], cost_track=S['cost_track'], rate_card=S.get('rate_card'),
                       per_well={k: dict(cbs_mismatch=v['cbs_mismatch'], ilt_h=v['ilt_h'], param_rows=v['param_rows'],
                                         correlations=v['correlations'], cum_typos=v['cum_typos'], mud_imbalance=v['mud_imbalance'],
                                         usd_per_day=(v['cost_efficiency'][0]['usd_per_day'] if v['cost_efficiency'] else None),
@@ -274,14 +290,15 @@ Self-contained · offline · live numeric search with file / sheet / cell / page
 <div class="panel"><h2>NPT attribution audit — explicit rows, no 50/50 split</h2><div id="nptattr"></div></div>
 <div class="panel"><h2>PDF / Excel / fact exact value coincidences</h2><div id="pdfmatch"></div></div>
 </div>
-<div class="panel"><h2>Evidence-based findings (DA-01 … DA-21)</h2><div id="findings"></div></div>
+<div class="panel"><h2>Peer-well reference rate card (DA-22) — project-confirmed uniform rates</h2><div id="ratecard"></div></div>
+<div class="panel"><h2>Evidence-based findings (DA-01 … DA-22)</h2><div id="findings"></div></div>
 <div class="panel"><h2>How to read a result</h2><p style="font-size:12px;line-height:1.6;color:#475569">
 <code>CELL</code> rows carry an exact Excel sheet and A1 reference; <code>PDF</code> rows carry a page and line number;
 <code>CBS</code>, <code>MAT</code>, <code>FORM</code>, <code>FACT</code>, <code>TBL</code>, <code>AN_PDF_TOKEN</code>, <code>AN_COST_TRACK</code> and <code>AN_NPT_ATTR</code> rows carry the source document, a short context and the derived forensic class.
 Every figure in this dashboard is a value read from the 51 source documents. Derived quantities (four-track cost, NPT deductions, DLS, structural delta) are computed only from sourced rates, quantities and hours and are labelled by their basis in the master audit workbook.
 No value is invented, interpolated or rounded away; pages without a text layer are retained page by page in the warehouse.</p></div>
 </div>
-<footer>SAZN Master Warehouse · SAZN_Master_Warehouse.sqlite · SAZN_Master_Audit_Workbook.xlsx · 166 reviewed graphics · 30 Word books · generated 2026-11-08</footer>
+<footer>SAZN Master Warehouse · SAZN_Master_Warehouse.sqlite · SAZN_Master_Audit_Workbook.xlsx · 167 reviewed graphics · 31 Word books · generated 2026-11-08</footer>
 <script>
 const META=__META__;const B64="__B64__";
 let ROWS=[],KINDS=new Set(),VIEW=[];
@@ -363,6 +380,8 @@ function deepCharts(){
   $('#pdflow').innerHTML=tbl(['Category','Low-text pages','Numeric tokens','Images','Measured tokens'],pdf.low_text_by_category.map(x=>[x.category,fmt(x.pages,0),fmt(x.numeric_tokens,0),fmt(x.images,0),fmt(x.measured_tokens,0)]));
   bars($('#costbridge'),[{key:'CBS plan',usd:ct.field.cbs_plan},{key:'Gross',usd:ct.field.gross},{key:'Payable',usd:ct.field.payable},{key:'Net',usd:ct.field.net}],['usd'],['#1D4ED8','#475569','#D97706','#15803D']);
   $('#nptattr').innerHTML=tbl(['Well','NPT h','Contractor h','Client h','Blank attribution h','Explicit %','Fallback 50/50 h'],ct.npt_attribution.map(x=>[x.well_key,fmt(x.npt_status_h,1),fmt(x.contractor_h,1),fmt(x.client_h,1),fmt(x.blank_attribution_h,1),fmt(x.explicit_attribution_pct,2),fmt(x.fallback_50_50_waiting_h,1)]));
+  const rc=D.rate_card;
+  $('#ratecard').innerHTML=tbl(['Metric','Value'],[['Reference keys',fmt(rc.keys_total,0)],['Multi-well keys',fmt(rc.multi_well_keys,0)],['Uniform card (<5% spread)',fmt(rc.uniform_card,0)],['Low dispersion',fmt(rc.low_dispersion,0)],['Dispersed',fmt(rc.dispersed,0)],['Priced lines within 5% of ref',fmt(rc.lines_within_5pct_of_ref,0)],['Lines deviating >5% vs ref',fmt(rc.lines_dev_gt5pct_vs_ref,0)],['Missing price, imputable from peers',fmt(rc.missing_price_lines,0)],['Embedded margin — positive deltas (USD)',fmt(rc.embedded_margin_pos_usd,0)],['Embedded margin — negative deltas (USD)',fmt(rc.embedded_margin_neg_usd,0)],['Net embedded margin (USD)',fmt(rc.embedded_margin_net_usd,0)],['Margin vs peer card — uniform keys only (net USD)',fmt(rc.uniform_delta_net_usd,0)]]);
   $('#pdfmatch').innerHTML=tbl(['Value','PDF tokens','Excel cells','Fact rows','First PDF source','First Excel source'],pdf.top_value_matches.map(x=>[x.value,fmt(x.pdf_tokens,0),fmt(x.excel_cells,0),fmt(x.fact_rows,0),x.first_pdf_source,x.first_excel_source]));
   $('#findings').innerHTML=D.findings.map(f=>'<div style="border-left:4px solid #1D4ED8;padding:8px 12px;margin:8px 0;background:#F8FAFD">'+
     '<b>'+f.id+' · '+esc(f.category)+' — '+esc(f.title)+'</b><div style="font-size:11px;color:#475569;margin-top:5px">'+esc(f.numeric_evidence)+'</div>'+
@@ -383,7 +402,7 @@ function charts(){
      ['PDF numbered tables',fmt(T.pdf_tables,0)],['EOWR / Programme facts','2,190+'],
      ['Graphics',R.total+' PNG'],['Graphics resolution',R.resolution],
      ['Text overlap pairs',R.text_overlap_pairs],['Mean PNG size',R.mean_kb+' KB'],
-     ['DOCX books','30 (24 chapters, 149 tables, 11 graphics each)']].map(x=>'<tr><td>'+x[0]+'</td><td>'+x[1]+'</td></tr>').join('')+'</tbody></table>';
+     ['DOCX books','31 (30 × 24 chapters/149 tables; FA findings book SAZN-FA-DA-001)']].map(x=>'<tr><td>'+x[0]+'</td><td>'+x[1]+'</td></tr>').join('')+'</tbody></table>';
 }
 </script></body></html>'''
 HTML = HTML.replace('__META__', json.dumps(META, ensure_ascii=False, separators=(',', ':')))

@@ -1,10 +1,10 @@
 {
  "review": {
-  "total": 166,
-  "resized": 17,
-  "min_kb": 59.6,
-  "max_kb": 247.1,
-  "mean_kb": 160.3,
+  "total": 167,
+  "resized": 18,
+  "min_kb": 59.5,
+  "max_kb": 249.3,
+  "mean_kb": 159.8,
   "resolution": "2400 x 1800 px @ 300 DPI (deviceScaleFactor 2)",
   "text_overlap_pairs": 0,
   "text_overlap_files": 0,
@@ -17,7 +17,8 @@
    "FIELD_16_learning.png",
    "AN_13_pdf_token_census.png",
    "AN_16_cost_bridge.png",
-   "AN_17_npt_attribution.png"
+   "AN_17_npt_attribution.png",
+   "AN_18_rate_card.png"
   ],
   "language": "English only inside every graphic",
   "depth_axis": "inverted (0 m top)"
@@ -25,9 +26,9 @@
  "files": [
   {
    "name": "AN_01_numeric_histogram.png",
-   "before": 197231,
-   "after": 79217,
-   "kb": 77.4,
+   "before": 79371,
+   "after": 79372,
+   "kb": 77.5,
    "px": [
     2400,
     1800
@@ -35,9 +36,9 @@
   },
   {
    "name": "AN_02_data_quality.png",
-   "before": 125151,
-   "after": 125121,
-   "kb": 122.2,
+   "before": 127341,
+   "after": 127309,
+   "kb": 124.3,
    "px": [
     2400,
     1800
@@ -45,9 +46,9 @@
   },
   {
    "name": "AN_03_cbs_arithmetic.png",
-   "before": 228159,
-   "after": 90418,
-   "kb": 88.3,
+   "before": 89849,
+   "after": 89813,
+   "kb": 87.7,
    "px": [
     2400,
     1800
@@ -55,9 +56,9 @@
   },
   {
    "name": "AN_04_formula_audit.png",
-   "before": 194580,
-   "after": 79219,
-   "kb": 77.4,
+   "before": 78951,
+   "after": 78922,
+   "kb": 77.1,
    "px": [
     2400,
     1800
@@ -65,9 +66,9 @@
   },
   {
    "name": "AN_05_time_control.png",
-   "before": 135691,
-   "after": 65134,
-   "kb": 63.6,
+   "before": 65363,
+   "after": 65316,
+   "kb": 63.8,
    "px": [
     2400,
     1800
@@ -75,9 +76,9 @@
   },
   {
    "name": "AN_06_correlation_heatmap.png",
-   "before": 221332,
-   "after": 90834,
-   "kb": 88.7,
+   "before": 91011,
+   "after": 90998,
+   "kb": 88.9,
    "px": [
     2400,
     1800
@@ -85,9 +86,9 @@
   },
   {
    "name": "AN_07_cost_efficiency.png",
-   "before": 143826,
-   "after": 60989,
-   "kb": 59.6,
+   "before": 60914,
+   "after": 60896,
+   "kb": 59.5,
    "px": [
     2400,
     1800
@@ -95,9 +96,9 @@
   },
   {
    "name": "AN_08_unit_price.png",
-   "before": 189805,
-   "after": 75185,
-   "kb": 73.4,
+   "before": 75459,
+   "after": 75434,
+   "kb": 73.7,
    "px": [
     2400,
     1800
@@ -105,9 +106,9 @@
   },
   {
    "name": "AN_09_structural_bias.png",
-   "before": 157628,
-   "after": 62661,
-   "kb": 61.2,
+   "before": 62877,
+   "after": 62838,
+   "kb": 61.4,
    "px": [
     2400,
     1800
@@ -115,9 +116,9 @@
   },
   {
    "name": "AN_10_program_actual.png",
-   "before": 206109,
-   "after": 80220,
-   "kb": 78.3,
+   "before": 79504,
+   "after": 79486,
+   "kb": 77.6,
    "px": [
     2400,
     1800
@@ -125,9 +126,9 @@
   },
   {
    "name": "AN_11_learning.png",
-   "before": 209571,
-   "after": 83261,
-   "kb": 81.3,
+   "before": 83327,
+   "after": 83316,
+   "kb": 81.4,
    "px": [
     2400,
     1800
@@ -135,9 +136,9 @@
   },
   {
    "name": "AN_12_findings_funnel.png",
-   "before": 170321,
-   "after": 67279,
-   "kb": 65.7,
+   "before": 67135,
+   "after": 67115,
+   "kb": 65.5,
    "px": [
     2400,
     1800
@@ -145,9 +146,9 @@
   },
   {
    "name": "AN_13_pdf_token_census.png",
-   "before": 216781,
-   "after": 84789,
-   "kb": 82.8,
+   "before": 84995,
+   "after": 84981,
+   "kb": 83.0,
    "px": [
     2400,
     1800
@@ -155,9 +156,9 @@
   },
   {
    "name": "AN_14_pdf_units.png",
-   "before": 186990,
-   "after": 74368,
-   "kb": 72.6,
+   "before": 74088,
+   "after": 74092,
+   "kb": 72.4,
    "px": [
     2400,
     1800
@@ -165,9 +166,9 @@
   },
   {
    "name": "AN_15_pdf_low_text.png",
-   "before": 104894,
-   "after": 104890,
-   "kb": 102.4,
+   "before": 105019,
+   "after": 105015,
+   "kb": 102.6,
    "px": [
     2400,
     1800
@@ -175,9 +176,9 @@
   },
   {
    "name": "AN_16_cost_bridge.png",
-   "before": 99027,
-   "after": 99003,
-   "kb": 96.7,
+   "before": 99879,
+   "after": 99861,
+   "kb": 97.5,
    "px": [
     2400,
     1800
@@ -185,9 +186,19 @@
   },
   {
    "name": "AN_17_npt_attribution.png",
-   "before": 241275,
-   "after": 93823,
-   "kb": 91.6,
+   "before": 93900,
+   "after": 93877,
+   "kb": 91.7,
+   "px": [
+    2400,
+    1800
+   ]
+  },
+  {
+   "name": "AN_18_rate_card.png",
+   "before": 123060,
+   "after": 123002,
+   "kb": 120.1,
    "px": [
     2400,
     1800
@@ -195,9 +206,9 @@
   },
   {
    "name": "AZNS-10_01_time_donut.png",
-   "before": 110832,
-   "after": 110832,
-   "kb": 108.2,
+   "before": 111202,
+   "after": 111202,
+   "kb": 108.6,
    "px": [
     2400,
     1800
@@ -205,9 +216,9 @@
   },
   {
    "name": "AZNS-10_02_wellbore.png",
-   "before": 105404,
-   "after": 105404,
-   "kb": 102.9,
+   "before": 105453,
+   "after": 105453,
+   "kb": 103.0,
    "px": [
     2400,
     1800
@@ -215,9 +226,9 @@
   },
   {
    "name": "AZNS-10_03_bha.png",
-   "before": 226188,
-   "after": 226188,
-   "kb": 220.9,
+   "before": 225430,
+   "after": 225430,
+   "kb": 220.1,
    "px": [
     2400,
     1800
@@ -225,9 +236,9 @@
   },
   {
    "name": "AZNS-10_04_fourtrack.png",
-   "before": 169031,
-   "after": 169031,
-   "kb": 165.1,
+   "before": 167725,
+   "after": 167725,
+   "kb": 163.8,
    "px": [
     2400,
     1800
@@ -235,9 +246,9 @@
   },
   {
    "name": "AZNS-10_05_composite_log.png",
-   "before": 136429,
-   "after": 136429,
-   "kb": 133.2,
+   "before": 135360,
+   "after": 135360,
+   "kb": 132.2,
    "px": [
     2400,
     1800
@@ -245,9 +256,9 @@
   },
   {
    "name": "AZNS-10_06_reconciliation.png",
-   "before": 204523,
-   "after": 204523,
-   "kb": 199.7,
+   "before": 202114,
+   "after": 202114,
+   "kb": 197.4,
    "px": [
     2400,
     1800
@@ -255,9 +266,9 @@
   },
   {
    "name": "AZNS-10_07_hookload.png",
-   "before": 252375,
-   "after": 252375,
-   "kb": 246.5,
+   "before": 250450,
+   "after": 250450,
+   "kb": 244.6,
    "px": [
     2400,
     1800
@@ -265,9 +276,9 @@
   },
   {
    "name": "AZNS-10_08_acid.png",
-   "before": 200107,
-   "after": 200107,
-   "kb": 195.4,
+   "before": 199794,
+   "after": 199794,
+   "kb": 195.1,
    "px": [
     2400,
     1800
@@ -275,9 +286,9 @@
   },
   {
    "name": "AZNS-10_09_gantt.png",
-   "before": 187352,
-   "after": 187352,
-   "kb": 183.0,
+   "before": 186218,
+   "after": 186218,
+   "kb": 181.9,
    "px": [
     2400,
     1800
@@ -285,9 +296,9 @@
   },
   {
    "name": "AZNS-10_10_risk.png",
-   "before": 148348,
-   "after": 148348,
-   "kb": 144.9,
+   "before": 147533,
+   "after": 147533,
+   "kb": 144.1,
    "px": [
     2400,
     1800
@@ -295,9 +306,9 @@
   },
   {
    "name": "AZNS-10_11_cost.png",
-   "before": 164777,
-   "after": 164777,
-   "kb": 160.9,
+   "before": 163833,
+   "after": 163833,
+   "kb": 160.0,
    "px": [
     2400,
     1800
@@ -305,8 +316,8 @@
   },
   {
    "name": "AZNS-116_01_time_donut.png",
-   "before": 114098,
-   "after": 114098,
+   "before": 114084,
+   "after": 114084,
    "kb": 111.4,
    "px": [
     2400,
@@ -315,9 +326,9 @@
   },
   {
    "name": "AZNS-116_02_wellbore.png",
-   "before": 207028,
-   "after": 207028,
-   "kb": 202.2,
+   "before": 205655,
+   "after": 205655,
+   "kb": 200.8,
    "px": [
     2400,
     1800
@@ -325,9 +336,9 @@
   },
   {
    "name": "AZNS-116_03_bha.png",
-   "before": 223479,
-   "after": 223479,
-   "kb": 218.2,
+   "before": 222764,
+   "after": 222764,
+   "kb": 217.5,
    "px": [
     2400,
     1800
@@ -335,9 +346,9 @@
   },
   {
    "name": "AZNS-116_04_fourtrack.png",
-   "before": 166404,
-   "after": 166404,
-   "kb": 162.5,
+   "before": 165378,
+   "after": 165378,
+   "kb": 161.5,
    "px": [
     2400,
     1800
@@ -345,9 +356,9 @@
   },
   {
    "name": "AZNS-116_05_composite_log.png",
-   "before": 142446,
-   "after": 142446,
-   "kb": 139.1,
+   "before": 142039,
+   "after": 142039,
+   "kb": 138.7,
    "px": [
     2400,
     1800
@@ -355,9 +366,9 @@
   },
   {
    "name": "AZNS-116_06_reconciliation.png",
-   "before": 217051,
-   "after": 217051,
-   "kb": 212.0,
+   "before": 214716,
+   "after": 214716,
+   "kb": 209.7,
    "px": [
     2400,
     1800
@@ -365,9 +376,9 @@
   },
   {
    "name": "AZNS-116_07_hookload.png",
-   "before": 244048,
-   "after": 244048,
-   "kb": 238.3,
+   "before": 241980,
+   "after": 241980,
+   "kb": 236.3,
    "px": [
     2400,
     1800
@@ -375,9 +386,9 @@
   },
   {
    "name": "AZNS-116_08_acid.png",
-   "before": 217034,
-   "after": 217034,
-   "kb": 211.9,
+   "before": 215590,
+   "after": 215590,
+   "kb": 210.5,
    "px": [
     2400,
     1800
@@ -385,9 +396,9 @@
   },
   {
    "name": "AZNS-116_09_gantt.png",
-   "before": 180935,
-   "after": 180935,
-   "kb": 176.7,
+   "before": 179329,
+   "after": 179329,
+   "kb": 175.1,
    "px": [
     2400,
     1800
@@ -395,9 +406,9 @@
   },
   {
    "name": "AZNS-116_10_risk.png",
-   "before": 148495,
-   "after": 148495,
-   "kb": 145.0,
+   "before": 147764,
+   "after": 147764,
+   "kb": 144.3,
    "px": [
     2400,
     1800
@@ -405,9 +416,9 @@
   },
   {
    "name": "AZNS-116_11_cost.png",
-   "before": 154447,
-   "after": 154447,
-   "kb": 150.8,
+   "before": 153550,
+   "after": 153550,
+   "kb": 150.0,
    "px": [
     2400,
     1800
@@ -415,8 +426,8 @@
   },
   {
    "name": "AZNS-122-WO1_01_time_donut.png",
-   "before": 114496,
-   "after": 114496,
+   "before": 114460,
+   "after": 114460,
    "kb": 111.8,
    "px": [
     2400,
@@ -425,9 +436,9 @@
   },
   {
    "name": "AZNS-122-WO1_02_wellbore.png",
-   "before": 110091,
-   "after": 110091,
-   "kb": 107.5,
+   "before": 110139,
+   "after": 110139,
+   "kb": 107.6,
    "px": [
     2400,
     1800
@@ -435,9 +446,9 @@
   },
   {
    "name": "AZNS-122-WO1_03_bha.png",
-   "before": 230617,
-   "after": 230617,
-   "kb": 225.2,
+   "before": 230148,
+   "after": 230148,
+   "kb": 224.8,
    "px": [
     2400,
     1800
@@ -445,9 +456,9 @@
   },
   {
    "name": "AZNS-122-WO1_04_fourtrack.png",
-   "before": 167982,
-   "after": 167982,
-   "kb": 164.0,
+   "before": 166809,
+   "after": 166809,
+   "kb": 162.9,
    "px": [
     2400,
     1800
@@ -455,9 +466,9 @@
   },
   {
    "name": "AZNS-122-WO1_05_composite_log.png",
-   "before": 118911,
-   "after": 118911,
-   "kb": 116.1,
+   "before": 117745,
+   "after": 117745,
+   "kb": 115.0,
    "px": [
     2400,
     1800
@@ -465,9 +476,9 @@
   },
   {
    "name": "AZNS-122-WO1_06_reconciliation.png",
-   "before": 234468,
-   "after": 234468,
-   "kb": 229.0,
+   "before": 231714,
+   "after": 231714,
+   "kb": 226.3,
    "px": [
     2400,
     1800
@@ -475,9 +486,9 @@
   },
   {
    "name": "AZNS-122-WO1_07_hookload.png",
-   "before": 252748,
-   "after": 252748,
-   "kb": 246.8,
+   "before": 250778,
+   "after": 250778,
+   "kb": 244.9,
    "px": [
     2400,
     1800
@@ -485,9 +496,9 @@
   },
   {
    "name": "AZNS-122-WO1_08_acid.png",
-   "before": 170336,
-   "after": 170336,
-   "kb": 166.3,
+   "before": 170129,
+   "after": 170129,
+   "kb": 166.1,
    "px": [
     2400,
     1800
@@ -495,9 +506,9 @@
   },
   {
    "name": "AZNS-122-WO1_09_gantt.png",
-   "before": 196565,
-   "after": 196565,
-   "kb": 192.0,
+   "before": 195644,
+   "after": 195644,
+   "kb": 191.1,
    "px": [
     2400,
     1800
@@ -505,9 +516,9 @@
   },
   {
    "name": "AZNS-122-WO1_10_risk.png",
-   "before": 151718,
-   "after": 151718,
-   "kb": 148.2,
+   "before": 151091,
+   "after": 151091,
+   "kb": 147.5,
    "px": [
     2400,
     1800
@@ -515,9 +526,9 @@
   },
   {
    "name": "AZNS-122-WO1_11_cost.png",
-   "before": 155274,
-   "after": 155274,
-   "kb": 151.6,
+   "before": 154589,
+   "after": 154589,
+   "kb": 151.0,
    "px": [
     2400,
     1800
@@ -525,9 +536,9 @@
   },
   {
    "name": "AZNS-122-WO2_01_time_donut.png",
-   "before": 117571,
-   "after": 117571,
-   "kb": 114.8,
+   "before": 117356,
+   "after": 117356,
+   "kb": 114.6,
    "px": [
     2400,
     1800
@@ -535,9 +546,9 @@
   },
   {
    "name": "AZNS-122-WO2_02_wellbore.png",
-   "before": 180719,
-   "after": 180719,
-   "kb": 176.5,
+   "before": 179447,
+   "after": 179447,
+   "kb": 175.2,
    "px": [
     2400,
     1800
@@ -545,118 +556,8 @@
   },
   {
    "name": "AZNS-122-WO2_03_bha.png",
-   "before": 112984,
-   "after": 112984,
-   "kb": 110.3,
-   "px": [
-    2400,
-    1800
-   ]
-  },
-  {
-   "name": "AZNS-122-WO2_04_fourtrack.png",
-   "before": 171746,
-   "after": 171746,
-   "kb": 167.7,
-   "px": [
-    2400,
-    1800
-   ]
-  },
-  {
-   "name": "AZNS-122-WO2_05_composite_log.png",
-   "before": 129692,
-   "after": 129692,
-   "kb": 126.7,
-   "px": [
-    2400,
-    1800
-   ]
-  },
-  {
-   "name": "AZNS-122-WO2_06_reconciliation.png",
-   "before": 221415,
-   "after": 221415,
-   "kb": 216.2,
-   "px": [
-    2400,
-    1800
-   ]
-  },
-  {
-   "name": "AZNS-122-WO2_07_hookload.png",
-   "before": 243237,
-   "after": 243237,
-   "kb": 237.5,
-   "px": [
-    2400,
-    1800
-   ]
-  },
-  {
-   "name": "AZNS-122-WO2_08_acid.png",
-   "before": 216066,
-   "after": 216066,
-   "kb": 211.0,
-   "px": [
-    2400,
-    1800
-   ]
-  },
-  {
-   "name": "AZNS-122-WO2_09_gantt.png",
-   "before": 194340,
-   "after": 194340,
-   "kb": 189.8,
-   "px": [
-    2400,
-    1800
-   ]
-  },
-  {
-   "name": "AZNS-122-WO2_10_risk.png",
-   "before": 152642,
-   "after": 152642,
-   "kb": 149.1,
-   "px": [
-    2400,
-    1800
-   ]
-  },
-  {
-   "name": "AZNS-122-WO2_11_cost.png",
-   "before": 160901,
-   "after": 160901,
-   "kb": 157.1,
-   "px": [
-    2400,
-    1800
-   ]
-  },
-  {
-   "name": "AZNS-127-ST2_01_time_donut.png",
-   "before": 116019,
-   "after": 116019,
-   "kb": 113.3,
-   "px": [
-    2400,
-    1800
-   ]
-  },
-  {
-   "name": "AZNS-127-ST2_02_wellbore.png",
-   "before": 232270,
-   "after": 232270,
-   "kb": 226.8,
-   "px": [
-    2400,
-    1800
-   ]
-  },
-  {
-   "name": "AZNS-127-ST2_03_bha.png",
-   "before": 113122,
-   "after": 113122,
+   "before": 113168,
+   "after": 113168,
    "kb": 110.5,
    "px": [
     2400,
@@ -664,10 +565,120 @@
    ]
   },
   {
+   "name": "AZNS-122-WO2_04_fourtrack.png",
+   "before": 170638,
+   "after": 170638,
+   "kb": 166.6,
+   "px": [
+    2400,
+    1800
+   ]
+  },
+  {
+   "name": "AZNS-122-WO2_05_composite_log.png",
+   "before": 121952,
+   "after": 121952,
+   "kb": 119.1,
+   "px": [
+    2400,
+    1800
+   ]
+  },
+  {
+   "name": "AZNS-122-WO2_06_reconciliation.png",
+   "before": 218826,
+   "after": 218826,
+   "kb": 213.7,
+   "px": [
+    2400,
+    1800
+   ]
+  },
+  {
+   "name": "AZNS-122-WO2_07_hookload.png",
+   "before": 241283,
+   "after": 241283,
+   "kb": 235.6,
+   "px": [
+    2400,
+    1800
+   ]
+  },
+  {
+   "name": "AZNS-122-WO2_08_acid.png",
+   "before": 214757,
+   "after": 214757,
+   "kb": 209.7,
+   "px": [
+    2400,
+    1800
+   ]
+  },
+  {
+   "name": "AZNS-122-WO2_09_gantt.png",
+   "before": 193626,
+   "after": 193626,
+   "kb": 189.1,
+   "px": [
+    2400,
+    1800
+   ]
+  },
+  {
+   "name": "AZNS-122-WO2_10_risk.png",
+   "before": 151997,
+   "after": 151997,
+   "kb": 148.4,
+   "px": [
+    2400,
+    1800
+   ]
+  },
+  {
+   "name": "AZNS-122-WO2_11_cost.png",
+   "before": 160059,
+   "after": 160059,
+   "kb": 156.3,
+   "px": [
+    2400,
+    1800
+   ]
+  },
+  {
+   "name": "AZNS-127-ST2_01_time_donut.png",
+   "before": 115857,
+   "after": 115857,
+   "kb": 113.1,
+   "px": [
+    2400,
+    1800
+   ]
+  },
+  {
+   "name": "AZNS-127-ST2_02_wellbore.png",
+   "before": 231026,
+   "after": 231026,
+   "kb": 225.6,
+   "px": [
+    2400,
+    1800
+   ]
+  },
+  {
+   "name": "AZNS-127-ST2_03_bha.png",
+   "before": 112589,
+   "after": 112589,
+   "kb": 110.0,
+   "px": [
+    2400,
+    1800
+   ]
+  },
+  {
    "name": "AZNS-127-ST2_04_fourtrack.png",
-   "before": 174868,
-   "after": 174868,
-   "kb": 170.8,
+   "before": 173876,
+   "after": 173876,
+   "kb": 169.8,
    "px": [
     2400,
     1800
@@ -675,9 +686,9 @@
   },
   {
    "name": "AZNS-127-ST2_05_composite_log.png",
-   "before": 158229,
-   "after": 158229,
-   "kb": 154.5,
+   "before": 150127,
+   "after": 150127,
+   "kb": 146.6,
    "px": [
     2400,
     1800
@@ -685,9 +696,9 @@
   },
   {
    "name": "AZNS-127-ST2_06_reconciliation.png",
-   "before": 218622,
-   "after": 218622,
-   "kb": 213.5,
+   "before": 216140,
+   "after": 216140,
+   "kb": 211.1,
    "px": [
     2400,
     1800
@@ -695,9 +706,9 @@
   },
   {
    "name": "AZNS-127-ST2_07_hookload.png",
-   "before": 246310,
-   "after": 246310,
-   "kb": 240.5,
+   "before": 244162,
+   "after": 244162,
+   "kb": 238.4,
    "px": [
     2400,
     1800
@@ -705,9 +716,9 @@
   },
   {
    "name": "AZNS-127-ST2_08_acid.png",
-   "before": 162305,
-   "after": 162305,
-   "kb": 158.5,
+   "before": 161890,
+   "after": 161890,
+   "kb": 158.1,
    "px": [
     2400,
     1800
@@ -715,9 +726,9 @@
   },
   {
    "name": "AZNS-127-ST2_09_gantt.png",
-   "before": 204734,
-   "after": 204734,
-   "kb": 199.9,
+   "before": 203164,
+   "after": 203164,
+   "kb": 198.4,
    "px": [
     2400,
     1800
@@ -725,9 +736,9 @@
   },
   {
    "name": "AZNS-127-ST2_10_risk.png",
-   "before": 150607,
-   "after": 150607,
-   "kb": 147.1,
+   "before": 149885,
+   "after": 149885,
+   "kb": 146.4,
    "px": [
     2400,
     1800
@@ -735,9 +746,9 @@
   },
   {
    "name": "AZNS-127-ST2_11_cost.png",
-   "before": 157482,
-   "after": 157482,
-   "kb": 153.8,
+   "before": 156644,
+   "after": 156644,
+   "kb": 153.0,
    "px": [
     2400,
     1800
@@ -745,9 +756,9 @@
   },
   {
    "name": "AZNS-127-WO1-ST1_01_time_donut.png",
-   "before": 115199,
-   "after": 115199,
-   "kb": 112.5,
+   "before": 114526,
+   "after": 114526,
+   "kb": 111.8,
    "px": [
     2400,
     1800
@@ -755,9 +766,9 @@
   },
   {
    "name": "AZNS-127-WO1-ST1_02_wellbore.png",
-   "before": 102852,
-   "after": 102852,
-   "kb": 100.4,
+   "before": 102597,
+   "after": 102597,
+   "kb": 100.2,
    "px": [
     2400,
     1800
@@ -765,9 +776,9 @@
   },
   {
    "name": "AZNS-127-WO1-ST1_03_bha.png",
-   "before": 236975,
-   "after": 236975,
-   "kb": 231.4,
+   "before": 236184,
+   "after": 236184,
+   "kb": 230.6,
    "px": [
     2400,
     1800
@@ -775,9 +786,9 @@
   },
   {
    "name": "AZNS-127-WO1-ST1_04_fourtrack.png",
-   "before": 191031,
-   "after": 191031,
-   "kb": 186.6,
+   "before": 189618,
+   "after": 189618,
+   "kb": 185.2,
    "px": [
     2400,
     1800
@@ -785,9 +796,9 @@
   },
   {
    "name": "AZNS-127-WO1-ST1_05_composite_log.png",
-   "before": 164083,
-   "after": 164083,
-   "kb": 160.2,
+   "before": 162950,
+   "after": 162950,
+   "kb": 159.1,
    "px": [
     2400,
     1800
@@ -795,9 +806,9 @@
   },
   {
    "name": "AZNS-127-WO1-ST1_06_reconciliation.png",
-   "before": 217258,
-   "after": 217258,
-   "kb": 212.2,
+   "before": 214856,
+   "after": 214856,
+   "kb": 209.8,
    "px": [
     2400,
     1800
@@ -805,9 +816,9 @@
   },
   {
    "name": "AZNS-127-WO1-ST1_07_hookload.png",
-   "before": 99903,
-   "after": 99903,
-   "kb": 97.6,
+   "before": 255281,
+   "after": 255281,
+   "kb": 249.3,
    "px": [
     2400,
     1800
@@ -815,9 +826,9 @@
   },
   {
    "name": "AZNS-127-WO1-ST1_08_acid.png",
-   "before": 207772,
-   "after": 207772,
-   "kb": 202.9,
+   "before": 206160,
+   "after": 206160,
+   "kb": 201.3,
    "px": [
     2400,
     1800
@@ -825,9 +836,9 @@
   },
   {
    "name": "AZNS-127-WO1-ST1_09_gantt.png",
-   "before": 182120,
-   "after": 182120,
-   "kb": 177.9,
+   "before": 181150,
+   "after": 181150,
+   "kb": 176.9,
    "px": [
     2400,
     1800
@@ -835,9 +846,9 @@
   },
   {
    "name": "AZNS-127-WO1-ST1_10_risk.png",
-   "before": 153815,
-   "after": 153815,
-   "kb": 150.2,
+   "before": 152958,
+   "after": 152958,
+   "kb": 149.4,
    "px": [
     2400,
     1800
@@ -845,9 +856,9 @@
   },
   {
    "name": "AZNS-127-WO1-ST1_11_cost.png",
-   "before": 156314,
-   "after": 156314,
-   "kb": 152.7,
+   "before": 155324,
+   "after": 155324,
+   "kb": 151.7,
    "px": [
     2400,
     1800
@@ -855,9 +866,9 @@
   },
   {
    "name": "AZNS-127-WO2_01_time_donut.png",
-   "before": 117665,
-   "after": 117665,
-   "kb": 114.9,
+   "before": 117434,
+   "after": 117434,
+   "kb": 114.7,
    "px": [
     2400,
     1800
@@ -865,9 +876,9 @@
   },
   {
    "name": "AZNS-127-WO2_02_wellbore.png",
-   "before": 177804,
-   "after": 177804,
-   "kb": 173.6,
+   "before": 176666,
+   "after": 176666,
+   "kb": 172.5,
    "px": [
     2400,
     1800
@@ -875,9 +886,9 @@
   },
   {
    "name": "AZNS-127-WO2_03_bha.png",
-   "before": 114050,
-   "after": 114050,
-   "kb": 111.4,
+   "before": 113803,
+   "after": 113803,
+   "kb": 111.1,
    "px": [
     2400,
     1800
@@ -885,9 +896,9 @@
   },
   {
    "name": "AZNS-127-WO2_04_fourtrack.png",
-   "before": 168810,
-   "after": 168810,
-   "kb": 164.9,
+   "before": 167668,
+   "after": 167668,
+   "kb": 163.7,
    "px": [
     2400,
     1800
@@ -895,9 +906,9 @@
   },
   {
    "name": "AZNS-127-WO2_05_composite_log.png",
-   "before": 121246,
-   "after": 121246,
-   "kb": 118.4,
+   "before": 120031,
+   "after": 120031,
+   "kb": 117.2,
    "px": [
     2400,
     1800
@@ -905,9 +916,9 @@
   },
   {
    "name": "AZNS-127-WO2_06_reconciliation.png",
-   "before": 223085,
-   "after": 223085,
-   "kb": 217.9,
+   "before": 220386,
+   "after": 220386,
+   "kb": 215.2,
    "px": [
     2400,
     1800
@@ -915,9 +926,9 @@
   },
   {
    "name": "AZNS-127-WO2_07_hookload.png",
-   "before": 247063,
-   "after": 247063,
-   "kb": 241.3,
+   "before": 244745,
+   "after": 244745,
+   "kb": 239.0,
    "px": [
     2400,
     1800
@@ -925,9 +936,9 @@
   },
   {
    "name": "AZNS-127-WO2_08_acid.png",
-   "before": 211270,
-   "after": 211270,
-   "kb": 206.3,
+   "before": 209995,
+   "after": 209995,
+   "kb": 205.1,
    "px": [
     2400,
     1800
@@ -935,9 +946,9 @@
   },
   {
    "name": "AZNS-127-WO2_09_gantt.png",
-   "before": 197913,
-   "after": 197913,
-   "kb": 193.3,
+   "before": 196778,
+   "after": 196778,
+   "kb": 192.2,
    "px": [
     2400,
     1800
@@ -945,9 +956,9 @@
   },
   {
    "name": "AZNS-127-WO2_10_risk.png",
-   "before": 153097,
-   "after": 153097,
-   "kb": 149.5,
+   "before": 152406,
+   "after": 152406,
+   "kb": 148.8,
    "px": [
     2400,
     1800
@@ -955,9 +966,9 @@
   },
   {
    "name": "AZNS-127-WO2_11_cost.png",
-   "before": 158196,
-   "after": 158196,
-   "kb": 154.5,
+   "before": 157382,
+   "after": 157382,
+   "kb": 153.7,
    "px": [
     2400,
     1800
@@ -965,9 +976,9 @@
   },
   {
    "name": "AZNS-12_01_time_donut.png",
-   "before": 117259,
-   "after": 117259,
-   "kb": 114.5,
+   "before": 117325,
+   "after": 117325,
+   "kb": 114.6,
    "px": [
     2400,
     1800
@@ -975,9 +986,9 @@
   },
   {
    "name": "AZNS-12_02_wellbore.png",
-   "before": 248319,
-   "after": 248319,
-   "kb": 242.5,
+   "before": 246784,
+   "after": 246784,
+   "kb": 241.0,
    "px": [
     2400,
     1800
@@ -985,9 +996,9 @@
   },
   {
    "name": "AZNS-12_03_bha.png",
-   "before": 218919,
-   "after": 218919,
-   "kb": 213.8,
+   "before": 218173,
+   "after": 218173,
+   "kb": 213.1,
    "px": [
     2400,
     1800
@@ -995,9 +1006,9 @@
   },
   {
    "name": "AZNS-12_04_fourtrack.png",
-   "before": 164199,
-   "after": 164199,
-   "kb": 160.4,
+   "before": 163085,
+   "after": 163085,
+   "kb": 159.3,
    "px": [
     2400,
     1800
@@ -1005,9 +1016,9 @@
   },
   {
    "name": "AZNS-12_05_composite_log.png",
-   "before": 117893,
-   "after": 117893,
-   "kb": 115.1,
+   "before": 116721,
+   "after": 116721,
+   "kb": 114.0,
    "px": [
     2400,
     1800
@@ -1015,9 +1026,9 @@
   },
   {
    "name": "AZNS-12_06_reconciliation.png",
-   "before": 211645,
-   "after": 211645,
-   "kb": 206.7,
+   "before": 209170,
+   "after": 209170,
+   "kb": 204.3,
    "px": [
     2400,
     1800
@@ -1025,9 +1036,9 @@
   },
   {
    "name": "AZNS-12_07_hookload.png",
-   "before": 242382,
-   "after": 242382,
-   "kb": 236.7,
+   "before": 240290,
+   "after": 240290,
+   "kb": 234.7,
    "px": [
     2400,
     1800
@@ -1035,9 +1046,9 @@
   },
   {
    "name": "AZNS-12_08_acid.png",
-   "before": 207984,
-   "after": 207984,
-   "kb": 203.1,
+   "before": 206600,
+   "after": 206600,
+   "kb": 201.8,
    "px": [
     2400,
     1800
@@ -1045,9 +1056,9 @@
   },
   {
    "name": "AZNS-12_09_gantt.png",
-   "before": 185668,
-   "after": 185668,
-   "kb": 181.3,
+   "before": 184566,
+   "after": 184566,
+   "kb": 180.2,
    "px": [
     2400,
     1800
@@ -1055,9 +1066,9 @@
   },
   {
    "name": "AZNS-12_10_risk.png",
-   "before": 148591,
-   "after": 148591,
-   "kb": 145.1,
+   "before": 147743,
+   "after": 147743,
+   "kb": 144.3,
    "px": [
     2400,
     1800
@@ -1065,9 +1076,9 @@
   },
   {
    "name": "AZNS-12_11_cost.png",
-   "before": 153075,
-   "after": 153075,
-   "kb": 149.5,
+   "before": 152087,
+   "after": 152087,
+   "kb": 148.5,
    "px": [
     2400,
     1800
@@ -1075,8 +1086,8 @@
   },
   {
    "name": "AZNS-166_01_time_donut.png",
-   "before": 111857,
-   "after": 111857,
+   "before": 111847,
+   "after": 111847,
    "kb": 109.2,
    "px": [
     2400,
@@ -1085,9 +1096,9 @@
   },
   {
    "name": "AZNS-166_02_wellbore.png",
-   "before": 252276,
-   "after": 252276,
-   "kb": 246.4,
+   "before": 250671,
+   "after": 250671,
+   "kb": 244.8,
    "px": [
     2400,
     1800
@@ -1095,8 +1106,8 @@
   },
   {
    "name": "AZNS-166_03_bha.png",
-   "before": 104818,
-   "after": 104818,
+   "before": 104898,
+   "after": 104898,
    "kb": 102.4,
    "px": [
     2400,
@@ -1105,9 +1116,9 @@
   },
   {
    "name": "AZNS-166_04_fourtrack.png",
-   "before": 165229,
-   "after": 165229,
-   "kb": 161.4,
+   "before": 164175,
+   "after": 164175,
+   "kb": 160.3,
    "px": [
     2400,
     1800
@@ -1115,9 +1126,9 @@
   },
   {
    "name": "AZNS-166_05_composite_log.png",
-   "before": 116317,
-   "after": 116317,
-   "kb": 113.6,
+   "before": 115354,
+   "after": 115354,
+   "kb": 112.7,
    "px": [
     2400,
     1800
@@ -1125,9 +1136,9 @@
   },
   {
    "name": "AZNS-166_06_reconciliation.png",
-   "before": 214148,
-   "after": 214148,
-   "kb": 209.1,
+   "before": 211619,
+   "after": 211619,
+   "kb": 206.7,
    "px": [
     2400,
     1800
@@ -1135,9 +1146,9 @@
   },
   {
    "name": "AZNS-166_07_hookload.png",
-   "before": 240857,
-   "after": 240857,
-   "kb": 235.2,
+   "before": 238987,
+   "after": 238987,
+   "kb": 233.4,
    "px": [
     2400,
     1800
@@ -1145,9 +1156,9 @@
   },
   {
    "name": "AZNS-166_08_acid.png",
-   "before": 236168,
-   "after": 236168,
-   "kb": 230.6,
+   "before": 234823,
+   "after": 234823,
+   "kb": 229.3,
    "px": [
     2400,
     1800
@@ -1155,9 +1166,9 @@
   },
   {
    "name": "AZNS-166_09_gantt.png",
-   "before": 179514,
-   "after": 179514,
-   "kb": 175.3,
+   "before": 178410,
+   "after": 178410,
+   "kb": 174.2,
    "px": [
     2400,
     1800
@@ -1165,9 +1176,9 @@
   },
   {
    "name": "AZNS-166_10_risk.png",
-   "before": 148144,
-   "after": 148144,
-   "kb": 144.7,
+   "before": 147374,
+   "after": 147374,
+   "kb": 143.9,
    "px": [
     2400,
     1800
@@ -1175,9 +1186,9 @@
   },
   {
    "name": "AZNS-166_11_cost.png",
-   "before": 156407,
-   "after": 156407,
-   "kb": 152.7,
+   "before": 155450,
+   "after": 155450,
+   "kb": 151.8,
    "px": [
     2400,
     1800
@@ -1185,9 +1196,9 @@
   },
   {
    "name": "AZNS-207_01_time_donut.png",
-   "before": 120035,
-   "after": 120035,
-   "kb": 117.2,
+   "before": 119957,
+   "after": 119957,
+   "kb": 117.1,
    "px": [
     2400,
     1800
@@ -1195,9 +1206,9 @@
   },
   {
    "name": "AZNS-207_02_wellbore.png",
-   "before": 113126,
-   "after": 113126,
-   "kb": 110.5,
+   "before": 113070,
+   "after": 113070,
+   "kb": 110.4,
    "px": [
     2400,
     1800
@@ -1205,9 +1216,9 @@
   },
   {
    "name": "AZNS-207_03_bha.png",
-   "before": 116563,
-   "after": 116563,
-   "kb": 113.8,
+   "before": 116788,
+   "after": 116788,
+   "kb": 114.1,
    "px": [
     2400,
     1800
@@ -1215,9 +1226,9 @@
   },
   {
    "name": "AZNS-207_04_fourtrack.png",
-   "before": 182777,
-   "after": 182777,
-   "kb": 178.5,
+   "before": 181710,
+   "after": 181710,
+   "kb": 177.5,
    "px": [
     2400,
     1800
@@ -1225,9 +1236,9 @@
   },
   {
    "name": "AZNS-207_05_composite_log.png",
-   "before": 229784,
-   "after": 229784,
-   "kb": 224.4,
+   "before": 229555,
+   "after": 229555,
+   "kb": 224.2,
    "px": [
     2400,
     1800
@@ -1235,9 +1246,9 @@
   },
   {
    "name": "AZNS-207_06_reconciliation.png",
-   "before": 220954,
-   "after": 220954,
-   "kb": 215.8,
+   "before": 218314,
+   "after": 218314,
+   "kb": 213.2,
    "px": [
     2400,
     1800
@@ -1245,9 +1256,9 @@
   },
   {
    "name": "AZNS-207_07_hookload.png",
-   "before": 246849,
-   "after": 246849,
-   "kb": 241.1,
+   "before": 244778,
+   "after": 244778,
+   "kb": 239.0,
    "px": [
     2400,
     1800
@@ -1255,9 +1266,9 @@
   },
   {
    "name": "AZNS-207_08_acid.png",
-   "before": 209501,
-   "after": 209501,
-   "kb": 204.6,
+   "before": 208069,
+   "after": 208069,
+   "kb": 203.2,
    "px": [
     2400,
     1800
@@ -1265,9 +1276,9 @@
   },
   {
    "name": "AZNS-207_09_gantt.png",
-   "before": 192546,
-   "after": 192546,
-   "kb": 188.0,
+   "before": 191434,
+   "after": 191434,
+   "kb": 186.9,
    "px": [
     2400,
     1800
@@ -1275,9 +1286,9 @@
   },
   {
    "name": "AZNS-207_10_risk.png",
-   "before": 149543,
-   "after": 149543,
-   "kb": 146.0,
+   "before": 148718,
+   "after": 148718,
+   "kb": 145.2,
    "px": [
     2400,
     1800
@@ -1285,9 +1296,9 @@
   },
   {
    "name": "AZNS-207_11_cost.png",
-   "before": 157838,
-   "after": 157838,
-   "kb": 154.1,
+   "before": 156951,
+   "after": 156951,
+   "kb": 153.3,
    "px": [
     2400,
     1800
@@ -1295,9 +1306,9 @@
   },
   {
    "name": "AZNS-40_01_time_donut.png",
-   "before": 113709,
-   "after": 113709,
-   "kb": 111.0,
+   "before": 113917,
+   "after": 113917,
+   "kb": 111.2,
    "px": [
     2400,
     1800
@@ -1305,8 +1316,8 @@
   },
   {
    "name": "AZNS-40_02_wellbore.png",
-   "before": 109555,
-   "after": 109555,
+   "before": 109588,
+   "after": 109588,
    "kb": 107.0,
    "px": [
     2400,
@@ -1315,9 +1326,9 @@
   },
   {
    "name": "AZNS-40_03_bha.png",
-   "before": 120914,
-   "after": 120914,
-   "kb": 118.1,
+   "before": 120674,
+   "after": 120674,
+   "kb": 117.8,
    "px": [
     2400,
     1800
@@ -1325,9 +1336,9 @@
   },
   {
    "name": "AZNS-40_04_fourtrack.png",
-   "before": 177369,
-   "after": 177369,
-   "kb": 173.2,
+   "before": 176135,
+   "after": 176135,
+   "kb": 172.0,
    "px": [
     2400,
     1800
@@ -1335,9 +1346,9 @@
   },
   {
    "name": "AZNS-40_05_composite_log.png",
-   "before": 182594,
-   "after": 182594,
-   "kb": 178.3,
+   "before": 180400,
+   "after": 180400,
+   "kb": 176.2,
    "px": [
     2400,
     1800
@@ -1345,9 +1356,9 @@
   },
   {
    "name": "AZNS-40_06_reconciliation.png",
-   "before": 202332,
-   "after": 202332,
-   "kb": 197.6,
+   "before": 199940,
+   "after": 199940,
+   "kb": 195.3,
    "px": [
     2400,
     1800
@@ -1355,9 +1366,9 @@
   },
   {
    "name": "AZNS-40_07_hookload.png",
-   "before": 251167,
-   "after": 251167,
-   "kb": 245.3,
+   "before": 248911,
+   "after": 248911,
+   "kb": 243.1,
    "px": [
     2400,
     1800
@@ -1365,9 +1376,9 @@
   },
   {
    "name": "AZNS-40_08_acid.png",
-   "before": 202030,
-   "after": 202030,
-   "kb": 197.3,
+   "before": 201765,
+   "after": 201765,
+   "kb": 197.0,
    "px": [
     2400,
     1800
@@ -1375,9 +1386,9 @@
   },
   {
    "name": "AZNS-40_09_gantt.png",
-   "before": 192811,
-   "after": 192811,
-   "kb": 188.3,
+   "before": 191682,
+   "after": 191682,
+   "kb": 187.2,
    "px": [
     2400,
     1800
@@ -1385,9 +1396,9 @@
   },
   {
    "name": "AZNS-40_10_risk.png",
-   "before": 148798,
-   "after": 148798,
-   "kb": 145.3,
+   "before": 147997,
+   "after": 147997,
+   "kb": 144.5,
    "px": [
     2400,
     1800
@@ -1395,9 +1406,9 @@
   },
   {
    "name": "AZNS-40_11_cost.png",
-   "before": 154030,
-   "after": 154030,
-   "kb": 150.4,
+   "before": 153056,
+   "after": 153056,
+   "kb": 149.5,
    "px": [
     2400,
     1800
@@ -1405,9 +1416,9 @@
   },
   {
    "name": "AZNS-75_01_time_donut.png",
-   "before": 121449,
-   "after": 121449,
-   "kb": 118.6,
+   "before": 121535,
+   "after": 121535,
+   "kb": 118.7,
    "px": [
     2400,
     1800
@@ -1415,9 +1426,9 @@
   },
   {
    "name": "AZNS-75_02_wellbore.png",
-   "before": 253056,
-   "after": 253056,
-   "kb": 247.1,
+   "before": 251636,
+   "after": 251636,
+   "kb": 245.7,
    "px": [
     2400,
     1800
@@ -1425,9 +1436,9 @@
   },
   {
    "name": "AZNS-75_03_bha.png",
-   "before": 118161,
-   "after": 118161,
-   "kb": 115.4,
+   "before": 118269,
+   "after": 118269,
+   "kb": 115.5,
    "px": [
     2400,
     1800
@@ -1435,9 +1446,9 @@
   },
   {
    "name": "AZNS-75_04_fourtrack.png",
-   "before": 176928,
-   "after": 176928,
-   "kb": 172.8,
+   "before": 175950,
+   "after": 175950,
+   "kb": 171.8,
    "px": [
     2400,
     1800
@@ -1445,9 +1456,9 @@
   },
   {
    "name": "AZNS-75_05_composite_log.png",
-   "before": 165768,
-   "after": 165768,
-   "kb": 161.9,
+   "before": 164679,
+   "after": 164679,
+   "kb": 160.8,
    "px": [
     2400,
     1800
@@ -1455,9 +1466,9 @@
   },
   {
    "name": "AZNS-75_06_reconciliation.png",
-   "before": 208514,
-   "after": 208514,
-   "kb": 203.6,
+   "before": 205951,
+   "after": 205951,
+   "kb": 201.1,
    "px": [
     2400,
     1800
@@ -1465,9 +1476,9 @@
   },
   {
    "name": "AZNS-75_07_hookload.png",
-   "before": 242580,
-   "after": 242580,
-   "kb": 236.9,
+   "before": 240235,
+   "after": 240235,
+   "kb": 234.6,
    "px": [
     2400,
     1800
@@ -1475,9 +1486,9 @@
   },
   {
    "name": "AZNS-75_08_acid.png",
-   "before": 208380,
-   "after": 208380,
-   "kb": 203.5,
+   "before": 206975,
+   "after": 206975,
+   "kb": 202.1,
    "px": [
     2400,
     1800
@@ -1485,9 +1496,9 @@
   },
   {
    "name": "AZNS-75_09_gantt.png",
-   "before": 197811,
-   "after": 197811,
-   "kb": 193.2,
+   "before": 196749,
+   "after": 196749,
+   "kb": 192.1,
    "px": [
     2400,
     1800
@@ -1495,9 +1506,9 @@
   },
   {
    "name": "AZNS-75_10_risk.png",
-   "before": 148846,
-   "after": 148846,
-   "kb": 145.4,
+   "before": 148043,
+   "after": 148043,
+   "kb": 144.6,
    "px": [
     2400,
     1800
@@ -1505,9 +1516,9 @@
   },
   {
    "name": "AZNS-75_11_cost.png",
-   "before": 155565,
-   "after": 155565,
-   "kb": 151.9,
+   "before": 154572,
+   "after": 154572,
+   "kb": 150.9,
    "px": [
     2400,
     1800
@@ -1515,9 +1526,9 @@
   },
   {
    "name": "AZNS-85_01_time_donut.png",
-   "before": 112787,
-   "after": 112787,
-   "kb": 110.1,
+   "before": 113161,
+   "after": 113161,
+   "kb": 110.5,
    "px": [
     2400,
     1800
@@ -1525,9 +1536,9 @@
   },
   {
    "name": "AZNS-85_02_wellbore.png",
-   "before": 100754,
-   "after": 100754,
-   "kb": 98.4,
+   "before": 100587,
+   "after": 100587,
+   "kb": 98.2,
    "px": [
     2400,
     1800
@@ -1535,9 +1546,9 @@
   },
   {
    "name": "AZNS-85_03_bha.png",
-   "before": 225808,
-   "after": 225808,
-   "kb": 220.5,
+   "before": 225115,
+   "after": 225115,
+   "kb": 219.8,
    "px": [
     2400,
     1800
@@ -1545,9 +1556,9 @@
   },
   {
    "name": "AZNS-85_04_fourtrack.png",
-   "before": 163309,
-   "after": 163309,
-   "kb": 159.5,
+   "before": 162230,
+   "after": 162230,
+   "kb": 158.4,
    "px": [
     2400,
     1800
@@ -1555,9 +1566,9 @@
   },
   {
    "name": "AZNS-85_05_composite_log.png",
-   "before": 115996,
-   "after": 115996,
-   "kb": 113.3,
+   "before": 114932,
+   "after": 114932,
+   "kb": 112.2,
    "px": [
     2400,
     1800
@@ -1565,9 +1576,9 @@
   },
   {
    "name": "AZNS-85_06_reconciliation.png",
-   "before": 202864,
-   "after": 202864,
-   "kb": 198.1,
+   "before": 200144,
+   "after": 200144,
+   "kb": 195.5,
    "px": [
     2400,
     1800
@@ -1575,9 +1586,9 @@
   },
   {
    "name": "AZNS-85_07_hookload.png",
-   "before": 245361,
-   "after": 245361,
-   "kb": 239.6,
+   "before": 243285,
+   "after": 243285,
+   "kb": 237.6,
    "px": [
     2400,
     1800
@@ -1585,9 +1596,9 @@
   },
   {
    "name": "AZNS-85_08_acid.png",
-   "before": 168207,
-   "after": 168207,
-   "kb": 164.3,
+   "before": 167991,
+   "after": 167991,
+   "kb": 164.1,
    "px": [
     2400,
     1800
@@ -1595,9 +1606,9 @@
   },
   {
    "name": "AZNS-85_09_gantt.png",
-   "before": 197866,
-   "after": 197866,
-   "kb": 193.2,
+   "before": 196580,
+   "after": 196580,
+   "kb": 192.0,
    "px": [
     2400,
     1800
@@ -1605,9 +1616,9 @@
   },
   {
    "name": "AZNS-85_10_risk.png",
-   "before": 149257,
-   "after": 149257,
-   "kb": 145.8,
+   "before": 148459,
+   "after": 148459,
+   "kb": 145.0,
    "px": [
     2400,
     1800
@@ -1615,9 +1626,9 @@
   },
   {
    "name": "AZNS-85_11_cost.png",
-   "before": 150925,
-   "after": 150925,
-   "kb": 147.4,
+   "before": 151193,
+   "after": 151193,
+   "kb": 147.6,
    "px": [
     2400,
     1800
@@ -1625,9 +1636,9 @@
   },
   {
    "name": "FIELD_12_sankey.png",
-   "before": 106161,
-   "after": 106161,
-   "kb": 103.7,
+   "before": 105188,
+   "after": 105188,
+   "kb": 102.7,
    "px": [
     2400,
     1800
@@ -1635,9 +1646,9 @@
   },
   {
    "name": "FIELD_13_rig_gantt.png",
-   "before": 108065,
-   "after": 108065,
-   "kb": 105.5,
+   "before": 107816,
+   "after": 107816,
+   "kb": 105.3,
    "px": [
     2400,
     1800
@@ -1645,8 +1656,8 @@
   },
   {
    "name": "FIELD_14_heatmap.png",
-   "before": 176176,
-   "after": 176176,
+   "before": 176125,
+   "after": 176125,
    "kb": 172.0,
    "px": [
     2400,
@@ -1655,9 +1666,9 @@
   },
   {
    "name": "FIELD_15_crosssection.png",
-   "before": 168092,
-   "after": 168092,
-   "kb": 164.2,
+   "before": 129221,
+   "after": 129221,
+   "kb": 126.2,
    "px": [
     2400,
     1800
@@ -1665,9 +1676,9 @@
   },
   {
    "name": "FIELD_16_learning.png",
-   "before": 156221,
-   "after": 156221,
-   "kb": 152.6,
+   "before": 153273,
+   "after": 153273,
+   "kb": 149.7,
    "px": [
     2400,
     1800
@@ -1675,9 +1686,9 @@
   },
   {
    "name": "FIELD_17_contracts.png",
-   "before": 178356,
-   "after": 178356,
-   "kb": 174.2,
+   "before": 175387,
+   "after": 175387,
+   "kb": 171.3,
    "px": [
     2400,
     1800

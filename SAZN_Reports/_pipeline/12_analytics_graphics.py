@@ -1,4 +1,4 @@
-"""17 additional Data-Analysis-Department artboards (real derived numbers only)."""
+"""18 additional Data-Analysis-Department artboards (real derived numbers only)."""
 import os, sys, json, math, importlib.util, sqlite3
 sys.path.insert(0, os.path.dirname(__file__))
 from common import DATA, GFX, DB, PAL, SEQ, fmt
@@ -39,7 +39,7 @@ for i, d in enumerate(dq):
     yy = 700 + (i % 6) * 26
     xx = 60 + (i // 6) * 540
     b += T(xx, yy, f"{d['check_name'][:44]}: {n(d['affected']):,.0f} / {n(d['n']):,.0f}", 10.5, MUTED)
-art('AN_02_data_quality', 'SAZN — Data-Quality Scorecard', 'Eighteen forensic checks with absolute affected counts', b)
+art('AN_02_data_quality', 'SAZN — Data-Quality Scorecard', 'Nineteen forensic checks with absolute affected counts', b)
 
 # 03 CBS arithmetic exceptions
 ex = RR('SELECT well_key,description,expected,total,delta,pct FROM an_cbs_line_audit WHERE status<>"MATCH" ORDER BY ABS(delta) DESC LIMIT 12')
@@ -156,18 +156,18 @@ for i, x in enumerate(lm):
 art('AN_11_learning', 'SAZN — Intervention Learning Metrics', 'NPT-hour and CBS intensity per DDR day across repeated interventions', b)
 
 # 12 exception funnel / findings
-b = T(60, 130, 'FORENSIC FUNNEL — FROM 1.2M CELLS TO 21 FINDINGS', 15, NAVY, wt='700')
+b = T(60, 130, 'FORENSIC FUNNEL — FROM 1.2M CELLS TO 22 FINDINGS', 15, NAVY, wt='700')
 steps = [('Non-empty worksheet cells',1196084),('Numeric cells',324150),('Formula cells',88692),('Formulas safely recomputed',48011),
          ('CBS priced lines checked',1572),('24-h daily rows checked',1304),('Daily parameter rows',17499),
-         ('Mud material-days checked',36046),('Reconciliation keys',4298),('PDF numeric tokens',305447),('Derived forensic findings',21)]
+         ('Mud material-days checked',36046),('Reconciliation keys',4298),('PDF numeric tokens',305447),('Derived forensic findings',22)]
 mx = max(v for _, v in steps)
 for i, (nm, v) in enumerate(steps):
     yy = 175 + i*52
     b += T(60, yy+18, nm, 12, INK, wt='600')
     b += R(420, yy, 620*math.log10(v+1)/math.log10(mx+1), 26, SEQ[i%len(SEQ)], rx=4)
     b += T(1160, yy+18, f'{v:,}', 12, NAVY, 'end', '700')
-b += T(60, 800, 'Every narrowing step is reproducible from the 40 an_* tables in SAZN_Master_Warehouse.sqlite.', 11.5, MUTED)
-art('AN_12_findings_funnel', 'SAZN — Forensic Funnel', 'Reproducible narrowing from the full cell census to the 21 evidence-based findings', b)
+b += T(60, 800, 'Every narrowing step is reproducible from the 42 an_* tables in SAZN_Master_Warehouse.sqlite.', 11.5, MUTED)
+art('AN_12_findings_funnel', 'SAZN — Forensic Funnel', 'Reproducible narrowing from the full cell census to the 22 evidence-based findings', b)
 
 # 13 PDF numeric-token magnitude census
 pdf = S['pdf']; ct = S['cost_track']
@@ -261,6 +261,31 @@ for i, x in enumerate(attr):
     b += T(960, yy, fmt(x['fallback_50_50_waiting_h'],1), 10.5, EMERALD, 'end')
 b += T(60, 800, 'Blank attributed-party cells are retained verbatim and classified by the source heuristic; waiting hours are never split 50/50.', 11, MUTED)
 art('AN_17_npt_attribution', 'SAZN — NPT Attribution Audit', 'Explicit N/NPT status rows with contractor/client and blank-column hours', b)
+
+# 18 peer-well reference rate card (DA-22)
+rc = S['rate_card']
+top = RR("SELECT description,unit,spread_pct,n_lines,n_wells FROM an_unit_rate_reference WHERE status<>'UNIFORM_CARD' AND spread_pct IS NOT NULL ORDER BY spread_pct DESC LIMIT 12")
+b = T(60, 130, 'PEER-WELL REFERENCE RATE CARD (DA-22)', 15, NAVY, wt='700')
+b += T(60, 152, 'Unit rates of a defined operation/commodity are uniform campaign-wide — project-confirmed 2026-11-08', 12, MUTED)
+b += bars([(f"{x['description'][:26]} {x['unit'][:8]}", n(x['spread_pct'])) for x in top], 60, 180, 700, 430, val_sz=11, unit='%')
+rx = 820
+b += R(rx, 180, 330, 430, SOFT, rx=6)
+b += T(rx+20, 220, 'CAMPAIGN CARD', 13, NAVY, wt='700')
+lines = [('Reference keys', f"{rc['keys_total']:,}"),('Multi-well keys', f"{rc['multi_well_keys']:,}"),
+         ('Uniform card (<5% spread)', f"{rc['uniform_card']:,}"),('Low dispersion', f"{rc['low_dispersion']:,}"),
+         ('Dispersed', f"{rc['dispersed']:,}"),('Priced lines within 5% of ref', f"{rc['lines_within_5pct_of_ref']:,}"),
+         ('Lines deviating >5% vs ref', f"{rc['lines_dev_gt5pct_vs_ref']:,}"),('Missing price, imputable', f"{rc['missing_price_lines']:,}"),
+         ('→ imputed from peer card', f"{rc['imputed_from_peer_card']:,}")]
+for i, (k, v) in enumerate(lines):
+    yy = 252 + i*40
+    b += T(rx+20, yy, k, 11, INK); b += T(rx+310, yy, v, 11.5, NAVY, 'end', '700')
+b += T(60, 660, 'EMBEDDED COMPANY MARGIN (source Total vs QTY x rate)', 13, NAVY, wt='700')
+b += T(60, 692, f"Positive deltas (margin):  +{rc['embedded_margin_pos_usd']:,.0f} USD", 12, EMERALD, wt='700')
+b += T(60, 720, f"Negative deltas (lump-sum / zero-total contingencies):  {rc['embedded_margin_neg_usd']:,.0f} USD", 12, CORAL, wt='700')
+b += T(60, 748, f"Net:  {rc['embedded_margin_net_usd']:,.0f} USD   |   vs peer card:  net {rc['delta_vs_ref_net_usd']:,.0f} USD", 12, NAVY, wt='700')
+b += T(60, 800, 'Large positive deltas are the embedded company margin (profit/overhead) — project-confirmed, not arithmetic errors.', 11, MUTED)
+b += T(60, 824, 'Source values retained verbatim; imputation flagged in an_cbs_reference_delta.status.', 11, MUTED)
+art('AN_18_rate_card', 'SAZN — Peer-Well Reference Rate Card', 'Uniform campaign rate card; imputed from peers where source is incomplete', b)
 
 jobs = g.JOBS
 json.dump(jobs, open(os.path.join(DATA, 'analytics_graphics_jobs.json'), 'w'), indent=1)

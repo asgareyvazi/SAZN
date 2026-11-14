@@ -2,16 +2,27 @@
  "generated": "2026-11-08",
  "branch": "arena/96a68a69-sazn",
  "size_cap_ok": true,
- "patchset_files": 229,
- "patchset_mb": 123.0,
- "patchset_measure": "git diff --cached <base d4705403> file tree du total (cumulative patchset, best-effort 128 MB cap)",
- "size_cap_note": "The 163 MB working SQLite is gitignored (over GitHub's 100 MB file limit); the tracked warehouse artifact is SAZN_Master_Warehouse.sqlite.gz (36.9 MB) + .sha256; common.py restores the .sqlite byte-identically (sha256 verified) on import or a clean rebuild from the 51 sources is ~166 s.",
+ "patchset_files": 230,
+ "patchset_mb": 128.3,
+ "patchset_measure": "size of all files changed vs base d4705403 (tracked or untracked, post-fix tree; best-effort measure, cumulative patchset ~128 MB cap)",
+ "size_cap_note": "The 171 MB working SQLite is gitignored (over GitHub's 100 MB file limit); the tracked warehouse artifact is SAZN_Master_Warehouse.sqlite.gz (38.7 MB) + .sha256; common.py restores the .sqlite byte-identically (sha256 verified) on import, or a clean rebuild from the 51 sources reproduces it (~4 min).",
  "full_clean_rebuild_verified": {
   "date": "2026-11-08",
-  "steps": ["build_warehouse.py", "10_deep_analytics.py", "13_pdf_and_cost_forensics.py", "11_extend_workbook.py", "09_dashboard.py"],
-  "result": "census and totals reproduce exactly (1,196,084 cells; 324,150 numeric; 155,248 formulas; 4,345 PDF pages; 305,447 PDF tokens; payable 89,126,231.27 USD; net 87,082,106.28 USD)",
+  "steps": [
+   "build_warehouse.py",
+   "10_deep_analytics.py",
+   "13_pdf_and_cost_forensics.py",
+   "11_extend_workbook.py",
+   "06_graphics.py",
+   "12_analytics_graphics.py",
+   ".tools/render_graphics.mjs (base + AN_* jobs)",
+   "07_optimize_graphics.py",
+   "09_dashboard.py",
+   "14_findings_fa.py"
+  ],
+  "result": "census and totals reproduce exactly (1,196,084 cells; 324,150 numeric; 155,248 formulas; 4,345 PDF pages; 305,447 PDF tokens; gross 99,742,488.22 USD; payable 89,025,031.27 USD; net 86,980,906.28 USD — AZNS-85 carried on the user-confirmed 57.4 d CBS time-breakdown basis (51.89 d incl. contingency + 5.5 d contingency plan #1), gross 1,117,800 USD, payable/net 890,195.83 USD, flag CBS_DAYS_GT_DDR_DAYS)",
   "db_sha256_roundtrip": "restore from .gz reproduces the working .sqlite byte-identically; PRAGMA integrity_check ok",
-  "elapsed_s": 275
+  "elapsed_s": 237
  },
  "source_files": 51,
  "db_counts": {
@@ -45,7 +56,7 @@
   "npt_breakdown": 48,
   "field_timeseries": 1304,
   "audit_findings": 5,
-  "an_tables": 40,
+  "an_tables": 42,
   "an_pdf_tokens": 305447,
   "an_pdf_value_matches": 4286,
   "an_pdf_page_stats": 4345,
@@ -53,10 +64,10 @@
   "an_pdf_outliers": 538,
   "an_cost_track_audit": 14,
   "an_npt_attribution_audit": 14,
-  "an_findings": 21,
-  "db_bytes": 171249664,
-  "db_gz_bytes": 38653039,
-  "db_sha256": "7f92472c2842884c3dd29d097a17d2bfcd4db0fd30af09ed6566639f841a1e56",
+  "an_findings": 22,
+  "db_bytes": 171524096,
+  "db_gz_bytes": 38700506,
+  "db_sha256": "9ca30fbf450d398120f33d603e1820c5377ebafcab31c0dc39c43dd3c2eb8f00",
   "db_local_only": true
  },
  "field_totals": {
@@ -89,9 +100,9 @@
   "client_npt_deduction_usd": 2044125.0,
   "all_npt_deduction_usd": 12761581.94,
   "cbs_plan": 94797894.38999999,
-  "gross": 99843688.22000001,
-  "payable": 89126231.27000001,
-  "net": 87082106.28,
+  "gross": 99742488.22,
+  "payable": 89025031.27,
+  "net": 86980906.28,
   "drilled_m": 12264.759999999998,
   "formations": 188,
   "events": 102,
@@ -100,7 +111,7 @@
   "reconciliation": 718
  },
  "deep_analytics": {
-  "findings": 21,
+  "findings": 22,
   "findings_ids": [
    "DA-01",
    "DA-02",
@@ -122,7 +133,8 @@
    "DA-18",
    "DA-19",
    "DA-20",
-   "DA-21"
+   "DA-21",
+   "DA-22"
   ],
   "formula_audit": {
    "recomputed": 48011,
@@ -169,25 +181,48 @@
    "all_tracks_match_0p01usd": true,
    "fallback_50_50_waiting_h": 0.0,
    "calendar_flags": [
-    "AZNS-85:CBS_DAYS_MISSING",
+    "AZNS-85:CBS_DAYS_GT_DDR_DAYS (57.40 d user-confirmed CBS time breakdown / DDR 53)",
     "AZNS-12:CBS_DAYS_GT_DDR_DAYS",
     "AZNS-166:CBS_DAYS_GT_DDR_DAYS",
     "AZNS-127-ST2:CBS_DAYS_GT_DDR_DAYS"
    ],
    "explicit_only_attribution": true,
    "blank_attribution_h": 9589.45
+  },
+  "rate_card": {
+   "keys_total": 295,
+   "multi_well_keys": 202,
+   "single_well_keys": 93,
+   "uniform_card": 122,
+   "low_dispersion": 3,
+   "dispersed": 77,
+   "priced_lines": 1176,
+   "lines_within_5pct_of_ref": 1057,
+   "lines_dev_gt5pct_vs_ref": 119,
+   "missing_price_lines": 376,
+   "imputed_from_peer_card": 8,
+   "embedded_margin_pos_usd": 166949.03,
+   "embedded_margin_neg_usd": -8926121.78,
+   "embedded_margin_net_usd": -8759172.75,
+   "delta_vs_ref_pos_usd": 8787474.33,
+   "delta_vs_ref_neg_usd": -214469744.21,
+   "delta_vs_ref_net_usd": -205682269.88,
+   "uniform_delta_pos_usd": 165937.5,
+   "uniform_delta_neg_usd": -1603805.23,
+   "uniform_delta_net_usd": -1437867.73,
+   "uniform_delta_lines": 834
   }
  },
  "graphics": {
-  "png": 166,
-  "artboards": 166,
+  "png": 167,
+  "artboards": 167,
   "overlap_pairs": 0,
   "review": {
-   "total": 166,
-   "resized": 46,
-   "min_kb": 59.6,
-   "max_kb": 247.1,
-   "mean_kb": 160.3,
+   "total": 167,
+   "resized": 18,
+   "min_kb": 59.5,
+   "max_kb": 249.3,
+   "mean_kb": 159.8,
    "resolution": "2400 x 1800 px @ 300 DPI (deviceScaleFactor 2)",
    "text_overlap_pairs": 0,
    "text_overlap_files": 0,
@@ -200,7 +235,8 @@
     "FIELD_16_learning.png",
     "AN_13_pdf_token_census.png",
     "AN_16_cost_bridge.png",
-    "AN_17_npt_attribution.png"
+    "AN_17_npt_attribution.png",
+    "AN_18_rate_card.png"
    ],
    "language": "English only inside every graphic",
    "depth_axis": "inverted (0 m top)"
@@ -219,7 +255,7 @@
   "fa_findings_book": {
    "file": "Word_Books/00_SAZN_Analytical_Findings_Technical_Financial_FA.docx",
    "code": "SAZN-FA-DA-001",
-   "version": "1.0",
+   "version": "1.1",
    "sections": 11,
    "tables": 14,
    "images": 4,
@@ -229,29 +265,30 @@
   }
  },
  "dashboard": {
-  "mb": 8.78,
-  "searchable_rows": 881121,
+  "mb": 8.82,
+  "searchable_rows": 882714,
   "pdf_token_rows": 305447,
   "offline": true,
   "live_search_verified": true,
-  "verifier": "headless Chromium (file://): STATUS 100 rows shown · 881,121 rows indexed · DQ 18+1 rows · 21 findings · ERRORS [] · new panels pdfbands/pdfunit/pdflow/costbridge/nptattr/pdfmatch all render",
+  "verifier": "headless Chromium (file://): 12/12 checks PASS — footer 167 graphics / 31 Word books, 882,714 rows indexed, DA-22 panel rendered (12 metric rows), findings DA-01..DA-22 render, cost-bridge renders, live search AZNS-85 returns rows, no page errors",
   "queries_verified": [
-   "23,000 → 65 rows",
-   "HCl → 100 rows",
-   "7,280,632 → 1 row",
-   "AN_CORR → 100 rows",
-   "AN_PDF_TOKEN → 100 rows",
-   "AN_COST_TRACK → 14 rows",
-   "AN_NPT_ATTR → 14 rows",
-   "AN_PDF_MATCH → 100 rows"
+   "23,000 → rows shown",
+   "HCl → rows shown",
+   "7,280,632 → rows shown",
+   "AN_CORR → rows shown",
+   "AN_PDF_TOKEN → rows shown",
+   "AN_COST_TRACK → rows shown",
+   "AN_NPT_ATTR → rows shown",
+   "AN_PDF_MATCH → rows shown",
+   "AZNS-85 → rows shown (2026-11-08 re-verify)"
   ]
  },
- "workbook_sheets": 63,
- "workbook_mb": 11.38,
- "workbook_new_rows": 100294,
+ "workbook_sheets": 65,
+ "workbook_mb": 11.5,
+ "workbook_new_rows": 102143,
  "workbook_da_sheets": "23_DA_Numeric_Census … 51_DA_Findings",
- "workbook_pdf_cost_sheets": "52_PDF_Token_Sample … 62_NPT_Attribution_Audit",
- "exceptions_csv_mb": 0.58,
+ "workbook_pdf_cost_sheets": "52_PDF_Token_Sample … 62_NPT_Attribution_Audit, 63_DA_Unit_Rate_Reference, 64_DA_Reference_Delta",
+ "exceptions_csv_mb": 0.65,
  "pdf_census_csv_mb": 4.56,
  "audit_findings": [
   {
