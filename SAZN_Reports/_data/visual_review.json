@@ -1,10 +1,10 @@
 {
  "review": {
-  "total": 149,
-  "resized": 29,
-  "min_kb": 97.6,
+  "total": 166,
+  "resized": 17,
+  "min_kb": 59.6,
   "max_kb": 247.1,
-  "mean_kb": 169.3,
+  "mean_kb": 160.3,
   "resolution": "2400 x 1800 px @ 300 DPI (deviceScaleFactor 2)",
   "text_overlap_pairs": 0,
   "text_overlap_files": 0,
@@ -14,15 +14,188 @@
    "AZNS-207_04_fourtrack.png",
    "AZNS-207_06_reconciliation.png",
    "FIELD_15_crosssection.png",
-   "FIELD_16_learning.png"
+   "FIELD_16_learning.png",
+   "AN_13_pdf_token_census.png",
+   "AN_16_cost_bridge.png",
+   "AN_17_npt_attribution.png"
   ],
   "language": "English only inside every graphic",
   "depth_axis": "inverted (0 m top)"
  },
  "files": [
   {
+   "name": "AN_01_numeric_histogram.png",
+   "before": 197231,
+   "after": 79217,
+   "kb": 77.4,
+   "px": [
+    2400,
+    1800
+   ]
+  },
+  {
+   "name": "AN_02_data_quality.png",
+   "before": 125151,
+   "after": 125121,
+   "kb": 122.2,
+   "px": [
+    2400,
+    1800
+   ]
+  },
+  {
+   "name": "AN_03_cbs_arithmetic.png",
+   "before": 228159,
+   "after": 90418,
+   "kb": 88.3,
+   "px": [
+    2400,
+    1800
+   ]
+  },
+  {
+   "name": "AN_04_formula_audit.png",
+   "before": 194580,
+   "after": 79219,
+   "kb": 77.4,
+   "px": [
+    2400,
+    1800
+   ]
+  },
+  {
+   "name": "AN_05_time_control.png",
+   "before": 135691,
+   "after": 65134,
+   "kb": 63.6,
+   "px": [
+    2400,
+    1800
+   ]
+  },
+  {
+   "name": "AN_06_correlation_heatmap.png",
+   "before": 221332,
+   "after": 90834,
+   "kb": 88.7,
+   "px": [
+    2400,
+    1800
+   ]
+  },
+  {
+   "name": "AN_07_cost_efficiency.png",
+   "before": 143826,
+   "after": 60989,
+   "kb": 59.6,
+   "px": [
+    2400,
+    1800
+   ]
+  },
+  {
+   "name": "AN_08_unit_price.png",
+   "before": 189805,
+   "after": 75185,
+   "kb": 73.4,
+   "px": [
+    2400,
+    1800
+   ]
+  },
+  {
+   "name": "AN_09_structural_bias.png",
+   "before": 157628,
+   "after": 62661,
+   "kb": 61.2,
+   "px": [
+    2400,
+    1800
+   ]
+  },
+  {
+   "name": "AN_10_program_actual.png",
+   "before": 206109,
+   "after": 80220,
+   "kb": 78.3,
+   "px": [
+    2400,
+    1800
+   ]
+  },
+  {
+   "name": "AN_11_learning.png",
+   "before": 209571,
+   "after": 83261,
+   "kb": 81.3,
+   "px": [
+    2400,
+    1800
+   ]
+  },
+  {
+   "name": "AN_12_findings_funnel.png",
+   "before": 170321,
+   "after": 67279,
+   "kb": 65.7,
+   "px": [
+    2400,
+    1800
+   ]
+  },
+  {
+   "name": "AN_13_pdf_token_census.png",
+   "before": 216781,
+   "after": 84789,
+   "kb": 82.8,
+   "px": [
+    2400,
+    1800
+   ]
+  },
+  {
+   "name": "AN_14_pdf_units.png",
+   "before": 186990,
+   "after": 74368,
+   "kb": 72.6,
+   "px": [
+    2400,
+    1800
+   ]
+  },
+  {
+   "name": "AN_15_pdf_low_text.png",
+   "before": 104894,
+   "after": 104890,
+   "kb": 102.4,
+   "px": [
+    2400,
+    1800
+   ]
+  },
+  {
+   "name": "AN_16_cost_bridge.png",
+   "before": 99027,
+   "after": 99003,
+   "kb": 96.7,
+   "px": [
+    2400,
+    1800
+   ]
+  },
+  {
+   "name": "AN_17_npt_attribution.png",
+   "before": 241275,
+   "after": 93823,
+   "kb": 91.6,
+   "px": [
+    2400,
+    1800
+   ]
+  },
+  {
    "name": "AZNS-10_01_time_donut.png",
-   "before": 280744,
+   "before": 110832,
    "after": 110832,
    "kb": 108.2,
    "px": [
@@ -32,7 +205,7 @@
   },
   {
    "name": "AZNS-10_02_wellbore.png",
-   "before": 272790,
+   "before": 105404,
    "after": 105404,
    "kb": 102.9,
    "px": [
@@ -132,7 +305,7 @@
   },
   {
    "name": "AZNS-116_01_time_donut.png",
-   "before": 289496,
+   "before": 114098,
    "after": 114098,
    "kb": 111.4,
    "px": [
@@ -242,7 +415,7 @@
   },
   {
    "name": "AZNS-122-WO1_01_time_donut.png",
-   "before": 287192,
+   "before": 114496,
    "after": 114496,
    "kb": 111.8,
    "px": [
@@ -252,7 +425,7 @@
   },
   {
    "name": "AZNS-122-WO1_02_wellbore.png",
-   "before": 285373,
+   "before": 110091,
    "after": 110091,
    "kb": 107.5,
    "px": [
@@ -352,7 +525,7 @@
   },
   {
    "name": "AZNS-122-WO2_01_time_donut.png",
-   "before": 297293,
+   "before": 117571,
    "after": 117571,
    "kb": 114.8,
    "px": [
@@ -372,7 +545,7 @@
   },
   {
    "name": "AZNS-122-WO2_03_bha.png",
-   "before": 300199,
+   "before": 112984,
    "after": 112984,
    "kb": 110.3,
    "px": [
@@ -462,7 +635,7 @@
   },
   {
    "name": "AZNS-127-ST2_01_time_donut.png",
-   "before": 292086,
+   "before": 116019,
    "after": 116019,
    "kb": 113.3,
    "px": [
@@ -482,7 +655,7 @@
   },
   {
    "name": "AZNS-127-ST2_03_bha.png",
-   "before": 298925,
+   "before": 113122,
    "after": 113122,
    "kb": 110.5,
    "px": [
@@ -572,7 +745,7 @@
   },
   {
    "name": "AZNS-127-WO1-ST1_01_time_donut.png",
-   "before": 289582,
+   "before": 115199,
    "after": 115199,
    "kb": 112.5,
    "px": [
@@ -582,7 +755,7 @@
   },
   {
    "name": "AZNS-127-WO1-ST1_02_wellbore.png",
-   "before": 266496,
+   "before": 102852,
    "after": 102852,
    "kb": 100.4,
    "px": [
@@ -632,7 +805,7 @@
   },
   {
    "name": "AZNS-127-WO1-ST1_07_hookload.png",
-   "before": 257487,
+   "before": 99903,
    "after": 99903,
    "kb": 97.6,
    "px": [
@@ -682,7 +855,7 @@
   },
   {
    "name": "AZNS-127-WO2_01_time_donut.png",
-   "before": 294884,
+   "before": 117665,
    "after": 117665,
    "kb": 114.9,
    "px": [
@@ -702,7 +875,7 @@
   },
   {
    "name": "AZNS-127-WO2_03_bha.png",
-   "before": 303226,
+   "before": 114050,
    "after": 114050,
    "kb": 111.4,
    "px": [
@@ -792,7 +965,7 @@
   },
   {
    "name": "AZNS-12_01_time_donut.png",
-   "before": 295026,
+   "before": 117259,
    "after": 117259,
    "kb": 114.5,
    "px": [
@@ -902,7 +1075,7 @@
   },
   {
    "name": "AZNS-166_01_time_donut.png",
-   "before": 279674,
+   "before": 111857,
    "after": 111857,
    "kb": 109.2,
    "px": [
@@ -922,7 +1095,7 @@
   },
   {
    "name": "AZNS-166_03_bha.png",
-   "before": 278377,
+   "before": 104818,
    "after": 104818,
    "kb": 102.4,
    "px": [
@@ -1012,7 +1185,7 @@
   },
   {
    "name": "AZNS-207_01_time_donut.png",
-   "before": 303984,
+   "before": 120035,
    "after": 120035,
    "kb": 117.2,
    "px": [
@@ -1022,7 +1195,7 @@
   },
   {
    "name": "AZNS-207_02_wellbore.png",
-   "before": 292514,
+   "before": 113126,
    "after": 113126,
    "kb": 110.5,
    "px": [
@@ -1032,7 +1205,7 @@
   },
   {
    "name": "AZNS-207_03_bha.png",
-   "before": 318895,
+   "before": 116563,
    "after": 116563,
    "kb": 113.8,
    "px": [
@@ -1122,7 +1295,7 @@
   },
   {
    "name": "AZNS-40_01_time_donut.png",
-   "before": 286793,
+   "before": 113709,
    "after": 113709,
    "kb": 111.0,
    "px": [
@@ -1132,7 +1305,7 @@
   },
   {
    "name": "AZNS-40_02_wellbore.png",
-   "before": 284859,
+   "before": 109555,
    "after": 109555,
    "kb": 107.0,
    "px": [
@@ -1142,7 +1315,7 @@
   },
   {
    "name": "AZNS-40_03_bha.png",
-   "before": 328831,
+   "before": 120914,
    "after": 120914,
    "kb": 118.1,
    "px": [
@@ -1232,7 +1405,7 @@
   },
   {
    "name": "AZNS-75_01_time_donut.png",
-   "before": 307209,
+   "before": 121449,
    "after": 121449,
    "kb": 118.6,
    "px": [
@@ -1252,7 +1425,7 @@
   },
   {
    "name": "AZNS-75_03_bha.png",
-   "before": 314898,
+   "before": 118161,
    "after": 118161,
    "kb": 115.4,
    "px": [
@@ -1342,7 +1515,7 @@
   },
   {
    "name": "AZNS-85_01_time_donut.png",
-   "before": 284644,
+   "before": 112787,
    "after": 112787,
    "kb": 110.1,
    "px": [
@@ -1352,7 +1525,7 @@
   },
   {
    "name": "AZNS-85_02_wellbore.png",
-   "before": 261535,
+   "before": 100754,
    "after": 100754,
    "kb": 98.4,
    "px": [
@@ -1452,7 +1625,7 @@
   },
   {
    "name": "FIELD_12_sankey.png",
-   "before": 281522,
+   "before": 106161,
    "after": 106161,
    "kb": 103.7,
    "px": [
@@ -1462,7 +1635,7 @@
   },
   {
    "name": "FIELD_13_rig_gantt.png",
-   "before": 271233,
+   "before": 108065,
    "after": 108065,
    "kb": 105.5,
    "px": [

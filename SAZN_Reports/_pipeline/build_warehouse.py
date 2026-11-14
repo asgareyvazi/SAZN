@@ -777,14 +777,13 @@ def time_account(wk):
     tb=R('SELECT category,SUM(hours) h FROM ddr_time WHERE well_key=? AND hours IS NOT NULL GROUP BY category ORDER BY h DESC',wk)
     for r in tb:
         if r['h'] and r['h']>0:tc[r['category']]=max(tc.get(r['category'],0),r['h'])
-    if st['NPT']==0 and tb:
-        kw=re.compile(r'wait|repair|fish|force majeure|npt|stuck|loss|breakdown|shortage|milling|junk',re.I)
-        for r in tb:
-            if r['h'] and kw.search(r['category'] or ''):
-                st['NPT']+=r['h'];at['Contractor / unattributed waiting']+=r['h']*.5;at['Client / subsurface waiting']+=r['h']*.5
+    # No-fabrication guard: when a daily pack has no explicit N / NPT status rows,
+    # unclassified waiting time is left UNCLASSIFIED. No invented 50/50 split is used.
+    fallback_50_50_waiting_used = False
     ctr=sum(v for k,v in at.items() if ck.search(k));cli=sum(v for k,v in at.items() if not ck.search(k))
     return dict(activities=len(acts),status_hours=dict(st),attributed_hours=dict(at),npt_contractor_h=ctr,npt_client_h=cli,npt_total_h=ctr+cli,
-        time_categories=[dict(category=k,hours=r2(v)) for k,v in sorted(tc.items(),key=lambda x:-x[1]) if v>0][:32],npt_events=npt)
+        time_categories=[dict(category=k,hours=r2(v)) for k,v in sorted(tc.items(),key=lambda x:-x[1]) if v>0][:32],npt_events=npt,
+        fallback_50_50_waiting_used=fallback_50_50_waiting_used)
 BENCHRATE=None
 def bench():
     global BENCHRATE

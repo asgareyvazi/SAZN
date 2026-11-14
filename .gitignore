@@ -5,3 +5,6 @@ __pycache__/
 .arena/
 SAZN_Reports/_data/artboards/
 SAZN_Reports/_data/dashboard_check.png
+
+# local restore artifact — the tracked copy is .sqlite.gz (see README)
+SAZN_Reports/SAZN_Master_Warehouse.sqlite

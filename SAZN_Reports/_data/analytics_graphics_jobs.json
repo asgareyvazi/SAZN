@@ -1,0 +1,87 @@
+[
+ {
+  "name": "AN_01_numeric_histogram",
+  "html": "/home/user/SAZN/SAZN_Reports/_data/artboards/AN_01_numeric_histogram.html",
+  "png": "/home/user/SAZN/SAZN_Reports/SAZN_Graphics/AN_01_numeric_histogram.png"
+ },
+ {
+  "name": "AN_02_data_quality",
+  "html": "/home/user/SAZN/SAZN_Reports/_data/artboards/AN_02_data_quality.html",
+  "png": "/home/user/SAZN/SAZN_Reports/SAZN_Graphics/AN_02_data_quality.png"
+ },
+ {
+  "name": "AN_03_cbs_arithmetic",
+  "html": "/home/user/SAZN/SAZN_Reports/_data/artboards/AN_03_cbs_arithmetic.html",
+  "png": "/home/user/SAZN/SAZN_Reports/SAZN_Graphics/AN_03_cbs_arithmetic.png"
+ },
+ {
+  "name": "AN_04_formula_audit",
+  "html": "/home/user/SAZN/SAZN_Reports/_data/artboards/AN_04_formula_audit.html",
+  "png": "/home/user/SAZN/SAZN_Reports/SAZN_Graphics/AN_04_formula_audit.png"
+ },
+ {
+  "name": "AN_05_time_control",
+  "html": "/home/user/SAZN/SAZN_Reports/_data/artboards/AN_05_time_control.html",
+  "png": "/home/user/SAZN/SAZN_Reports/SAZN_Graphics/AN_05_time_control.png"
+ },
+ {
+  "name": "AN_06_correlation_heatmap",
+  "html": "/home/user/SAZN/SAZN_Reports/_data/artboards/AN_06_correlation_heatmap.html",
+  "png": "/home/user/SAZN/SAZN_Reports/SAZN_Graphics/AN_06_correlation_heatmap.png"
+ },
+ {
+  "name": "AN_07_cost_efficiency",
+  "html": "/home/user/SAZN/SAZN_Reports/_data/artboards/AN_07_cost_efficiency.html",
+  "png": "/home/user/SAZN/SAZN_Reports/SAZN_Graphics/AN_07_cost_efficiency.png"
+ },
+ {
+  "name": "AN_08_unit_price",
+  "html": "/home/user/SAZN/SAZN_Reports/_data/artboards/AN_08_unit_price.html",
+  "png": "/home/user/SAZN/SAZN_Reports/SAZN_Graphics/AN_08_unit_price.png"
+ },
+ {
+  "name": "AN_09_structural_bias",
+  "html": "/home/user/SAZN/SAZN_Reports/_data/artboards/AN_09_structural_bias.html",
+  "png": "/home/user/SAZN/SAZN_Reports/SAZN_Graphics/AN_09_structural_bias.png"
+ },
+ {
+  "name": "AN_10_program_actual",
+  "html": "/home/user/SAZN/SAZN_Reports/_data/artboards/AN_10_program_actual.html",
+  "png": "/home/user/SAZN/SAZN_Reports/SAZN_Graphics/AN_10_program_actual.png"
+ },
+ {
+  "name": "AN_11_learning",
+  "html": "/home/user/SAZN/SAZN_Reports/_data/artboards/AN_11_learning.html",
+  "png": "/home/user/SAZN/SAZN_Reports/SAZN_Graphics/AN_11_learning.png"
+ },
+ {
+  "name": "AN_12_findings_funnel",
+  "html": "/home/user/SAZN/SAZN_Reports/_data/artboards/AN_12_findings_funnel.html",
+  "png": "/home/user/SAZN/SAZN_Reports/SAZN_Graphics/AN_12_findings_funnel.png"
+ },
+ {
+  "name": "AN_13_pdf_token_census",
+  "html": "/home/user/SAZN/SAZN_Reports/_data/artboards/AN_13_pdf_token_census.html",
+  "png": "/home/user/SAZN/SAZN_Reports/SAZN_Graphics/AN_13_pdf_token_census.png"
+ },
+ {
+  "name": "AN_14_pdf_units",
+  "html": "/home/user/SAZN/SAZN_Reports/_data/artboards/AN_14_pdf_units.html",
+  "png": "/home/user/SAZN/SAZN_Reports/SAZN_Graphics/AN_14_pdf_units.png"
+ },
+ {
+  "name": "AN_15_pdf_low_text",
+  "html": "/home/user/SAZN/SAZN_Reports/_data/artboards/AN_15_pdf_low_text.html",
+  "png": "/home/user/SAZN/SAZN_Reports/SAZN_Graphics/AN_15_pdf_low_text.png"
+ },
+ {
+  "name": "AN_16_cost_bridge",
+  "html": "/home/user/SAZN/SAZN_Reports/_data/artboards/AN_16_cost_bridge.html",
+  "png": "/home/user/SAZN/SAZN_Reports/SAZN_Graphics/AN_16_cost_bridge.png"
+ },
+ {
+  "name": "AN_17_npt_attribution",
+  "html": "/home/user/SAZN/SAZN_Reports/_data/artboards/AN_17_npt_attribution.html",
+  "png": "/home/user/SAZN/SAZN_Reports/SAZN_Graphics/AN_17_npt_attribution.png"
+ }
+]

@@ -2,12 +2,23 @@
  "generated": "2026-11-08",
  "branch": "arena/96a68a69-sazn",
  "size_cap_ok": true,
+ "patchset_files": 229,
+ "patchset_mb": 123.0,
+ "patchset_measure": "git diff --cached <base d4705403> file tree du total (cumulative patchset, best-effort 128 MB cap)",
+ "size_cap_note": "The 163 MB working SQLite is gitignored (over GitHub's 100 MB file limit); the tracked warehouse artifact is SAZN_Master_Warehouse.sqlite.gz (36.9 MB) + .sha256; common.py restores the .sqlite byte-identically (sha256 verified) on import or a clean rebuild from the 51 sources is ~166 s.",
+ "full_clean_rebuild_verified": {
+  "date": "2026-11-08",
+  "steps": ["build_warehouse.py", "10_deep_analytics.py", "13_pdf_and_cost_forensics.py", "11_extend_workbook.py", "09_dashboard.py"],
+  "result": "census and totals reproduce exactly (1,196,084 cells; 324,150 numeric; 155,248 formulas; 4,345 PDF pages; 305,447 PDF tokens; payable 89,126,231.27 USD; net 87,082,106.28 USD)",
+  "db_sha256_roundtrip": "restore from .gz reproduces the working .sqlite byte-identically; PRAGMA integrity_check ok",
+  "elapsed_s": 275
+ },
  "source_files": 51,
  "db_counts": {
   "source_files": 51,
   "sheets": 2810,
-  "sheet_cells": 2810,
   "cell_numeric": 324150,
+  "sheet_cells": 2810,
   "pdf_pages": 4345,
   "pdf_num_pages": 4345,
   "pdf_tables": 1349,
@@ -33,7 +44,20 @@
   "reconciliation": 718,
   "npt_breakdown": 48,
   "field_timeseries": 1304,
-  "audit_findings": 5
+  "audit_findings": 5,
+  "an_tables": 40,
+  "an_pdf_tokens": 305447,
+  "an_pdf_value_matches": 4286,
+  "an_pdf_page_stats": 4345,
+  "an_pdf_low_text": 364,
+  "an_pdf_outliers": 538,
+  "an_cost_track_audit": 14,
+  "an_npt_attribution_audit": 14,
+  "an_findings": 21,
+  "db_bytes": 171249664,
+  "db_gz_bytes": 38653039,
+  "db_sha256": "7f92472c2842884c3dd29d097a17d2bfcd4db0fd30af09ed6566639f841a1e56",
+  "db_local_only": true
  },
  "field_totals": {
   "operations": 13,
@@ -59,6 +83,11 @@
   "pdf_numbers": 305447,
   "ddr_days": 1304,
   "npt_hours": 13316.433333333334,
+  "contractor_npt_h": 11183.433333333334,
+  "client_npt_h": 2133.0,
+  "contractor_npt_deduction_usd": 10717456.94,
+  "client_npt_deduction_usd": 2044125.0,
+  "all_npt_deduction_usd": 12761581.94,
   "cbs_plan": 94797894.38999999,
   "gross": 99843688.22000001,
   "payable": 89126231.27000001,
@@ -70,16 +99,95 @@
   "recs": 156,
   "reconciliation": 718
  },
+ "deep_analytics": {
+  "findings": 21,
+  "findings_ids": [
+   "DA-01",
+   "DA-02",
+   "DA-03",
+   "DA-04",
+   "DA-05",
+   "DA-06",
+   "DA-07",
+   "DA-08",
+   "DA-09",
+   "DA-10",
+   "DA-11",
+   "DA-12",
+   "DA-13",
+   "DA-14",
+   "DA-15",
+   "DA-16",
+   "DA-17",
+   "DA-18",
+   "DA-19",
+   "DA-20",
+   "DA-21"
+  ],
+  "formula_audit": {
+   "recomputed": 48011,
+   "match": 47965,
+   "minor": 3,
+   "mismatch": 43
+  },
+  "numeric_as_text_cells": 328989,
+  "numeric_as_text_pct": 27.51,
+  "cbs_qty_price_neq_total_lines": 17,
+  "cbs_material_gaps_ge_5pct": 16,
+  "cbs_net_signed_delta_usd": -8759173,
+  "cbs_abs_delta_usd": 9093071,
+  "time_balance": {
+   "rows_checked": 1252,
+   "carried_over_excess_h": 7393,
+   "under_coded": 16,
+   "over_coded": 1224,
+   "genuine_shortfall_h": 163
+  },
+  "mud_imbalance_rows": 1846,
+  "mud_imbalance_pct": 5.12,
+  "pdf": {
+   "tokens": 305447,
+   "pages": 4345,
+   "unit_bearing": 13548,
+   "measured_context_bearing": 41679,
+   "navigation_toc": 42390,
+   "header_identifier": 34293,
+   "unclassified": 187085,
+   "robust_unit_group_outliers": 538,
+   "distinct_pdf_values": 32131,
+   "distinct_six_decimal_matches": 4286,
+   "token_level_coincidences": 386692,
+   "low_text_pages": 364,
+   "low_text_pct": 8.38,
+   "low_text_by_category": {
+    "EOWR": 267,
+    "PROGRAM": 97
+   }
+  },
+  "cost_track": {
+   "max_formula_delta_usd": 0.009236,
+   "all_tracks_match_0p01usd": true,
+   "fallback_50_50_waiting_h": 0.0,
+   "calendar_flags": [
+    "AZNS-85:CBS_DAYS_MISSING",
+    "AZNS-12:CBS_DAYS_GT_DDR_DAYS",
+    "AZNS-166:CBS_DAYS_GT_DDR_DAYS",
+    "AZNS-127-ST2:CBS_DAYS_GT_DDR_DAYS"
+   ],
+   "explicit_only_attribution": true,
+   "blank_attribution_h": 9589.45
+  }
+ },
  "graphics": {
-  "png": 149,
-  "artboards": 149,
+  "png": 166,
+  "artboards": 166,
   "overlap_pairs": 0,
   "review": {
-   "total": 149,
-   "resized": 29,
-   "min_kb": 97.6,
+   "total": 166,
+   "resized": 46,
+   "min_kb": 59.6,
    "max_kb": 247.1,
-   "mean_kb": 169.3,
+   "mean_kb": 160.3,
    "resolution": "2400 x 1800 px @ 300 DPI (deviceScaleFactor 2)",
    "text_overlap_pairs": 0,
    "text_overlap_files": 0,
@@ -89,50 +197,82 @@
     "AZNS-207_04_fourtrack.png",
     "AZNS-207_06_reconciliation.png",
     "FIELD_15_crosssection.png",
-    "FIELD_16_learning.png"
+    "FIELD_16_learning.png",
+    "AN_13_pdf_token_census.png",
+    "AN_16_cost_bridge.png",
+    "AN_17_npt_attribution.png"
    ],
    "language": "English only inside every graphic",
    "depth_axis": "inverted (0 m top)"
   }
  },
  "docx": {
-  "total": 30,
+  "reference_books": 30,
   "all_pass": true,
   "min_chapters": 24,
-  "min_tables": 96,
+  "min_tables": 149,
   "min_graphics": 11,
-  "mb": 30.04,
+  "mb": 32.0,
   "fa_font": "B Nazanin",
   "en_font": "Times New Roman",
-  "forbidden_labels": 0
+  "forbidden_labels": 0,
+  "fa_findings_book": {
+   "file": "Word_Books/00_SAZN_Analytical_Findings_Technical_Financial_FA.docx",
+   "code": "SAZN-FA-DA-001",
+   "version": "1.0",
+   "sections": 11,
+   "tables": 14,
+   "images": 4,
+   "language": "Persian (FA), RTL + w:bidi, B Nazanin",
+   "audience": "field management / contracts & measurement department / project control",
+   "mb": 0.39
+  }
  },
  "dashboard": {
-  "mb": 4.13,
-  "searchable_rows": 532268,
+  "mb": 8.78,
+  "searchable_rows": 881121,
+  "pdf_token_rows": 305447,
   "offline": true,
-  "live_search_verified": true
+  "live_search_verified": true,
+  "verifier": "headless Chromium (file://): STATUS 100 rows shown · 881,121 rows indexed · DQ 18+1 rows · 21 findings · ERRORS [] · new panels pdfbands/pdfunit/pdflow/costbridge/nptattr/pdfmatch all render",
+  "queries_verified": [
+   "23,000 → 65 rows",
+   "HCl → 100 rows",
+   "7,280,632 → 1 row",
+   "AN_CORR → 100 rows",
+   "AN_PDF_TOKEN → 100 rows",
+   "AN_COST_TRACK → 14 rows",
+   "AN_NPT_ATTR → 14 rows",
+   "AN_PDF_MATCH → 100 rows"
+  ]
  },
- "workbook_sheets": 23,
+ "workbook_sheets": 63,
+ "workbook_mb": 11.38,
+ "workbook_new_rows": 100294,
+ "workbook_da_sheets": "23_DA_Numeric_Census … 51_DA_Findings",
+ "workbook_pdf_cost_sheets": "52_PDF_Token_Sample … 62_NPT_Attribution_Audit",
+ "exceptions_csv_mb": 0.58,
+ "pdf_census_csv_mb": 4.56,
  "audit_findings": [
   {
    "id": "AF-01",
-   "title": "AZNS-122 WO1 has no EOWR in 04.EOWR/"
+   "title": "Operation 4 (AZNS-85) has no EOWR in 04.EOWR/"
   },
   {
    "id": "AF-02",
-   "title": "Operations 12 and 13 share one EOWR file"
+   "title": "Operations 12 and 13 share one EOWR file (238 pages, ST#2 consolidated)"
   },
   {
    "id": "AF-03",
-   "title": "Contract-code discrepancies in source headers"
+   "title": "Contract-code discrepancies in source headers (CCA/C/1401/27 vs CCA/C/1403/31 ST2 amendment vs CCA/C/1405/3)"
   },
   {
    "id": "AF-04",
-   "title": "Benchmark material sheets for wells 29 and 38"
+   "title": "Benchmark material sheets for wells 29 and 38 are contract-1 rate benchmarks, not campaign wells"
   },
   {
    "id": "AF-05",
-   "title": "Image-only pages and text-layer limits"
+   "title": "364 low-text/image-only pages (EOWR 267, Program 97) archived without invented OCR values"
   }
  ],
  "no_fabrication": {
@@ -141,8 +281,10 @@
   "derived_day_rate_wells": [
    "AZNS-85"
   ],
-  "graphic_placeholders_removed": true
+  "graphic_placeholders_removed": true,
+  "pdf_ocr_values_invented": false,
+  "blank_npt_attribution_retained": true,
+  "source_files_modified": false
  },
- "patchset_files": 198,
- "patchset_mb": 122.36
+ "deliverable_word_books": 31
 }

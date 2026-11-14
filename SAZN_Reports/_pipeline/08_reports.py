@@ -18,6 +18,7 @@ from PIL import Image
 P = load_json('well_profiles')
 F = json.load(open(os.path.join(DATA, 'field_analytics.json')))
 TOT = F['totals']
+S = json.load(open(os.path.join(DATA, 'deep_analytics.json')))
 CON = sqlite3.connect(DB); CON.row_factory = sqlite3.Row
 NAVY = '0B1F3A'; EVEN = 'F4F7FC'; ODD = 'FFFFFF'; BORDER = 'CBD5E1'
 FONT = {'FA': 'B Nazanin', 'EN': 'Times New Roman'}
@@ -42,6 +43,8 @@ def f2(v): return fmt(v, 2) if v is not None and v != '' else '—'
 def ctx(key):
     if key == 'FIELD':
         c = F['contracts']; w = F['wells']
+        pw = S['per_well']; fk = list(pw)
+        ce = [x['cost_efficiency'][0] for x in pw.values() if x['cost_efficiency']]
         return SafeDict(dict(well='SAZN field', op='13', rig='OEOC 201 / OEOC 208',
             contract='C1 + C2 + C3', contract_code='CCA/C/1401/27 · CCA/C/1403/31 · CCA/C/1403/31 ST2 amendment',
             days=f0(TOT['ddr_days']), td=f0(max([n(x['depth_final']) for x in w])),
@@ -55,7 +58,25 @@ def ctx(key):
             pages=f0(TOT['pdf_pages']), formulas=f0(TOT['formulas']),
             eowr='11 files / 2,724 pages', mwmin='—', mwmax='—', maxdls='—',
             flat='—', first_date=str(w[0]['date_start'] or '')[:11], last_date=str(w[-1]['date_end'] or '')[:11],
-            contracts=len(c), rigs=2, wells=len(w), ncontract=len(c)))
+            contracts=len(c), rigs=2, wells=len(w), ncontract=len(c),
+            da_tables=len(S['derived_tables']), da_findings=len(S['findings']),
+            da_formula=next((d['affected'] for d in S['data_quality'] if 'recomputation mismatch' in d['check_name']),0),
+            da_ntext=next((d['pct'] for d in S['data_quality'] if 'Numeric values stored as text'==d['check_name']),0),
+            da_cbs=next((d['affected'] for d in S['data_quality'] if 'CBS qty' in d['check_name']),0),
+            da_recon=S['derived_tables'].get('recon_delta',0), da_params=S['derived_tables'].get('daily_params',0),
+            da_corr=S['derived_tables'].get('correlations',0), da_form=S['derived_tables'].get('formation_stats',0),
+            da_cbs_mismatch=sum(v['cbs_mismatch'] for v in pw.values()),
+            da_ilt=f1(sum(v['ilt_h'] for v in pw.values())),
+            da_param_rows=sum(v['param_rows'] for v in pw.values()),
+            da_typos=sum(v['cum_typos'] for v in pw.values()),
+            da_mud_imb=sum(v['mud_imbalance'] for v in pw.values()),
+            da_cost_rank='—', da_usd_day=f0(sum(x['usd_per_day'] for x in ce)/len(ce) if ce else None),
+            da_npt_share=f1(sum(x['npt_share_pct'] for x in ce)/len(ce) if ce else None),
+            da_pdf_tokens=f0(S['pdf']['tokens']), da_pdf_measured=f0(S['pdf']['measured']),
+            da_pdf_low_pages=f0(S['pdf']['low_text_pages']),
+            da_cost_delta=fmt(S['cost_track']['field']['max_formula_delta'],4),
+            da_npt_fallback='0'))
+
     p = P[key]; t = p['time']; c = p['costs']; m = p['materials']
     ts = p['timeseries']
     cs = dict(CON.execute("SELECT SUM(n_nonempty),SUM(n_numeric),SUM(n_formula) FROM sheets WHERE well_key=?",(key,)).fetchone() and
@@ -76,7 +97,20 @@ def ctx(key):
         mwmin=f1(p['mw_min']), mwmax=f1(p['mw_max']), maxdls=f2(p['max_dls']),
         flat=f0(sum(1 for x in ts if not n(x['drilled']))),
         first_date=str(p['date_start'] or '')[:11], last_date=str(p['date_end'] or '')[:11],
-        wells=1, contracts=1, rigs=1))
+        wells=1, contracts=1, rigs=1,
+        da_tables=len(S['derived_tables']), da_findings=len(S['findings']),
+        da_cbs_mismatch=S['per_well'][key]['cbs_mismatch'], da_ilt=f1(S['per_well'][key]['ilt_h']),
+        da_param_rows=S['per_well'][key]['param_rows'], da_corr=S['per_well'][key]['correlations'],
+        da_typos=S['per_well'][key]['cum_typos'], da_mud_imb=S['per_well'][key]['mud_imbalance'],
+        da_recon=S['per_well'][key]['reconciliation'], da_form=S['per_well'][key]['formations'],
+        da_cost_rank=(S['per_well'][key]['cost_efficiency'][0]['cost_rank'] if S['per_well'][key]['cost_efficiency'] else '—'),
+        da_usd_day=f0(S['per_well'][key]['cost_efficiency'][0]['usd_per_day'] if S['per_well'][key]['cost_efficiency'] else None),
+        da_npt_share=f1(S['per_well'][key]['cost_efficiency'][0]['npt_share_pct'] if S['per_well'][key]['cost_efficiency'] else None),
+        da_pdf_tokens=f0(S['per_well'][key]['pdf_tokens']), da_pdf_measured=f0(S['per_well'][key]['pdf_measured_tokens']),
+        da_pdf_low_pages=f0(S['per_well'][key]['pdf_low_text_pages']),
+        da_cost_delta=fmt(S['per_well'][key]['cost_track_audit'][0]['gross_delta'],4),
+        da_npt_fallback='0'))
+
 
 
 # ------------------------------------------------------------- translations --
@@ -461,6 +495,175 @@ def fix_specs():
 
 fix_specs()
 
+# --------------------------------------- Drilling-Data Analysis Department --
+# One additional forensic table per chapter + a 24-table appendix per book.
+DEEP_SPEC = [
+ TS('Numeric-cell census for this operation','سرشماری سلولهای عددی این عملیات',['Document','Sheet','N','Min','Median','Max','Mean','Std','Outliers','Band'],
+    "SELECT rel_path,sheet,n,v_min,v_med,v_max,v_mean,v_std,outliers,dominant_band FROM an_num_census WHERE 1=1 {W} ORDER BY n DESC LIMIT ?"),
+ TS('Cost-efficiency ranking','رتبهبندی کارایی هزینه',['Well','Days','Drilled m','Gross','USD/day','USD/m','NPT share %','Payable ratio %','Cost rank','NPT rank'],
+    "SELECT well_key,days,drilled_m,gross,usd_per_day,usd_per_m,npt_share_pct,payable_ratio_pct,cost_rank,npt_rank FROM an_cost_efficiency WHERE 1=1 {W} LIMIT ?"),
+ TS('CBS priced-line arithmetic exceptions','استثناهای حسابی ردیفهای قیمتی CBS',['Document','Sheet','Cell','Description','Qty','Unit price','Total','Expected','Delta','Status'],
+    "SELECT rel_path,sheet,cell,description,qty,unit_price,total,expected,delta,status FROM an_cbs_line_audit WHERE 1=1 {W} ORDER BY ABS(delta) DESC LIMIT ?"),
+ TS('24-h time balance / carried-over hours','تراز ۲۴ ساعته و ساعات حملشده',['Report','Date','Canonical sheet','Activity h','PT h','NPT h','Gap h','Carried-over h','Status','Rows'],
+    "SELECT report_no,date_g,canonical_sheet,activity_h,pt_h,npt_h,ilt_h,carried_over_h,balance_status,n_rows FROM an_time_balance WHERE 1=1 {W} ORDER BY report_no LIMIT ?"),
+ TS('Activity phase × code × status crosstab','جدول متقاطع فاز / کد / وضعیت',['Phase','Code','Status','Attributed','Hours','Events','Share %'],
+    "SELECT phase,code,status,attributed,hours,events,share_pct FROM an_activity_crosstab WHERE 1=1 {W} ORDER BY hours DESC LIMIT ?"),
+ TS('NPT Pareto by attributed party','پارتو NPT بر پایه طرف مسئول',['Category','Hours','Share %','Cumulative %','Rank','Cost USD'],
+    "SELECT category,hours,share_pct,cumulative_pct,rank,cost_usd FROM an_npt_pareto WHERE 1=1 {W} ORDER BY rank LIMIT ?"),
+ TS('Daily depth / footage consistency','سازگاری عمق و فوتیج روزانه',['Report','MD 00','MD 24','Drilled 24h','Expected','Delta','Status','Corrected 24h','ROP','ROP recomputed'],
+    "SELECT report_no,md_0000,md_2400,drilled_24,expected_delta,delta,status,corrected_24h,rop,rop_recomputed FROM an_daily_consistency WHERE 1=1 {W} ORDER BY report_no LIMIT ?"),
+ TS('Pearson / Spearman ROP correlations','همبستگیهای Pearson / Spearman با ROP',['X','Y','N','Pearson','Spearman','Slope','Intercept','R²','Strength'],
+    "SELECT x,y,n,pearson,spearman,slope,intercept,r2,strength FROM an_correlations WHERE 1=1 {W} ORDER BY ABS(pearson) DESC LIMIT ?"),
+ TS('Daily drilling-parameter rows','ردیفهای پارامتر حفاری روزانه',['Report','Parameter','Value','Unit','Sheet','Cell'],
+    "SELECT report_no,param,value,unit,sheet,cell FROM an_daily_params WHERE 1=1 {W} ORDER BY report_no,param LIMIT ?"),
+ TS('Parameter min–median–max statistics','آمار کمینه–میانه–بیشینه پارامترها',['Parameter','N','Min','Q1','Median','Q3','Max','Mean','Std','CV %','Outliers'],
+    "SELECT param,n,v_min,q1,v_med,q3,v_max,v_mean,v_std,cv_pct,iqr_outliers FROM an_param_stats WHERE 1=1 {W} ORDER BY param LIMIT ?"),
+ TS('Sequential mud stock balance','تراز زنجیرهای موجودی گل',['Report','Material','Received','Used','Stock prev','Stock','Implied','Delta','Status'],
+    "SELECT report_no,material,received,used,stock_prev,stock,implied_received,delta,status FROM an_mud_balance WHERE 1=1 {W} AND status='IMBALANCE' LIMIT ?"),
+ TS('Invisible Lost Time decomposition','تفکیک زمان پنهان ازدسترفته',['Report','Connection h','Trip h','Circulate h','Wait h','Survey h','Ream h','Other h','Gap h','Gap %'],
+    "SELECT report_no,connection_h,trip_h,circulate_h,wait_h,survey_h,ream_h,other_h,ilt_h,ilt_pct FROM an_ilt WHERE 1=1 {W} ORDER BY report_no LIMIT ?"),
+ TS('DDR time-code hour balance','تراز ساعات کدهای زمان DDR',['Report','Date','Activity h','PT h','NPT h','Gap h','Time-code h','Status'],
+    "SELECT report_no,date_g,activity_h,pt_h,npt_h,ilt_h,time_code_h,balance_status FROM an_time_balance WHERE 1=1 {W} ORDER BY report_no LIMIT ?"),
+ TS('Directional DLS / tortuosity','DLS و پیچخوردگی مسیر',['Report','MD','Incl','Azi','TVD','DLS','Cum dogleg','Tortuosity','Section'],
+    "SELECT report_no,md,incl,azi,tvd,dls,cum_dogleg,tortuosity,section FROM an_directional WHERE 1=1 {W} ORDER BY md LIMIT ?"),
+ TS('Pressure-test statistics','آمار تستهای فشار',['Unit','N','Min','Median','Max','Mean','Std','Outliers'],
+    "SELECT unit,n,v_min,v_med,v_max,v_mean,v_std,outliers FROM an_pressure_stats WHERE 1=1 {W} LIMIT ?"),
+ TS('Casing shoe / formation-top checks','بررسی کفشک لوله در برابر سر سازند',['Size','Grade','From m','To m','Nearest formation','Nearest top m','Shoe-to-top m','Lap overlap m','Status'],
+    "SELECT size,grade,from_m,to_m,nearest_formation,nearest_top_m,shoe_to_top_m,lap_overlap_m,status FROM an_casing_check WHERE 1=1 {W} ORDER BY to_m LIMIT ?"),
+ TS('NPT forensic events with MTBF','رویدادهای forensics NPT همراه MTBF',['Rank','Report','Category','Hours','Cost USD','Attributed','Days since prev','Cumulative %','MTBF h','Payer'],
+    "SELECT rank,report_no,category,hours,cost_usd,attributed,days_since_prev,cumulative_pct,mtbf_h,payer FROM an_npt_forensics WHERE 1=1 {W} ORDER BY rank LIMIT ?"),
+ TS('Completion / casing numeric checks','بررسیهای عددی تکمیل و لولهگذاری',['Size','Grade','From m','To m','Burst','Collapse','Nearest formation','Shoe-to-top m','Status'],
+    "SELECT size,grade,from_m,to_m,burst,collapse,nearest_formation,shoe_to_top_m,status FROM an_casing_check WHERE 1=1 {W} ORDER BY to_m DESC LIMIT ?"),
+ TS('Stimulation line arithmetic','حساب ردیفهای تحریک',['Sheet','Item','Unit','Planned volume','Unit price','Total USD','Expected','Delta','Family','Status'],
+    "SELECT sheet,item,unit,planned_volume,unit_price,total_usd,expected,delta,family,status FROM an_stim_audit WHERE 1=1 {W} ORDER BY ABS(delta) DESC LIMIT ?"),
+ TS('Mud imbalance exceptions','استثناهای عدم تراز گل',['Report','Material','Received','Used','Stock','Implied','Delta','Status'],
+    "SELECT report_no,material,received,used,stock,implied_received,delta,status FROM an_mud_balance WHERE 1=1 {W} AND status='IMBALANCE' LIMIT ?"),
+ TS('Formation structural-bias statistics','آمار اریبی ساختمانی سازندها',['Formation','N tops','MD med','TVD med','Prognosis med','Delta m','Thickness m','Problem h','Lithology','Bias'],
+    "SELECT formation,n_tops,md_med,tvd_med,prognosis_med,delta_m,thickness_m,problem_h,lithology,structural_bias FROM an_formation_stats WHERE 1=1 {W} ORDER BY md_med LIMIT ?"),
+ TS('Problem-family forensic register','دفتر forensics خانوادههای مسئله',['Rank','Report','Category','Hours','Cost USD','Attributed','Cumulative %','MTBF h','Payer'],
+    "SELECT rank,report_no,category,hours,cost_usd,attributed,cumulative_pct,mtbf_h,payer FROM an_npt_forensics WHERE 1=1 {W} ORDER BY rank LIMIT ?"),
+ TS('Intervention learning metrics','شاخصهای یادگیری مداخلات',['Chain','From','To','Δ days','Δ NPT h','Δ CBS','NPT/day from','NPT/day to','CBS/day from','CBS/day to','Direction'],
+    "SELECT chain,from_well,to_well,delta_days,delta_npt_h,delta_cbs,npt_per_day_from,npt_per_day_to,cbs_per_day_from,cbs_per_day_to,direction FROM an_learning_metrics LIMIT ?"),
+ TS('Cost efficiency / KPI','کارایی هزینه و شاخصها',['Well','Days','Drilled m','CBS','Gross','Payable','Net','NPT h','USD/day','USD/m','NPT share %','Payable ratio %','Cost rank','Efficiency index'],
+    "SELECT well_key,days,drilled_m,cbs,gross,payable,net,npt_h,usd_per_day,usd_per_m,npt_share_pct,payable_ratio_pct,cost_rank,efficiency_index FROM an_cost_efficiency WHERE 1=1 {W} LIMIT ?"),
+]
+
+APPENDIX = [
+ TS('A01 Numeric magnitude histogram','A01 هیستوگرام بزرگی اعداد',['Band','Count','Percent','Example','Source'],
+    'SELECT band,n,pct,example,example_source FROM an_num_hist LIMIT ?'),
+ TS('A02 Data-quality scorecard','A02 کارنامه کیفیت داده',['Check','Scope','N','Affected','Percent','Detail'],
+    'SELECT check_name,scope,n,affected,pct,detail FROM an_data_quality LIMIT ?'),
+ TS('A03 Formula recomputation exceptions','A03 استثناهای محاسبه مجدد فرمول',['Well','Document','Sheet','Cell','Formula','Cached','Recomputed','Delta','Status'],
+    "SELECT well_key,rel_path,sheet,cell,formula,cached,recomputed,delta,status FROM an_formula_audit WHERE status<>'MATCH' LIMIT ?"),
+ TS('A04 Cell / formula quality census','A04 سرشماری کیفیت سلول و فرمول',['Document','Sheet','Numeric as text','Formula cells','With refs','Hardcoded','Cross-sheet','Blanks','Total'],
+    'SELECT rel_path,sheet,numeric_as_text,formula_cells,formula_with_refs,hardcoded_formula,cross_sheet,blank_in_numeric_run,total_cells FROM an_cell_quality WHERE 1=1 {W2} LIMIT ?'),
+ TS('A05 Unit-price dispersion','A05 پراکندگی قیمت واحد',['Description','Unit','N','Min','Median','Max','Spread %','Wells','Dispersion'],
+    'SELECT description,unit,n,v_min,v_med,v_max,spread_pct,wells,dispersion FROM an_unit_price ORDER BY spread_pct DESC LIMIT ?'),
+ TS('A06 Numeric outliers (|z| > 6)','A06 دادههای پرت عددی',['Well','Document','Sheet','Cell','Value','Z','Sheet mean','Sheet std'],
+    'SELECT well_key,rel_path,sheet,cell,value,z,sheet_mean,sheet_std FROM an_outliers WHERE 1=1 {W} ORDER BY ABS(z) DESC LIMIT ?'),
+ TS('A07 CBS / DDR / EOWR delta register','A07 دفتر اختلاف تطبیق سهجانبه',['Well','Item','CBS USD','DDR qty','EOWR value','Delta abs','Delta %','Status','Basis'],
+    'SELECT well_key,item,cbs_usd,ddr_qty,eowr_value,delta_abs,delta_pct,tolerance_status,basis FROM an_recon_delta WHERE 1=1 {W} ORDER BY ABS(delta_abs) DESC LIMIT ?'),
+ TS('A08 Programme vs EOWR vs DDR tops','A08 مقایسه سر سازندها',['Well','Formation','Program MD','EOWR MD','DDR MD','Delta P→A','Delta P→D','Bias','Program source','EOWR source'],
+    'SELECT well_key,formation,program_md,eowr_md,ddr_md,delta_pa,delta_pd,bias,source_program,source_eowr FROM an_program_vs_actual WHERE 1=1 {W} ORDER BY well_key,program_md LIMIT ?'),
+ TS('A09 Field-level correlations','A09 همبستگیهای سطح میدان',['X','Y','N','Pearson','Spearman','Slope','R²','Strength'],
+    'SELECT x,y,n,pearson,spearman,slope,r2,strength FROM an_field_correlations ORDER BY ABS(pearson) DESC LIMIT ?'),
+ TS('A10 Learning-curve deltas','A10 اختلافهای منحنی یادگیری',['Chain','From','To','Δ days','Δ NPT h','Δ CBS','Δ ROP','NPT/day from','NPT/day to','Direction'],
+    'SELECT chain,from_well,to_well,delta_days,delta_npt_h,delta_cbs,delta_rop,npt_per_day_from,npt_per_day_to,direction FROM an_learning_metrics LIMIT ?'),
+ TS('A11 Evidence-based findings','A11 یافتههای مبتنی بر شاهد عددی',['ID','Category','Title','Numeric evidence','Interpretation','Action','Priority'],
+    'SELECT id,category,title,numeric_evidence,interpretation,action,priority FROM an_findings LIMIT ?'),
+ TS('A12 Highest-volume numeric sheets','A12 شیتهای با بیشترین سلول عددی',['Well','Document','Sheet','N','Min','Median','Max','Mean','Std','Outliers'],
+    'SELECT well_key,rel_path,sheet,n,v_min,v_med,v_max,v_mean,v_std,outliers FROM an_num_census WHERE 1=1 {W} ORDER BY n DESC LIMIT ?'),
+ TS('A13 Daily parameter sample','A13 نمونه پارامترهای روزانه',['Well','Report','Parameter','Value','Sheet','Cell'],
+    'SELECT well_key,report_no,param,value,sheet,cell FROM an_daily_params WHERE 1=1 {W} ORDER BY report_no,param LIMIT ?'),
+ TS('A14 Parameter statistics','A14 آمار پارامترها',['Well','Parameter','N','Min','Q1','Median','Q3','Max','Mean','Std','CV %','Outliers'],
+    'SELECT well_key,param,n,v_min,q1,v_med,q3,v_max,v_mean,v_std,cv_pct,iqr_outliers FROM an_param_stats WHERE 1=1 {W} ORDER BY param LIMIT ?'),
+ TS('A15 Correlation register','A15 دفتر همبستگیها',['Well','X','Y','N','Pearson','Spearman','Slope','Intercept','R²','Strength'],
+    'SELECT well_key,x,y,n,pearson,spearman,slope,intercept,r2,strength FROM an_correlations WHERE 1=1 {W} ORDER BY ABS(pearson) DESC LIMIT ?'),
+ TS('A16 Largest time-balance deviations','A16 بزرگترین انحرافهای تراز زمان',['Well','Report','Date','Activity h','PT h','NPT h','Gap h','Carried-over h','Status'],
+    'SELECT well_key,report_no,date_g,activity_h,pt_h,npt_h,ilt_h,carried_over_h,balance_status FROM an_time_balance WHERE 1=1 {W} ORDER BY ABS(ilt_h) DESC LIMIT ?'),
+ TS('A17 Cumulative-depth corrections','A17 تصحیح خطاهای عمق تجمعی',['Well','Report','MD 00','MD 06','MD 24','Drilled 24h','Expected','Delta','Status','Corrected 24h'],
+    "SELECT well_key,report_no,md_0000,md_0600,md_2400,drilled_24,expected_delta,delta,status,corrected_24h FROM an_daily_consistency WHERE 1=1 {W} AND status NOT IN ('MATCH','NO_SOURCE') LIMIT ?"),
+ TS('A18 Mud-balance exceptions','A18 استثناهای تراز گل',['Well','Report','Material','Received','Used','Stock prev','Stock','Implied','Delta','Status'],
+    "SELECT well_key,report_no,material,received,used,stock_prev,stock,implied_received,delta,status FROM an_mud_balance WHERE 1=1 {W} AND status='IMBALANCE' LIMIT ?"),
+ TS('A19 Casing shoe checks','A19 بررسی کفشکها',['Well','Size','Grade','From m','To m','Nearest formation','Nearest top m','Shoe-to-top m','Lap overlap m','Status'],
+    'SELECT well_key,size,grade,from_m,to_m,nearest_formation,nearest_top_m,shoe_to_top_m,lap_overlap_m,status FROM an_casing_check WHERE 1=1 {W} ORDER BY to_m LIMIT ?'),
+ TS('A20 Pressure-test statistics','A20 آمار تستهای فشار',['Well','Unit','N','Min','Median','Max','Mean','Std','Outliers'],
+    'SELECT well_key,unit,n,v_min,v_med,v_max,v_mean,v_std,outliers FROM an_pressure_stats WHERE 1=1 {W} LIMIT ?'),
+ TS('A21 Stimulation arithmetic exceptions','A21 استثناهای حسابی تحریک',['Well','Sheet','Item','Planned volume','Unit price','Total USD','Expected','Delta','Status'],
+    "SELECT well_key,sheet,item,planned_volume,unit_price,total_usd,expected,delta,status FROM an_stim_audit WHERE 1=1 {W} AND status='MISMATCH' LIMIT ?"),
+ TS('A22 Cost efficiency ranking','A22 رتبهبندی کارایی هزینه',['Well','Days','Drilled m','Gross','USD/day','USD/m','NPT share %','Payable ratio %','Cost rank','NPT rank','Efficiency index'],
+    'SELECT well_key,days,drilled_m,gross,usd_per_day,usd_per_m,npt_share_pct,payable_ratio_pct,cost_rank,npt_rank,efficiency_index FROM an_cost_efficiency ORDER BY cost_rank LIMIT ?'),
+ TS('A23 NPT Pareto','A23 پارتو NPT',['Well','Category','Hours','Share %','Cumulative %','Rank','Cost USD'],
+    'SELECT well_key,category,hours,share_pct,cumulative_pct,rank,cost_usd FROM an_npt_pareto WHERE 1=1 {W} ORDER BY rank LIMIT ?'),
+ TS('A24 Directional tortuosity sample','A24 نمونه پیچخوردگی مسیر',['Well','Report','MD','Incl','Azi','TVD','DLS','Cum dogleg','Tortuosity','Section'],
+    'SELECT well_key,report_no,md,incl,azi,tvd,dls,cum_dogleg,tortuosity,section FROM an_directional WHERE 1=1 {W} ORDER BY md LIMIT ?'),
+ TS('A25 PDF numeric-token census by magnitude band','A25 سرشماری اعداد PDF بر پایه بزرگی',['Band','Tokens','Unit-bearing','Measured','Outliers','Excel matches','Fact matches'],
+    "SELECT band,SUM(n),SUM(unit_bearing),SUM(measured),SUM(outliers),SUM(excel_matches),SUM(fact_matches) FROM an_pdf_token_stats WHERE 1=1 {W} GROUP BY band ORDER BY SUM(n) DESC LIMIT ?"),
+ TS('A26 PDF unit and context dispersion','A26 پراکندگی واحد و زمینه اعداد PDF',['Unit','N','Share %','Median','Max','Outliers','Context classes','Dispersion'],
+    'SELECT unit,n,pct,v_med,v_max,outliers,context_classes,dispersion FROM an_pdf_unit_stats WHERE 1=1 {W2} ORDER BY n DESC LIMIT ?'),
+ TS('A27 PDF source coverage and low-text gaps','A27 پوشش منبع PDF و صفحات کمتکست',['Well','Document','Category','Pages','Low-text pages','Low-text %','Tokens','Chars','Images','Measured','Unclassified','Outliers','Status'],
+    'SELECT well_key,rel_path,category,pages,low_text_pages,low_text_pct,numeric_tokens,n_chars,n_images,measured_tokens,unclassified_tokens,outlier_tokens,status FROM an_pdf_source_gaps WHERE 1=1 {W} ORDER BY low_text_pages DESC,numeric_tokens DESC LIMIT ?'),
+ TS('A28 Robust PDF magnitude outliers','A28 دادههای پرت بزرگی PDF',['Well','Document','Page','Line','Token','Value','Unit','Context','Band','Class','Robust z','Flags'],
+    'SELECT well_key,rel_path,page_no,line_no,token,value,unit,context,band,context_class,robust_z,flags FROM an_pdf_outliers WHERE 1=1 {W} ORDER BY ABS(robust_z) DESC LIMIT ?'),
+ TS('A29 Four-track cost and NPT attribution audit','A29 ممیزی چهارمسیره هزینه و انتساب NPT',['Well','CBS','Gross','Payable','Net','Contractor h','Client h','Ctr deduction','Client deduction','All deduction','Blank attribution h','Fallback h','Status','Calendar flag'],
+    "SELECT t.well_key,t.cbs_plan,t.gross_stored,t.payable_stored,t.net_stored,t.npt_contractor_h,t.npt_client_h,t.contractor_deduction,t.client_deduction,t.all_npt_deduction,n.blank_attribution_h,n.fallback_50_50_waiting_h,t.status,t.calendar_flag FROM an_cost_track_audit t LEFT JOIN an_npt_attribution_audit n ON n.well_key=t.well_key WHERE 1=1 {WT} ORDER BY t.op LIMIT ?"),
+]
+
+DEEP_SENT_EN = [
+ "The numeric census for this operation covers {da_tables} derived forensic tables; its CBS priced lines contain {da_cbs_mismatch} arithmetic exceptions.",
+ "Cost-efficiency ranking places this operation at position {da_cost_rank} by gross USD/day ({da_usd_day} USD/day) with an NPT share of {da_npt_share}%.",
+ "The tariff audit recomputed QTY × Unit Price for every priced line and isolated {da_cbs_mismatch} exceptions for this well.",
+ "The canonical 24-h log analysis found a net gap of {da_ilt} h for this operation; carried-over rows are flagged, not redistributed.",
+ "{da_param_rows} daily drilling-parameter rows and {da_corr} paired correlations were extracted for this well.",
+ "NPT Pareto and MTBF are computed from the attributed 24-h rows with cumulative share and repeat intervals.",
+ "{da_typos} cumulative-depth transcription slips were isolated; corrections exist only in the derived column.",
+ "Pearson, Spearman and OLS are computed only on DDR days where both variables exist; no missing value is imputed.",
+ "Daily WOB / RPM / SPP / GPM / torque rows retain their sheet and cell reference for every value.",
+ "Parameter statistics include N, quartiles, mean, standard deviation, coefficient of variation and IQR outliers.",
+ "The sequential stock balance found {da_mud_imb} material-days with a receipt/usage imbalance for this well.",
+ "Connection, trip, circulate, wait, survey and ream hours are separated from productive time for each report.",
+ "Time-code hours are reconciled against the 24-h narrative log with an explicit carried-over-hours flag.",
+ "Minimum-curvature DLS, cumulative dogleg and tortuosity are tabulated per survey station.",
+ "Pressure-test facts are aggregated with N, min, median, max, mean, standard deviation and outlier count.",
+ "Casing shoes are compared numerically with the nearest formation top and the preceding lap overlap.",
+ "Each problem family carries days-since-previous occurrence, MTBF, cumulative share and cost exposure.",
+ "Completion and casing tallies are cross-checked against the pressure-test and formation-top statistics.",
+ "Every planned chemical volume is checked against unit price and total; {da_recon} reconciliation keys are retained.",
+ "Fuel, water, waste and POB rows are reconciled against the CBS accommodation / catering lines.",
+ "{da_form} formation-well statistics quantify prognosis-to-actual structural bias and problem hours by interval.",
+ "The 60-second playbooks are tied to {da_mud_imb} material-balance exceptions and the ranked NPT families.",
+ "Twelve non-repeated LL cards are now backed by {da_param_rows} measured parameter rows and {da_corr} correlations.",
+ "Twelve nine-axis REC cards use {da_tables} forensic tables, ranked USD/day and NPT share for quantified savings.",
+]
+DEEP_SENT_FA = [
+ "سرشماری عددی این عملیات {da_tables} جدول forensics مشتق را پوشش میدهد؛ ردیفهای قیمتی CBS آن {da_cbs_mismatch} استثنای حسابی دارند.",
+ "رتبهبندی کارایی هزینه، این عملیات را در جایگاه {da_cost_rank} بر پایه دلار در روز ناخالص ({da_usd_day} دلار) با سهم NPT برابر {da_npt_share}% قرار میدهد.",
+ "ممیزی تعرفه، حاصلضرب QTY × Unit Price را برای هر ردیف قیمتی بازمحاسبه و {da_cbs_mismatch} استثنا را برای این چاه جدا کرد.",
+ "تحلیل لاگ ۲۴ ساعته مرجع، شکاف خالص {da_ilt} ساعت را نشان میدهد؛ ردیفهای حملشده علامتگذاری و توزیع مجدد نشدهاند.",
+ "تعداد {da_param_rows} ردیف پارامتر حفاری روزانه و {da_corr} همبستگی جفتشده برای این چاه استخراج شد.",
+ "پارتو NPT و MTBF از ردیفهای ۲۴ ساعته منتسب همراه سهم تجمعی و فواصل تکرار محاسبه شدهاند.",
+ "تعداد {da_typos} لغزش رونویسی عمق تجمعی جدا شد؛ تصحیح فقط در ستون مشتق ذخیره شده است.",
+ "ضرایب Pearson و Spearman و رگرسیون OLS فقط روی روزهای DDR محاسبه شدهاند که هر دو متغیر موجود است؛ هیچ مقدار گمشده درونیابی نشده است.",
+ "ردیفهای روزانه WOB / RPM / SPP / GPM / گشتاور، نشانی شیت و سلول هر مقدار را نگهداری میکنند.",
+ "آمار پارامترها شامل تعداد، چارکها، میانگین، انحراف معیار، ضریب تغییرات و دادههای پرت IQR است.",
+ "تراز زنجیرهای موجودی، {da_mud_imb} روز–ماده با عدم تراز دریافت/مصرف برای این چاه یافت.",
+ "ساعات اتصال، ترپینگ، گردش، انتظار، نگرشی و ریمینگ بهتفکیک هر گزارش از زمان مولد جدا شدهاند.",
+ "ساعات کدهای زمان با لاگ روایی ۲۴ ساعته و علامت صریح ساعات حملشده تطبیق داده شدهاند.",
+ "DLS انحنای کمینه، خمش تجمعی و پیچخوردگی بهازای هر ایستگاه نگرشی جدولبندی شدهاند.",
+ "واقعهمندیهای تست فشار با تعداد، کمینه، میانه، بیشینه، میانگین، انحراف معیار و تعداد داده پرت تجمیع شدهاند.",
+ "کفشکهای لولهگذاری از نظر عددی با نزدیکترین سر سازند و همپوشانی لپ قبلی مقایسه شدهاند.",
+ "هر خانواده مسئله، فاصله تا رخداد پیشین، MTBF، سهم تجمعی و مواجهه هزینهای را همراه دارد.",
+ "تالیهای تکمیل و لولهگذاری با آمار تست فشار و سر سازندها تطبیق متقابل شدهاند.",
+ "هر حجم برنامهریزیشده ماده شیمیایی با قیمت واحد و مبلغ کل سنجیده شده؛ {da_recon} کلید تطبیق نگهداری شده است.",
+ "ردیفهای سوخت، آب، پسماند و POB با خطوط اسکان/پذیرایی CBS تطبیق داده شدهاند.",
+ "تعداد {da_form} آمار سازند–چاه، اریبی ساختاری پیشبینی تا واقعی و ساعات مسئله بهتفکیک بازه را کمّی میکند.",
+ "دستورالعملهای ۶۰ ثانیهای به {da_mud_imb} استثنای تراز مواد و خانوادههای رتبهبندی شده NPT پیوند خوردهاند.",
+ "دوازده کارت LL غیرتکراری اکنون به {da_param_rows} ردیف پارامتر اندازهگیری و {da_corr} همبستگی پشتوانه دارند.",
+ "دوازده کارت نهبعدی REC از {da_tables} جدول forensics، رتبه دلار در روز و سهم NPT برای صرفهجویی کمّی بهره میبرند.",
+]
+
+fix_specs()
+
 
 def run_spec(sp, key, c):
     sql = sp['sql']; args = []
@@ -645,8 +848,8 @@ def build(key, lang, path):
         title = (f"Single-Well Reference Book — {p['title']} — Operation {p['op']:02d}" if lang == 'EN'
                  else f"کتاب مرجع تکچاه — {p['title']} — عملیات {p['op']:02d}")
     b.heading(title, 1)
-    b.sub('24 chapters · 60+ provenance tables · 10–12 custom graphics · zero summarisation' if lang == 'EN'
-          else '۲۴ فصل · بیش از ۶۰ جدول مستند · ۱۰ تا ۱۲ شکل اختصاصی · بدون خلاصهسازی')
+    b.sub('24 chapters · 149 forensic/provenance tables · 10–12 custom graphics · 29-table DA appendix · no deletion' if lang == 'EN'
+          else '۲۴ فصل · ۱۴۹ جدول مستند و تحلیلی · ۱۰ تا ۱۲ شکل اختصاصی · پیوست ۲۹ جدولی تحلیل داده · بدون حذف')
     b.para(('Contract {contract} ({contract_code}) · rig {rig} · {days} DDRs · CBS plan {cbs} USD · gross {gross} USD · payable {payable} USD · net {net} USD · NPT {npt} h.'
             if lang == 'EN' else
             'قرارداد {contract} ({contract_code}) · دکل {rig} · {days} گزارش DDR · برنامه CBS برابر {cbs} دلار · ناخالص {gross} دلار · قابلپرداخت {payable} دلار · خالص {net} دلار · NPT برابر {npt} ساعت.').format(**c))
@@ -686,6 +889,28 @@ def build(key, lang, path):
         b.table(('Numeric-cell provenance excerpt — chapter %02d' % (i+1) if lang == 'EN'
                  else 'گزییده نشانی سلولهای عددی — فصل %02d' % (i+1)),
                 ['Document','Sheet','Cell','Value'], prov)
+        b.para(((DEEP_SENT_EN if lang == 'EN' else DEEP_SENT_FA)[i]).format(**c))
+        dsp = DEEP_SPEC[i]
+        drows = run_spec(dsp, key, c)
+        if drows and str(drows[0][0]).startswith('QUERY ERROR'):
+            drows = [tuple(['No source rows for this query'] + ['—'] * (len(dsp['cols']) - 1))]
+        if not drows:
+            drows = [tuple(['No source rows for this query'] + ['—'] * (len(dsp['cols']) - 1))]
+        b.table(('DA-%02d — ' % (i+1) + (dsp['ten'] if lang == 'EN' else dsp['tfa'])),
+                dsp['cols'], drows)
+    b.heading('Appendix A — Drilling-Data Analysis Department (29 forensic registers)'
+              if lang == 'EN' else 'پیوست الف — دپارتمان تحلیل دادههای حفاری (۲۹ دفتر تحلیلی)', 1)
+    b.para(('This appendix is derived from the SAZN master warehouse. It covers {da_pdf_tokens} PDF numeric tokens ({da_pdf_measured} measured / context-bearing), {da_pdf_low_pages} low-text source pages, {da_tables} derived forensic tables and {da_findings} evidence-based findings. Four-track cost reconciliation is exact to {da_cost_delta} USD after rounding; 50/50 waiting fallback hours = {da_npt_fallback}. No source value is modified, deleted or overwritten; every derived correction is stored in a separate labelled column and every result keeps its source key.'
+            if lang == 'EN' else
+            'این پیوست از انبار داده جامع سازن مشتق شده و {da_pdf_tokens} عدد PDF ({da_pdf_measured} عدد با واحد یا زمینه اندازهگیری)، {da_pdf_low_pages} صفحه کمتکست، {da_tables} جدول forensics مشتق و {da_findings} یافته مستند را پوشش میدهد. تطبیق چهارمسیره هزینه تا {da_cost_delta} دلار پس از گردکردن دقیق است؛ ساعات fallback انتظار ۵۰/۵۰ برابر {da_npt_fallback} است. هیچ مقدار منبعی تغییر، حذف یا بازنویسی نشده؛ هر تصحیح مشتق در ستون جداگانه و برچسبگذاریشده و هر نتیجه با کلید منبع نگهداری میشود.').format(**c))
+    for ai, asp in enumerate(APPENDIX):
+        arows = run_spec(asp, key, c)
+        if arows and str(arows[0][0]).startswith('QUERY ERROR'):
+            arows = [tuple(['No source rows for this query'] + ['—'] * (len(asp['cols']) - 1))]
+        if not arows:
+            arows = [tuple(['No source rows for this query'] + ['—'] * (len(asp['cols']) - 1))]
+        b.table(('DA-A%02d — ' % (ai+1) + (asp['ten'] if lang == 'EN' else asp['tfa'])),
+                asp['cols'], arows)
     b.save()
     return dict(path=path, lang=lang, key=key, chapters=b.chapters, tables=b.tables, images=b.images,
                 size_kb=round(os.path.getsize(path)/1024,1))
@@ -726,7 +951,7 @@ def audit(rec):
                 centered_paragraphs=centered, bidi_paragraphs=bidi, bidiVisual_tables=bidi_visual,
                 repeated_headers=repeat, cantSplit_rows=cant, navy_header_cells=navy, banded_tables=banded,
                 forbidden_labels=forbidden,
-                pass_gate=(rec['chapters'] == 24 and rec['tables'] >= 60 and rec['images'] >= 10
+                pass_gate=(rec['chapters'] == 24 and rec['tables'] >= 145 and rec['images'] >= 10
                            and not forbidden and (fonts.most_common(1)[0][0] == FONT[lang] if fonts else False)))
 
 

@@ -6,6 +6,12 @@ OUT = os.path.join(ROOT, 'SAZN_Reports'); DATA = os.path.join(OUT, '_data')
 GFX = os.path.join(OUT, 'SAZN_Graphics'); HTML = os.path.join(DATA, 'artboards')
 DB = os.path.join(OUT, 'SAZN_Master_Warehouse.sqlite'); XLSX = os.path.join(OUT, 'SAZN_Master_Audit_Workbook.xlsx')
 for d in (OUT, DATA, GFX, HTML): os.makedirs(d, exist_ok=True)
+# The warehouse is committed as a gzip archive to stay below the workspace patch cap.
+# Restore the working (ignored) SQLite file automatically when only the archive exists.
+if not os.path.exists(DB) and os.path.exists(DB + '.gz'):
+    import gzip as _gz, shutil as _sh
+    with _gz.open(DB + '.gz', 'rb') as _f, open(DB, 'wb') as _o:
+        _sh.copyfileobj(_f, _o)
 
 CONTRACTS = {'C1':('CCA/C/1401/27','Six-well bundle',list(range(1,7))),
              'C2':('CCA/C/1403/31','4+1 well bundle / extended scope',list(range(7,13))),
